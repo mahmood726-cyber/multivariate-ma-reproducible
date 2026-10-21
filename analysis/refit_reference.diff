@@ -1,0 +1,24 @@
+--- bench/reference.R
++++ analysis/refit_reference.R
+@@ -1,7 +1,7 @@
+-source('r_session.R')
+-corpus<-jsonlite::fromJSON('corpus.json',simplifyVector=FALSE)
+-for(nm in c('remlprof.fn','remlprof.gr','par2Psi','initpar','glsfit'))writeLines(capture.output(print(get(nm,asNamespace('mvmeta')))),file.path('documentation',paste0('mvmeta-',nm,'-source.txt')))
+-rd<-tools::Rd_db('metafor');for(nm in c('rma.mv','rcalc','escalc'))writeLines(capture.output(tools::Rd2txt(rd[[paste0(nm,'.Rd')]])),file.path('documentation',paste0('metafor-',nm,'.txt')))
++# Generated from bench/reference.R: reads the FRESH corpus from OUT, writes to OUT; no partial file and
++# no documentation snapshot. Statistical code is unchanged; see analysis/refit_reference.diff.
++source('analysis/json17.R')
++corpus<-jsonlite::fromJSON(file.path(OUT,'corpus.json'),simplifyVector=FALSE)
+ matrows<-function(M)lapply(seq_len(nrow(M)),function(i)unname(M[i,]))
+ out<-list()
+ for(c in corpus) {
+@@ -41,8 +41,7 @@
+   list(status='ok',k=k,m=2,mu=mu,muSE=se,muVcov=matrows(CV),G=matrows(G),rho=if(all(diag(G)>0))G[1,2]/sqrt(prod(diag(G))) else NULL,logLik=ll,ciLower=mu-qnorm(.975)*se,ciUpper=mu+qnorm(.975)*se,sd=sqrt(diag(G)),converged=f[['converged']],niter=f[['niter']],startLogLik=vapply(fits,function(x)as.numeric(logLik(x)),0),raw_mvmeta=raw,adjudication=adjudication)
+  },warning=function(w){warnings<<-c(warnings,conditionMessage(w));invokeRestart('muffleWarning')}),error=function(e)list(status='refused',reason=conditionMessage(e),k=k))
+  r[['id']]<-id;r[['warnings']]<-unique(warnings);out[[length(out)+1L]]<-r
+- write_json17(out,'reference-partial.json')
+  cat(length(out),id,r[['status']],if(r[['status']]=='refused')r[['reason']] else '', '\n')
+ }
+-write_json17(out,'reference.json')
++write_json17(out,file.path(OUT,'reference.json'))
+ cat('REFERENCE',length(out),'configurations;',sum(vapply(out,function(x)x[['status']]=='ok',logical(1))),'fits; boundary adjudication recorded\n')

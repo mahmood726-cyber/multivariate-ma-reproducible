@@ -1,0 +1,131 @@
+Studies on Adjuvant Treatments to Levodopa Therapy for Parkinson
+disease
+
+Description:
+
+     Results from 29 trials assessing efficacy of three drug classes as
+     adjuvant treatment to levodopa therapy in patients with Parkinson
+     disease and motor complications.
+
+Usage:
+
+     dat.stowe2010
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*  'character'  study label              
+       *id*     'integer'    study id                 
+       *t1*     'character'  treatment 1              
+       *y1*     'numeric'    treatment effect arm 1   
+       *sd1*    'numeric'    standard deviation arm 1 
+       *n1*     'integer'    sample size arm 1        
+       *t2*     'character'  treatment 2              
+       *y2*     'numeric'    treatment effect arm 2   
+       *sd2*    'numeric'    standard deviation arm 2 
+       *n2*     'integer'    sample size arm 2        
+       *t3*     'character'  treatment 3              
+       *y3*     'numeric'    treatment effect arm 3   
+       *sd3*    'numeric'    standard deviation arm 3 
+       *n3*     'integer'    sample size arm 3        
+      
+Details:
+
+     This dataset contains data from a Cochrane review assessing
+     efficacy and safety of three drug classes as adjuvant treatment to
+     levodopa therapy in patients with Parkinson disease and motor
+     complications (Stowe et al., 2010).
+
+     The authors conducted three pairwise meta-analyses comparing
+     dopamine agonists, catechol-O-methyl transferase inhibitors
+     (COMTI), and monoamine oxidase type B inhibitors (MAOBI) with
+     placebo. The primary outcome was the mean reduction of the time
+     spent in a relatively immobile 'off' phase (mean off-time),
+     calculated in hours per day. Relative treatment effects were
+     expressed as mean difference. Data on this outcome were available
+     for 5,331 patients from 28 studies comparing an active treatment
+     with placebo and one three-arm study comparing two active
+     treatments with placebo.
+
+Concepts:
+
+     medicine, raw mean differences, network meta-analysis
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Stowe, R., Ives, N., Clarke, C. E., Deane, K., Hilten, V.,
+     Wheatley, K., Gray, R., Handley, K., & Furmston, A. (2010).
+     Evaluation of the efficacy and safety of adjuvant treatment to
+     levodopa therapy in Parkinson's disease patients with motor
+     complications. _Cochrane Database of Systematic Reviews_, *7*,
+     CD007166. https://doi.org/10.1002/14651858.CD007166.pub2
+
+Examples:
+
+     ### Show results from three studies (including three-arm study LARGO)
+     dat.stowe2010[18:20, ]
+     
+     ## Not run:
+     
+     ### Load netmeta package
+     suppressPackageStartupMessages(library(netmeta))
+     
+     ### Print mean differences with two digits and standard errors with 3
+     ### digits
+     oldset <- settings.meta(digits = 2, digits.se = 3)
+     
+     ### Transform data from wide arm-based format to contrast-based
+     ### format. Argument 'sm' must not be provided as the mean difference
+     ### is the default in R function metacont() called internally.
+     pw <- pairwise(treat = list(t1, t2, t3), n = list(n1, n2, n3),
+       mean = list(y1, y2, y3), sd = list(sd1, sd2, sd3),
+       studlab = study, data = dat.stowe2010, sm = "MD")
+     
+     ### Show calculated mean differences (TE) for three studies
+     selstudy <- c("COMTI(E) INT-OZ", "LARGO", "COMTI(E) Nomecomt")
+     subset(pw, studlab %in% selstudy)[, c(3:7, 10, 1)]
+     
+     ### Conduct random effects network meta-analysis (NMA)
+     ### with placebo as reference
+     net <- netmeta(pw, common = FALSE, ref = "plac")
+     
+     ### Show network graph
+     netgraph(net, number = TRUE, multiarm = TRUE,
+       cex = 1.25, offset = 0.025,
+       cex.number = 1, pos.number.of.studies = 0.3)
+     
+     ### Print NMA results
+     net
+     
+     ### Forest plot with NMA results
+     forest(net)
+     
+     ### Forest plot showing all network estimates of active treatments
+     ### compared with other treatments
+     forest(net, ref = c("C", "D", "M"), baseline = FALSE, drop = TRUE)
+     
+     ### Treatment ranking using P-scores
+     netrank(net)
+     
+     ### Rankogram with all ranking probabilities
+     set.seed(1909)
+     ran <- rankogram(net)
+     ran
+     plot(ran)
+     
+     ### Treatment ranking using SUCRAs
+     netrank(ran)
+     
+     ### League table showing network and direct estimates
+     netleague(net, seq = netrank(net), ci = FALSE)
+     
+     ### Use previous settings
+     settings.meta(oldset)
+     ## End(Not run)
+     

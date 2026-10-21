@@ -1,0 +1,17 @@
+--- bench/corpus.R
++++ analysis/refit_corpus.R
+@@ -1,4 +1,6 @@
+-source('r_session.R')
++# Generated from bench/corpus.R: writes to OUT; the session banner is printed by validate.R.
++# Data construction code is unchanged; see analysis/refit_corpus.diff.
++source('analysis/json17.R')
+ getdat <- function(pkg,nm) { e<-new.env();data(list=nm,package=pkg,envir=e);get(nm,e) }
+ corpus<-list(); rows<-list(); attempts<-list()
+ matrows <- function(M) lapply(seq_len(nrow(M)),function(i)unname(M[i,]))
+@@ -70,5 +72,5 @@
+  a<-metafor::escalc(measure='PLO',xi=x1,ni=n1,add=.5,to='all');b<-metafor::escalc(measure='PLO',xi=x2,ni=n2,add=.5,to='all');Y<-cbind(logit_sensitivity=a[['yi']],logit_specificity=b[['yi']]);S<-lapply(seq_len(nrow(d)),function(i)diag(c(a[['vi']][i],b[['vi']][i])))
+  add('metadat',nm,Y,S,seq_len(nrow(d)),'escalc PLO .5 to all cells; sensitivity and specificity in disjoint case/noncase samples; covariance zero','disjoint-binomial-samples')
+ }
+-write_json17(corpus,'corpus.json');write.csv(do.call(rbind,rows),'row-ledger.csv',row.names=FALSE)
++write_json17(corpus,file.path(OUT,'corpus.json'));write.csv(do.call(rbind,rows),file.path(OUT,'row-ledger.csv'),row.names=FALSE)
+ cat('CORPUS',length(corpus),'configurations from',length(unique(vapply(corpus,function(c)paste(c[['package']],c[['dataset']]),''))),'datasets\n')

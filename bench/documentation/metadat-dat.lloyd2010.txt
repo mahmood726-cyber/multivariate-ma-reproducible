@@ -1,0 +1,83 @@
+Studies on Anti-TNF-alpha Inhibitors in Rheumatoid Arthritis
+
+Description:
+
+     Results from 16 studies evaluating anti-TNF-alpha inhibitors in
+     patients with rheumatoid arthritis.
+
+Usage:
+
+     dat.lloyd2010
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*     'character'  first author                   
+       *year*       'integer'    publication year               
+       *mean.das*   'numeric'    mean for outcome DAS-28        
+       *lower.das*  'numeric'    lower limit for outcome DAS-28 
+       *upper.das*  'numeric'    upper limit for outcome DAS-28 
+       *mean.haq*   'numeric'    mean for outcome HAQ           
+       *lower.haq*  'numeric'    lower limit for outcome HAQ    
+       *upper.haq*  'numeric'    upper limit for outcome HAQ    
+       *n*          'integer'    sample size                    
+      
+Details:
+
+     Lloyd et al. (2010) report results of a systematic review
+     evaluating the effectiveness of anti-TNF-alpha inhibitors in the
+     treatment of rheumatoid arthritis. The authors conducted separate
+     meta-analyses for HAQ and DAS-28.
+
+Concepts:
+
+     medicine, rheumatology, raw mean differences
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Lloyd, S., Bujkiewicz, S., Wailoo, A. J., Sutton, A. J., & Scott,
+     D. (2010). The effectiveness of anti-TNF-alpha therapies when used
+     sequentially in rheumatoid arthritis patients: A systematic review
+     and meta-analysis. _Rheumatology_, *49*(12), 2313-2321.
+     https://doi.org/10.1093/rheumatology/keq169
+
+Examples:
+
+     ### Show first five studies
+     head(dat.lloyd2010, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Only consider studies providing data for both outcomes
+     lloyd5 <- subset(dat.lloyd2010, !is.na(mean.haq) & !is.na(mean.das))
+     
+     ### Univariate meta-analysis of the DAS-28 outcome
+     m.das <- metagen(mean.das,
+       lower = lower.das, upper = upper.das,
+       data = lloyd5, sm = "MD",
+       studlab = paste(author, year),
+       random = FALSE)
+     
+     ### Univariate meta-analysis of the HAQ outcome
+     m.haq <- metagen(mean.haq,
+       lower = lower.haq, upper = upper.haq,
+       data = lloyd5, sm = "MD",
+       studlab = paste(author, year),
+       random = FALSE)
+     
+     ### Forest plots
+     forest(m.das, test.overall = TRUE, hetstat = FALSE,
+       digits.TE = 2, digits.se = 2)
+     forest(m.haq, test.overall = TRUE, hetstat = FALSE,
+       digits.TE = 2, digits.se = 2)
+     ## End(Not run)
+     

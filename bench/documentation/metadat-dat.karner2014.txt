@@ -1,0 +1,115 @@
+Studies on Tiotropium in Patients with COPD
+
+Description:
+
+     Data on several endpoints and risk-of-bias from a systematic
+     review of studies on tiotropium in patients with chronic
+     obstructive pulmonary disease (COPD).
+
+Usage:
+
+     dat.karner2014
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*               'character'  publication identifier (first author and publication year)                                                    
+       *year*                'numeric'    publication year                                                                                              
+       *duration*            'factor'     study duration (<1 year vs. >=1 year)                                                                         
+       *inhaler*             'factor'     type of inhaler investigated ("dry powder" or "soft mist")                                                    
+       *baseline.age*        'numeric'    mean age at baseline                                                                                          
+       *baseline.males*      'numeric'    proportion of males among study participants                                                                  
+       *baseline.fev1*       'numeric'    mean FEV1 at baseline (L)                                                                                     
+       *baseline.fev1pp*     'numeric'    mean FEV1 (percent of predicted) at baseline                                                                  
+       *baseline.pyr*        'numeric'    mean number of pack-years (smoking history)                                                                   
+       *tiotropium.total*    'numeric'    total number of patients in the treatment group                                                               
+       *tiotropium.exa*      'numeric'    number of patients with >=1 exacerbation in the treatment group                                               
+       *tiotropium.sexa*     'numeric'    number of patients with >=1 _severe_ exacerbation in the treatment group                                      
+       *tiotropium.hospi*    'numeric'    number of patients with >=1 hospitalization (all-cause) in the treatment group                                
+       *tiotropium.deaths*   'numeric'    number of deaths in the treatment group                                                                       
+       *tiotropium.sae*      'numeric'    number of patients with >=1 serious adverse event (non-fatal) in the treatment group                          
+       *tiotropium.dropout*  'numeric'    number of withdrawals in the treatment group                                                                  
+       *placebo.total*       'numeric'    total number of patients in the control group                                                                 
+       *placebo.exa*         'numeric'    number of patients with >=1 exacerbation in the control group                                                 
+       *placebo.sexa*        'numeric'    number of patients with >=1 _severe_ exacerbation in the control group                                        
+       *placebo.hospi*       'numeric'    number of patients with >=1 hospitalization (all-cause) in the control group                                  
+       *placebo.deaths*      'numeric'    number of deaths in the control group                                                                         
+       *placebo.sae*         'numeric'    number of patients with >=1 serious adverse event (non-fatal) in the control group                            
+       *placebo.dropout*     'numeric'    number of withdrawals in the control group                                                                    
+       *sgrq.md*, *sgrq.se*  'numeric'    mean difference and associated standard error for _St. George's respiratory questionnaire (SGRQ)_ total score 
+       *fev1.md*, *fev1.se*  'numeric'    mean difference and associated standard error for _forced expiratory volume in 1 second (FEV1, mL)_           
+       *rob.rand*            'factor'     random sequence generation (selection bias)                                                                   
+       *rob.alloc*           'factor'     allocation concealment (selection bias)                                                                       
+       *rob.perf*            'factor'     blinding of participants and personnel (performance bias)                                                     
+       *rob.det*             'factor'     blinding of outcome assessment (detection bias)                                                               
+       *rob.att*             'factor'     incomplete outcome data (attrition bias)                                                                      
+       *rob.rep*             'factor'     selective reporting bias (reporting bias)                                                                     
+      
+Details:
+
+     Chronic obstructive pulmonary disease (COPD) is a chronic and
+     progressive condition characterized by recurrent exacerbation
+     phases. Various treatment options are available, aimed at both
+     providing relief during an acute exacerbation, and at delaying
+     overall disease progression. A common drug used in the management
+     of COPD is _tiotropium_, a long-acting muscarinic antagonist
+     (LAMA), which is administered via an inhaler device.
+
+     Karner et al. (2014) conducted a systematic review in order to
+     evaluate the evidence on the effects of tiotropium in comparison
+     to placebo. 22 placebo-controlled studies were found, and a range
+     of endpoints and subgroups were considered. The data reproduced
+     here relate to analyses 1.1, 1.9, 1.14, 1.15, 1.19, 1.26, 1.27,
+     and 1.28 in the original investigation. The risk-of-bias
+     assessments were shown in Fig. 2. A number of study-level
+     covariables are also provided.
+
+Concepts:
+
+     medicine, pulmonology, odds ratios, raw mean differences,
+     meta-regression, risk-of-bias
+
+Author(s):
+
+     Christian Roever, <mailto:christian.roever@med.uni-goettingen.d>
+
+Source:
+
+     Karner, C., Chong, J., & Poole, P. (2014). Tiotropium versus
+     placebo for chronic obstructive pulmonary disease. _Cochrane
+     Database of Systematic Reviews_, *7*, CD009285.
+     https://doi.org/10.1002/14651858.cd009285.pub3
+
+Examples:
+
+     dat.karner2014
+     
+     ## Not run:
+     
+     library(metafor)
+     library(bayesmeta)
+     
+     # compute effect sizes (log odds ratios) from exacerbation count data
+     # (using the "metafor" package's "escalc()" function)
+     karner.exa <- escalc(measure="OR",
+                          ai=tiotropium.exa, n1i=tiotropium.total,
+                          ci=placebo.exa,    n2i=placebo.total,
+                          slab=study, data=dat.karner2014)
+     
+     # show forest plot
+     forestplot(karner.exa, title="exacerbation",
+                exponentiate=TRUE, xlog=TRUE,
+                xlab="odds ratio")
+     
+     # derive St. George's Respiratory Questionnaire (SGRQ) effect sizes
+     # (change in SGRQ score)
+     karner.sgrq <- escalc(measure="MD",
+                           yi=sgrq.md, sei=sgrq.se,
+                           slab=study, data=dat.karner2014,
+                           subset=is.finite(dat.karner2014$sgrq.md))
+     
+     # show forest plot
+     forestplot(karner.sgrq, title="SGRQ", xlab="mean difference")
+     ## End(Not run)
+     

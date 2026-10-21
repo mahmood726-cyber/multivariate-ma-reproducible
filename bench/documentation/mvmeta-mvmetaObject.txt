@@ -1,0 +1,174 @@
+mvmeta Objects
+
+Description:
+
+     An object returned by the 'mvmeta' function, inheriting from class
+     '"mvmeta"', and representing a fitted univariate or multivariate
+     meta-analytical model.
+
+Value:
+
+     Objects of class '"mvmeta"' are lists with defined components.
+     Dimensions of such components may refer to k outcome parameters, p
+     predictors and m studies used for fitting the model (the latter
+     can be different from those originally selected due to missing).
+     The following components needs to be included in a legitimate
+     'mvmeta' object:
+
+coefficients: a p-dimensional vector (for univariate models) or a p x k
+          matrix (for multivariate models) of the fixed-effects
+          coefficients.
+
+    vcov: estimated kp x kp (co)variance matrix of the fixed-effects
+          coefficients.
+
+     Psi: for random-effects models, the estimated k x k between-study
+          (co)variance matrix.
+
+residuals: a m-dimensional vector (for univariate models) or m x k
+          matrix (for multivariate models) of residuals, that is
+          observed minus fitted values.
+
+fitted.values: a m-dimensional vector (for univariate models) or m x k
+          matrix (for multivariate models) of fitted mean values.
+
+df.residual: the residual degrees of freedom.
+
+    rank: the numeric rank of the fitted model.
+
+  logLik: the (restricted) log-likelihood of the fitted model. Set to
+          'NA' for non-likelihood models.
+
+converged, niter: for models with iterative estimation methods, logical
+          scalar indicating if the algorithm eventually converged.
+
+     par: parameters estimated in the optimization process when using
+          likelihood-based estimators. These correspond to
+          trasformations of entries of the between-study (co)variance
+          matrix of random effects, dependent on chosen '(co)variance
+          structure'. See also the 'optimizations algorithms' for
+          details.
+
+ hessian: Hessian matrix of the estimated parameters in 'par' above,
+          only returned if 'hessian=TRUE' in 'mvmeta.control'. See the
+          related 'optimizations algorithms' for details.
+
+negeigen: for models fitted through method of moments, the number of
+          negative eigenvalues in the estimated between-study
+          (co)variance matrix, then set to 0.
+
+ control: a list with the values of the control arguments used, as
+          returned by 'mvmeta.control'.
+
+  method: the estimation method.
+
+   bscov: a string defining the between-study (co)variance structure in
+          likelihood based models.
+
+       S: a m x k(k+1)/2 matrix, where each row represents the
+          vectorized entries of the lower triangle of the related
+          within-study (co)variance matrix, taken by column. See
+          'mvmeta'.
+
+     dim: list with the following scalar components: 'm' (number of
+          studies included in estimation, which could be lower than the
+          total number in the presence of missing values), 'k' (number
+          of outcome parameters), 'p' (number of coefficients for each
+          outcome parameter).
+
+      df: list with the following scalar components: 'nall' (number of
+          observations used for estimation, excluding missing values),
+          'nobs' (equal to 'nall', minus the number of fixed-effects
+          coefficients in REML models), 'fixed' (number of estimated
+          fixed-effects coefficients), 'random' (number of estimated
+          (co)variance terms).
+
+     lab: list with the following label vectors: 'm' for the m studies,
+          'k' for the k outcome parameters, 'p' for the p predictors
+          (including intercept). The first two are derived from the
+          vector/matrix of outcome parameters in 'formula', the third
+          from the design matrix derived from 'model.matrix'.
+
+   model: the model frame used for fitting. Reported if 'model=TRUE' in
+          'mvmeta'. See 'model.frame'.
+
+    call: the function call.
+
+na.action: (where relevant) information returned by 'model.frame' on
+          the special handling of NAs. See info on 'missing values'.
+
+ formula: the model supplied.
+
+   terms: the 'terms' object representing the fitted model.
+
+contrasts: (where relevant) the contrasts used.
+
+ xlevels: (where relevant) a record of the levels of the factors used
+          in fitting.
+
+Methods:
+
+     A number of methods functions are available for 'mvmeta' objects,
+     most of them common to other regression functions.
+
+     Specifically-written method functions are defined for 'predict'
+     (standard predictions) and 'blup' (best linear unbiased
+     predictions). The method function 'simulate' produces simulated
+     outcomes from a fitted model, while 'qtest' performs the Cochran Q
+     test for heterogeneity. Other methods have been produced for
+     'summary', 'logLik', 'coef', and 'vcov'.
+
+     Specific methods are also available for 'model.frame' and
+     'model.matrix'. In particular, the former produces the model frame
+     (a data frame with special attributes storing the variables used
+     for fitting) with the additional class '"data.frame.mvmeta"'.
+     Methods 'na.omit' and 'na.exclude' for this class are useful for
+     the handling of missing values in 'mvmeta' objects.
+
+     Printing functions for the objects of classes defined above are
+     also provided. 'anova' methods for performing tests in 'mvmeta'
+     objects are in development.
+
+     All the methods above are visible (exported from the namespace)
+     and documented. In additions, several default method functions for
+     regression are also applicable to objects of class '"mvmeta"',
+     such as 'fitted', 'residuals', 'AIC', 'BIC' and 'update', among
+     others.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+See Also:
+
+     See 'mvmeta'. See 'lm' or 'glm' for standard regression functions.
+     See 'mvmeta-package' for an overview of this modelling framework.
+
+Examples:
+
+     # RUN THE MODEL
+     model <- mvmeta(cbind(PD,AL)~pubyear,S=berkey98[5:7],data=berkey98)
+     
+     # INSPECT THE OBJECT
+     names(model)
+     
+     # LABELS
+     model$lab
+     
+     # FORMULA
+     model$formula
+     
+     # CONVERGED?
+     model$converged
+     

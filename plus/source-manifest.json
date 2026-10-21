@@ -1,0 +1,164 @@
+{
+ "schema": "multivariate-ma-plus-source-v1",
+ "repository": "https://github.com/mahmood726-cyber/allmeta",
+ "branch": "feat/multivariate-ma-plus",
+ "pull_request": "#152 (draft, not merged at archive build time)",
+ "commit": "d0892228c2c0af009ca5270cfc8eb73ffa12eb31",
+ "parents": {
+  "plus_branch": "5bdf400f337c1e5e1fffd84b9ce9e38f3310e464",
+  "v1_fix_pr154": "1b9b9327d75262b9ff8c32ecc5d6414c264071d6"
+ },
+ "note": "Byte-identical copies of the git blobs at the commit (git cat-file blob, no end-of-line conversion).",
+ "files": [
+  {
+   "path": "hub/shared/a11y-landmarks.js",
+   "bytes": 1904,
+   "sha256": "f7a89f3c72dd80f666d16d52592a7e60f45fba62efc9dfeb4c2faf7fb0e8b5a2"
+  },
+  {
+   "path": "hub/shared/tests/multivariate-ma-fixture.mjs",
+   "bytes": 733,
+   "sha256": "3b30c88222a0171106555a1242e1d55ff1ef2bc17ce70e5c895c6be9049ddedc"
+  },
+  {
+   "path": "hub/shared/tests/multivariate-ma-parity.spec.mjs",
+   "bytes": 2670,
+   "sha256": "6aa99cba683c4f0d4bbb2249058eb5803a1ebcf634e38f7f72b44da7b11bdfd3"
+  },
+  {
+   "path": "hub/shared/tests/multivariate-ma-plus-pixels.spec.mjs",
+   "bytes": 1145,
+   "sha256": "03c4e2fb57650c3d860b398a0306612c66a8aa7f5ad1576eb6e1b2581a9459ac"
+  },
+  {
+   "path": "hub/shared/tests/multivariate-ma-plus.spec.mjs",
+   "bytes": 9379,
+   "sha256": "b4ac76494cca641ec4e4abf4d3d06b683985cc5d9abd8eb3be484a6e58427335"
+  },
+  {
+   "path": "hub/shared/tests/multivariate-ma-sanity.spec.mjs",
+   "bytes": 1594,
+   "sha256": "cc4e00c1c14b99d9a36acf8185bdd6daf1d0c857660849be41108fc80fd816f1"
+  },
+  {
+   "path": "LICENSE",
+   "bytes": 1070,
+   "sha256": "9ef93bba7449dd90d4d56d657049842fc7ff0b073fb669b79daf267d68c1c8c6"
+  },
+  {
+   "path": "multivariate-ma/index.html",
+   "bytes": 29675,
+   "sha256": "d03e7b332649616d6b7b4b714d0fdb62bb843e6d71fb9634818514f891110e5e"
+  },
+  {
+   "path": "multivariate-ma/plus-ui.js",
+   "bytes": 13616,
+   "sha256": "e5b65e746af6f5b2545e255e1aa6701ab1d980e093e65bd6a3e2a3c15f338ed9"
+  },
+  {
+   "path": "multivariate-ma/plus.js",
+   "bytes": 18133,
+   "sha256": "d9c50b428f3069a3477e5c9e06a113d7d5d6bccffdf71e45a395578d16515dd3"
+  },
+  {
+   "path": "multivariate-ma/validate/generate-plus.R",
+   "bytes": 10749,
+   "sha256": "b14e5fa05350864f271d9bc4f5ed7b938f664d6bd373d55572d1cc5db88c7fe2"
+  },
+  {
+   "path": "multivariate-ma/validate/make_plus_corpus.py",
+   "bytes": 1840,
+   "sha256": "55b90055e3ddad75b160de35be5f0282cd1e11e5c29fca14c5ad79749c98e0f6"
+  },
+  {
+   "path": "multivariate-ma/validate/MANIFEST-plus.json",
+   "bytes": 1210,
+   "sha256": "932583d5500dc452e58c6f5fd5cebe50c2974758cdfd931134b4eaef1d39d598"
+  },
+  {
+   "path": "multivariate-ma/validate/pin-plus.py",
+   "bytes": 2039,
+   "sha256": "b846e7f4a5221315e6e7767202f3efb2a3f90782cd63b30ef97a5fea2ca76c25"
+  },
+  {
+   "path": "multivariate-ma/validate/plus/corpus.json",
+   "bytes": 409014,
+   "sha256": "fbac67e86b31ba9f7f9e3d3bb6cf2284a226a95500a218aafe71d8b7bb23477b"
+  },
+  {
+   "path": "multivariate-ma/validate/plus/evidence-node.json",
+   "bytes": 6949,
+   "sha256": "9437657572cf3bd9f21b00137bbb61a0140de6e5a8caac82667660e231b3266c"
+  },
+  {
+   "path": "multivariate-ma/validate/plus/generate-plus.log",
+   "bytes": 7165,
+   "sha256": "55e78cecdf7ca2de88d9f231b5f1cda4a19116a218d7f8d598db2fe7381137ed"
+  },
+  {
+   "path": "multivariate-ma/validate/plus/reference.json",
+   "bytes": 1228828,
+   "sha256": "0d09a7f24ad3263b113851ba3e6afc79bd93d63f5fba64f013c2fbccda76fdab"
+  },
+  {
+   "path": "multivariate-ma/validate/plus/roundtrip-result.json",
+   "bytes": 12012,
+   "sha256": "276e8c6670502c64a582a010e333fcb1a9b25ac7fe695681ed649f96ea462000"
+  },
+  {
+   "path": "multivariate-ma/validate/plus-adapter.js",
+   "bytes": 5084,
+   "sha256": "8cb1fd724de164231596d7b80228513e69be00779cfb73e56f0610fd25e11d35"
+  },
+  {
+   "path": "multivariate-ma/validate/plus-contract.js",
+   "bytes": 11280,
+   "sha256": "c4dba51adaadf9f8bf8b334de57b0f64c0b6541f557e9d5f5abfad7d61a99196"
+  },
+  {
+   "path": "multivariate-ma/validate/plus-pins.js",
+   "bytes": 992,
+   "sha256": "17400caed38a4167aecfd8a4b5ae0e38f2448f5247b17f3848aeef179aec2d01"
+  },
+  {
+   "path": "multivariate-ma/validate/README-plus.md",
+   "bytes": 6528,
+   "sha256": "340ffd605acefc342a61c959ada0fa1059dea05346cdef25a0340bd7895a15d2"
+  },
+  {
+   "path": "multivariate-ma/validate/roundtrip-compare.cjs",
+   "bytes": 3947,
+   "sha256": "3bd98cb944b00fbab37373b6f13b85851921705e18ddfbd63964c6a1d0cdacc8"
+  },
+  {
+   "path": "multivariate-ma/validate/roundtrip-export.cjs",
+   "bytes": 2992,
+   "sha256": "20771c22cfbc7a16b78ddadee8d27fd5986ca73345fb5d1da20446d2628f0270"
+  },
+  {
+   "path": "multivariate-ma/validate/run-plus-node.cjs",
+   "bytes": 3475,
+   "sha256": "72cbc470c6f6503582674b9638db06013b71894cfaaf9abdc93d503d098620f1"
+  },
+  {
+   "path": "shared/alm-validate.js",
+   "bytes": 17355,
+   "sha256": "24b0f17a3b9273c21eda065cad851ec7ad2d8077de96cee93c3bfe41c51e8e29"
+  },
+  {
+   "path": "shared/build-info.js",
+   "bytes": 1274,
+   "sha256": "5e830962d74b2a8ab4d2cbf1a822976e78cc0c29db5cda1e45acc052f981b333"
+  },
+  {
+   "path": "shared/forced-colors.css",
+   "bytes": 2357,
+   "sha256": "a26b396b0b5b683ea06fca129855e3aba34805348e2d8d4e811ef74b44f5e96e"
+  },
+  {
+   "path": "shared/multivariate-ma.js",
+   "bytes": 25629,
+   "sha256": "50af4e810f95e959a7c423d20bf36f69f02a9f52339c592216f2472026920b07"
+  }
+ ]
+}

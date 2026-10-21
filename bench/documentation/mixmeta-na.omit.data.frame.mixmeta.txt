@@ -1,0 +1,92 @@
+Handling Missing Values in mixmeta Models
+
+Description:
+
+     These method functions exclude rows corresponding to units with
+     invalid missing pattern from model frames of class
+     '"data.frame.mixmeta"'. This guarantees the correct handling of
+     missing values while fitting meta-analytical models.
+
+Usage:
+
+     ## S3 method for class 'data.frame.mixmeta'
+     na.omit(object, ...)
+     
+     ## S3 method for class 'data.frame.mixmeta'
+     na.exclude(object, ...)
+     
+Arguments:
+
+  object: an object of class '"data.frame.mixmeta"'.
+
+     ...: further arguments passed to or from other methods.
+
+Details:
+
+     A model frame of class '"data.frame.mixmeta"' is produced by
+     'mixmeta'. A call to 'na.omit' or 'na.exclude' removes from the
+     model frame the rows corresponding to studies with invalid missing
+     pattern. In addition, a 'na.action' attribute is added to the
+     model frame, namely a numeric vector corresponding to the removed
+     rows and class '"omit"' or '"exclude"', respectively. This
+     information is used by 'naresid' and 'napredict' to deal with
+     missing values in functions such as 'fitted', 'residuals',
+     'predict' and 'blup', among others.
+
+     The definition of missing, identifying an invalid missing pattern,
+     is different in meta-analytical models performed through 'mixmeta'
+     if compared to other regression functions such as 'lm' or 'glm',
+     in particular for the multivariate case. Specifically, while a
+     unit is removed if at least an observation for one predictor is
+     missing, partially missing outcomes do not prevent the unit to
+     contribute to estimation (see 'mixmeta'). Specific methods
+     'na.omit' and 'na.exclude' for class '"data.frame.mixmeta"' allow
+     this different definition.
+
+Value:
+
+     These functions returns the model frame 'object' with rows
+     corresponding to units with invalid missing pattern being removed.
+     They also add the related 'na.action' attribute as explained
+     above.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+See Also:
+
+     See 'na.action', 'naresid' and 'napredict'. See 'model.frame'. See
+     'mixmeta-package' for an overview of the package and modelling
+     framework.
+
+Examples:
+
+     # INPUT MISSING VALUES IN PREDICTOR AND ONE RESPONSE
+     data <- berkey98
+     data[2,1] <- data[4,3] <- NA
+     data
+     
+     # RUN THE MODEL
+     model <- mixmeta(cbind(PD,AL) ~ pubyear, S=data[5:7], data=data, method="ml")
+     
+     # SUMMARIZE: NOTE THE NUMBER OF STUDIES AND OBSERVATIONS
+     summary(model)
+     df.residual(model)
+     
+     # EXTRACT THE MODEL FRAME WITH na.pass
+     model.frame(model, na.action="na.pass")
+     # EXTRACT THE MODEL FRAME WITH na.omit (DEFAULT)
+     model.frame(model, na.action="na.omit")
+     
+     # COMPARE WITH DEFAULT METHOD FOR na.omit
+     frame <- model.frame(model, na.action="na.pass")
+     na.omit(frame)
+     class(frame)
+     class(frame) <- "data.frame"
+     na.omit(frame)
+     
+     # WITH na.exclude
+     residuals(model)
+     residuals(update(model, na.action="na.exclude"))
+     

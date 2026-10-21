@@ -1,0 +1,16 @@
+{
+  "LICENSE.app.txt": "9ef93bba7449dd90d4d56d657049842fc7ff0b073fb669b79daf267d68c1c8c6",
+  "original/hub/shared/a11y-landmarks.js": "f7a89f3c72dd80f666d16d52592a7e60f45fba62efc9dfeb4c2faf7fb0e8b5a2",
+  "original/hub/shared/tests/multivariate-ma-parity.spec.mjs": "a524aeb8eb4747ed30d56e7ccc8556741b554abaff58795b13c9db7b81a1ce50",
+  "original/multivariate-ma/index.html": "53f081876c2f33a195f720444f16738d233b3324ca59d54b977df6f98e1865b2",
+  "original/shared/build-info.js": "5e830962d74b2a8ab4d2cbf1a822976e78cc0c29db5cda1e45acc052f981b333",
+  "original/shared/forced-colors.css": "a26b396b0b5b683ea06fca129855e3aba34805348e2d8d4e811ef74b44f5e96e",
+  "original/shared/multivariate-ma.js": "39e1053ae35378ddb6dcf56aa1c103bcd62c9c93a0e9ce1740c4fc2b5a448fd0",
+  "patched/hub/shared/a11y-landmarks.js": "f7a89f3c72dd80f666d16d52592a7e60f45fba62efc9dfeb4c2faf7fb0e8b5a2",
+  "patched/hub/shared/tests/multivariate-ma-parity.spec.mjs": "6aa99cba683c4f0d4bbb2249058eb5803a1ebcf634e38f7f72b44da7b11bdfd3",
+  "patched/multivariate-ma/index.html": "bb7c35d5cd276ce51fef0d8215e05e979a4257d8ff7639fbb325ea1aed80313a",
+  "patched/shared/build-info.js": "5e830962d74b2a8ab4d2cbf1a822976e78cc0c29db5cda1e45acc052f981b333",
+  "patched/shared/forced-colors.css": "a26b396b0b5b683ea06fca129855e3aba34805348e2d8d4e811ef74b44f5e96e",
+  "patched/shared/multivariate-ma.js": "55b64f2acb1776c6e8b99ca2e0c21a908e241eaa58829cd92571d3b37cab6b3b",
+  "source-manifest.json": "c06dfcc6d14b41ba1d399379e3736c0cb9d4f5f7df320b088d698efc286dec22"
+}

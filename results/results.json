@@ -1,0 +1,694 @@
+{
+  "commit": "acd363fa33f0decd2fcafcf08814f663bb9d6178",
+  "candidate_datasets": 132,
+  "included_datasets": 22,
+  "excluded_datasets": 110,
+  "configurations": 92,
+  "reference_fits": 91,
+  "reference_refusals": 1,
+  "rows_across_configurations": 2093,
+  "accepted_rows_across_configurations": 1209,
+  "counts": {
+    "original": {
+      "total": 18684,
+      "passed": 18591,
+      "corpus_numerical": {
+        "total": 2002,
+        "passed": 1949
+      },
+      "corpus_configurations": {
+        "total": 92,
+        "passed": 91
+      },
+      "focused": {
+        "total": 4988,
+        "passed": 4972
+      },
+      "default_example": {
+        "total": 10,
+        "passed": 0
+      },
+      "metafor_crosscheck": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "patched": {
+      "total": 18682,
+      "passed": 18682,
+      "corpus_numerical": {
+        "total": 2002,
+        "passed": 2002
+      },
+      "corpus_configurations": {
+        "total": 92,
+        "passed": 92
+      },
+      "focused": {
+        "total": 4986,
+        "passed": 4986
+      },
+      "default_example": {
+        "total": 10,
+        "passed": 10
+      },
+      "metafor_crosscheck": {
+        "total": 10,
+        "passed": 10
+      }
+    }
+  },
+  "quantities_original": [
+    {
+      "quantity": "G",
+      "checks": 368,
+      "passed": 360,
+      "max_error": 6.998130629827515e-06,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "accessor_G",
+      "checks": 404,
+      "passed": 404,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_k",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_logLik",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_mu",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_muSE",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_rho",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "api_refusal",
+      "checks": 4,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ciLower",
+      "checks": 182,
+      "passed": 178,
+      "max_error": 1.644819597190761e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "ciUpper",
+      "checks": 182,
+      "passed": 178,
+      "max_error": 1.1319384802564864e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_G",
+      "checks": 4,
+      "passed": 0,
+      "max_error": 0.003015923619680845,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_logLik",
+      "checks": 1,
+      "passed": 0,
+      "max_error": 0.01626172528342269,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_mu",
+      "checks": 2,
+      "passed": 0,
+      "max_error": 0.01753917950962397,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_muSE",
+      "checks": 2,
+      "passed": 0,
+      "max_error": 0.00615404522664359,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_rho",
+      "checks": 1,
+      "passed": 0,
+      "max_error": 0.15203325275681817,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "display_cards",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "display_headline",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_in_viewport",
+      "checks": 101,
+      "passed": 79,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_mahalanobis",
+      "checks": 8100,
+      "passed": 8100,
+      "max_error": 1.6737848414165666e-11,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "ellipse_vertices",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "fit_status",
+      "checks": 91,
+      "passed": 91,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "focused_k",
+      "checks": 10,
+      "passed": 9,
+      "max_error": 0.3333333333333333,
+      "tolerance": 0
+    },
+    {
+      "quantity": "input_membership",
+      "checks": 92,
+      "passed": 92,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "k",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "logLik",
+      "checks": 92,
+      "passed": 92,
+      "max_error": 4.985408624738672e-13,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "m",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "mu",
+      "checks": 184,
+      "passed": 182,
+      "max_error": 1.2117216852125523e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muSE",
+      "checks": 184,
+      "passed": 180,
+      "max_error": 1.843797125166506e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muVcov",
+      "checks": 364,
+      "passed": 356,
+      "max_error": 4.148523486323046e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "outcome_labels",
+      "checks": 1,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "plot_study_coordinate",
+      "checks": 6436,
+      "passed": 6436,
+      "max_error": 1.0799858638444551e-14,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "plot_study_count",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "refusal",
+      "checks": 1,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "rho",
+      "checks": 79,
+      "passed": 77,
+      "max_error": 1.0541257755569688e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "rho_undefined",
+      "checks": 13,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "schema",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "sd",
+      "checks": 182,
+      "passed": 174,
+      "max_error": 1.449572404302324e-05,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "svg_finite",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ui_refusal",
+      "checks": 4,
+      "passed": 2,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "valid_capture",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    }
+  ],
+  "quantities_patched": [
+    {
+      "quantity": "G",
+      "checks": 368,
+      "passed": 368,
+      "max_error": 9.511508350246048e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "accessor_G",
+      "checks": 404,
+      "passed": 404,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_k",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_logLik",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_mu",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_muSE",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_rho",
+      "checks": 80,
+      "passed": 80,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_rho_undefined",
+      "checks": 21,
+      "passed": 21,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "api_refusal",
+      "checks": 4,
+      "passed": 4,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ciLower",
+      "checks": 182,
+      "passed": 182,
+      "max_error": 5.998911670745954e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "ciUpper",
+      "checks": 182,
+      "passed": 182,
+      "max_error": 3.6194876552008734e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_G",
+      "checks": 4,
+      "passed": 4,
+      "max_error": 4.2676489425685915e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_logLik",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 4.811670144112978e-16,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_mu",
+      "checks": 2,
+      "passed": 2,
+      "max_error": 5.247288159537788e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_muSE",
+      "checks": 2,
+      "passed": 2,
+      "max_error": 5.120643908895772e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_rho",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 1.1617607986735834e-08,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "display_cards",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "display_headline",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_in_viewport",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_mahalanobis",
+      "checks": 8100,
+      "passed": 8100,
+      "max_error": 5.549387613004089e-12,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "ellipse_vertices",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "fit_status",
+      "checks": 91,
+      "passed": 91,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "focused_k",
+      "checks": 10,
+      "passed": 10,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "input_membership",
+      "checks": 92,
+      "passed": 92,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "k",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "logLik",
+      "checks": 92,
+      "passed": 92,
+      "max_error": 1.6891094949231962e-13,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "m",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "mu",
+      "checks": 184,
+      "passed": 184,
+      "max_error": 4.210983436392368e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muSE",
+      "checks": 184,
+      "passed": 184,
+      "max_error": 1.8437970997880654e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muVcov",
+      "checks": 364,
+      "passed": 364,
+      "max_error": 4.1485234358260214e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "outcome_labels",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "plot_study_coordinate",
+      "checks": 6434,
+      "passed": 6434,
+      "max_error": 1.0799858638444551e-14,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "plot_study_count",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "refusal",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "rho",
+      "checks": 79,
+      "passed": 79,
+      "max_error": 1.054125782218307e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "rho_undefined",
+      "checks": 13,
+      "passed": 13,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "schema",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "sd",
+      "checks": 182,
+      "passed": 182,
+      "max_error": 4.6489600609662455e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "svg_finite",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ui_refusal",
+      "checks": 4,
+      "passed": 4,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "valid_capture",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    }
+  ],
+  "limitations": [
+    "Node/linkedom generated DOM and SVG only; no real browser rendering",
+    "Complete-pair analysis only; no partially observed multivariate model",
+    "Finite set of supplied/documented covariance inputs, not all possible numeric covariances",
+    "Primary oracle boundary adjudication uses installed likelihood and GLS plus exact two-study covariance; raw mvmeta retained"
+  ]
+}

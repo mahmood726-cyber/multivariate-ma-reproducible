@@ -1,0 +1,96 @@
+Studies on the Effectiveness of Warfarin for Preventing Strokes
+
+Description:
+
+     Results from 6 clinical trials examining the effectiveness of
+     adjusted-dose warfarin for preventing strokes in patients with
+     atrial fibrillation.
+
+Usage:
+
+     dat.hart1999
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *trial*     'numeric'    trial number                                              
+       *study*     'character'  study name (abbreviated)                                  
+       *year*      'numeric'    publication year                                          
+       *x1i*       'numeric'    number of strokes in the warfarin group                   
+       *n1i*       'numeric'    number of patients in the warfarin group                  
+       *t1i*       'numeric'    total person-time (in years) in the warfarin group        
+       *x2i*       'numeric'    number of strokes in the placebo/control group            
+       *n2i*       'numeric'    number of patients in the placebo/control group           
+       *t2i*       'numeric'    total person-time (in years) in the placebo/control group 
+       *compgrp*   'character'  type of comparison group (placebo or control)             
+       *prevtype*  'character'  type of prevention (primary or secondary)                 
+       *trinr*     'character'  target range for the international normalized ratio (INR) 
+      
+Details:
+
+     The 6 studies provide data with respect to the number of strokes
+     in the warfarin and the comparison (placebo or control) group. In
+     addition, the number of patients and the total person-time (in
+     years) is provided for the two groups. The goal of the
+     meta-analysis was to examine the effectiveness of adjusted-dose
+     warfarin for preventing strokes in patients with atrial
+     fibrillation.
+
+Concepts:
+
+     medicine, cardiology, incidence rates
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Hart, R. G., Benavente, O., McBride, R., & Pearce, L. A. (1999).
+     Antithrombotic therapy to prevent stroke in patients with atrial
+     fibrillation: A meta-analysis. _Annals of Internal Medicine_,
+     *131*(7), 492-501.
+     https://doi.org/10.7326/0003-4819-131-7-199910050-00003
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.hart1999
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate log incidence rate ratios and corresponding sampling variances
+     dat <- escalc(measure="IRR", x1i=x1i, x2i=x2i, t1i=t1i, t2i=t2i, data=dat)
+     dat
+     
+     ### meta-analysis of log incidence rate ratios using a random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     
+     ### average incidence rate ratio with 95% CI
+     predict(res, transf=exp)
+     
+     ### forest plot with extra annotations
+     par(mar=c(5,4,1,2))
+     forest(res, xlim=c(-11, 5), at=log(c(0.05, 0.25, 1, 4)), atransf=exp,
+            slab=paste0(study, " (", year, ")"),
+            ilab=cbind(paste(x1i, "/", t1i, sep=" "),
+                       paste(x2i, "/", t2i, sep=" ")),
+            ilab.xpos=c(-6.5,-4), cex=0.85, header="Study (Year)")
+     op <- par(cex=0.85, font=2)
+     text(c(-6.5,-4), 8.5, c("Warfarin", "Control"))
+     text(c(-6.5,-4), 7.5, c("Strokes / PT", "Strokes / PT"))
+     segments(x0=-8, y0=8, x1=-2.75, y1=8)
+     par(op)
+     
+     ### meta-analysis of incidence rate differences using a random-effects model
+     res <- rma(measure="IRD", x1i=x1i, x2i=x2i, t1i=t1i, t2i=t2i, data=dat)
+     res
+     ## End(Not run)
+     

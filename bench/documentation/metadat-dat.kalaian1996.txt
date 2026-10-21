@@ -1,0 +1,124 @@
+Studies on the Effectiveness of Coaching for the SAT
+
+Description:
+
+     Results from studies examining the effectiveness of coaching on
+     the performance on the Scholastic Aptitude Test (SAT).
+
+Usage:
+
+     dat.kalaian1996
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*        'numeric'    row (effect) id                                                                          
+       *study*     'character'  study identifier                                                                         
+       *year*      'numeric'    publication year                                                                         
+       *n1i*       'numeric'    number of participants in the coached group                                              
+       *n2i*       'numeric'    number of participants in the uncoached group                                            
+       *outcome*   'character'  subtest (verbal or math)                                                                 
+       *yi*        'numeric'    standardized mean difference                                                             
+       *vi*        'numeric'    corresponding sampling variance                                                          
+       *hrs*       'numeric'    hours of coaching                                                                        
+       *ets*       'numeric'    study conducted by the Educational Testing Service (ETS) (0 = no, 1 = yes)               
+       *homework*  'numeric'    assignment of homework outside of the coaching course (0 = no, 1 = yes)                  
+       *type*      'numeric'    study type (1 = randomized study, 2 = matched study, 3 = nonequivalent comparison study) 
+      
+Details:
+
+     The effectiveness of coaching for the Scholastic Aptitude Test
+     (SAT) has been examined in numerous studies. This dataset contains
+     standardized mean differences comparing the performance of a
+     coached versus uncoached group on the verbal and/or math subtest
+     of the SAT. Studies may report a standardized mean difference for
+     the verbal subtest, the math subtest, or both. In the latter case,
+     the two standardized mean differences are not independent (since
+     they were measured in the same group of subjects). The number of
+     hours of coaching (variable 'hrs'), whether the study was
+     conducted by the Educational Testing Service (variable 'ets'),
+     whether homework was assigned outside of the coaching course
+     (variable 'homework'), and the study type (variable 'type') may be
+     potential moderators of the treatment effect.
+
+Concepts:
+
+     education, standardized mean differences, multivariate models,
+     meta-regression
+
+Note:
+
+     The dataset was obtained from Table 1 in Kalaian and Raudenbush
+     (1996). However, there appear to be some inconsistencies between
+     the data in the table and those that were actually used for the
+     analyses (see 'Examples').
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Kalaian, H. A., & Raudenbush, S. W. (1996). A multivariate mixed
+     linear model for meta-analysis. _Psychological Methods_, *1*(3),
+     227-235. https://doi.org/10.1037/1082-989X.1.3.227
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.kalaian1996
+     head(dat, 12)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### check ranges
+     range(dat$yi[dat$outcome == "verbal"]) # -0.35 to 0.74 according to page 230
+     range(dat$yi[dat$outcome == "math"])   # -0.53 to 0.60 according to page 231
+     
+     ### comparing this with Figure 1 in the paper reveals some discrepancies
+     par(mfrow=c(1,2), mar=c(5,5,1,3.4))
+     plot(log(dat$hrs[dat$outcome == "verbal"]), dat$yi[dat$outcome == "verbal"],
+          pch=19, col=rgb(0,0,0,0.4), xlab="Log(Coaching Hours)", ylab="Effect Size (verbal)",
+          xlim=c(1,6), ylim=c(-0.5,1), xaxs="i", yaxs="i")
+     abline(h=c(-0.5,0,0.5), lty="dotted")
+     abline(v=log(c(5,18)),  lty="dotted")
+     plot(log(dat$hrs[dat$outcome == "math"]), dat$yi[dat$outcome == "math"],
+          pch=19, col=rgb(0,0,0,0.4), xlab="Log(Coaching Hours)", ylab="Effect Size (math)",
+          xlim=c(1,6), ylim=c(-1.0,1), xaxs="i", yaxs="i")
+     abline(h=c(-0.5,0,0.5), lty="dotted")
+     abline(v=log(c(5,18)),  lty="dotted")
+     
+     ### construct variance-covariance matrix assuming rho = 0.66 for effect sizes
+     ### corresponding to the 'verbal' and 'math' outcome types
+     V <- vcalc(vi, cluster=study, type=outcome, data=dat, rho=0.66)
+     
+     ### fit multivariate random-effects model
+     res <- rma.mv(yi, V, mods = ~ 0 + outcome,
+                   random = ~ outcome | study, struct="UN",
+                   data=dat, digits=3)
+     res
+     
+     ### test whether the effect differs for the math and verbal subtest
+     anova(res, X=c(1,-1))
+     
+     ### log-transform and mean center the hours of coaching variable
+     dat$loghrs <- log(dat$hrs) - mean(log(dat$hrs), na.rm=TRUE)
+     
+     ### fit multivariate model with log(hrs) as moderator
+     res <- rma.mv(yi, V, mods = ~ 0 + outcome + outcome:loghrs,
+                   random = ~ outcome | study, struct="UN",
+                   data=dat, digits=3)
+     res
+     
+     ### fit model with tau2 = 0 for outcome verbal (which also constrains rho = 0)
+     res <- rma.mv(yi, V, mods = ~ 0 + outcome + outcome:loghrs,
+                   random = ~ outcome | study, struct="UN", tau2=c(NA,0),
+                   data=dat, digits=3)
+     res
+     ## End(Not run)
+     

@@ -1,0 +1,58 @@
+Extract Model Terms from mixmeta Objects
+
+Description:
+
+     These method function returns the terms object that defines
+     meta-analytical models represented in objects of class
+     '"mixmeta"'.
+
+Usage:
+
+     ## S3 method for class 'mixmeta'
+     terms(x, type="fixed", ...)
+     
+Arguments:
+
+       x: an object of class '"mixmeta"'.
+
+    type: the type of terms. Either '"fixed"' or '"full"'. See Details.
+
+     ...: further arguments passed to or from other methods.
+
+Details:
+
+     The 'terms' object is produced by 'mixmeta' when fitting the
+     meta-analytical model, and stored as an attribute of the
+     'model.frame'. Note that this object consists of terms for both
+     the fixed and random-effects parts, the latter including also the
+     grouping factors.
+
+     By using the default 'type="fixed"', this method function removes
+     the random-effects terms. This can then be used, for instance, for
+     creating the 'model.matrix' for the fixed effects. Otherwise with
+     'type="full"', the full set of terms is returned.
+
+Value:
+
+     An object of class 'c("terms","formula")' which contains the terms
+     representation of a symbolic meta-analytical model. See
+     'terms.object' for its structure.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+See Also:
+
+     See the methods 'model.frame' and 'model.matrix'.
+
+Examples:
+
+     # RUN A MODEL
+     model <- mixmeta(effect, var, random= ~ 1|district/study, data=school)
+     
+     # TERMS (FIXED AND FULL)
+     terms(model)
+     terms(model, "full")
+     attr(model.frame(model), "terms")
+     

@@ -1,0 +1,87 @@
+Studies on the Length of Hospital Stay of Stroke Patients
+
+Description:
+
+     Results from 9 studies on the length of the hospital stay of
+     stroke patients under specialized care and under
+     conventional/routine (non-specialist) care.
+
+Usage:
+
+     dat.normand1999
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*   'numeric'    study number                                                    
+       *source*  'character'  source of data                                                  
+       *n1i*     'numeric'    number of patients under specialized care                       
+       *m1i*     'numeric'    mean length of stay (in days) under specialized care            
+       *sd1i*    'numeric'    standard deviation of the length of stay under specialized care 
+       *n2i*     'numeric'    number of patients under routine care                           
+       *m2i*     'numeric'    mean length of stay (in days) under routine care                
+       *sd2i*    'numeric'    standard deviation of the length of stay under routine care     
+      
+Details:
+
+     The 9 studies provide data in terms of the mean length of the
+     hospital stay (in days) of stroke patients under specialized care
+     and under conventional/routine (non-specialist) care. The goal of
+     the meta-analysis was to examine the hypothesis whether specialist
+     stroke unit care will result in a shorter length of
+     hospitalization compared to routine management.
+
+Concepts:
+
+     medicine, raw mean differences, standardized mean differences
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Normand, S. T. (1999). Meta-analysis: Formulating, evaluating,
+     combining, and reporting. _Statistics in Medicine_, *18*(3),
+     321-359.
+     https://doi.org/10.1002/(sici)1097-0258(19990215)18:3<321::aid-sim28>3.0.co;2-p
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.normand1999
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate mean differences and corresponding sampling variances
+     dat <- escalc(measure="MD", m1i=m1i, sd1i=sd1i, n1i=n1i, m2i=m2i, sd2i=sd2i, n2i=n2i, data=dat)
+     dat
+     
+     ### meta-analysis of mean differences using a random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     
+     ### meta-analysis of standardized mean differences using a random-effects model
+     res <- rma(measure="SMD", m1i=m1i, sd1i=sd1i, n1i=n1i, m2i=m2i, sd2i=sd2i, n2i=n2i,
+                data=dat, slab=source)
+     res
+     
+     ### draw forest plot
+     forest(res, xlim=c(-7,5), alim=c(-3,1), header="Study/Source")
+     
+     ### calculate (log transformed) ratios of means and corresponding sampling variances
+     dat <- escalc(measure="ROM", m1i=m1i, sd1i=sd1i, n1i=n1i, m2i=m2i, sd2i=sd2i, n2i=n2i, data=dat)
+     dat
+     
+     ### meta-analysis of the (log transformed) ratios of means using a random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     predict(res, transf=exp, digits=2)
+     ## End(Not run)
+     

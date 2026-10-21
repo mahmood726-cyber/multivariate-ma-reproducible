@@ -1,0 +1,95 @@
+Studies on the Risk of Lung Cancer in Women Exposed to Environmental
+Tobacco Smoke
+
+Description:
+
+     Results from 37 studies on the risk of lung cancer in women
+     exposed to environmental tobacco smoke (ETS) from their smoking
+     spouse.
+
+Usage:
+
+     dat.hackshaw1998
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*    'numeric'    study number                                 
+       *author*   'character'  first author of study                        
+       *year*     'numeric'    publication year                             
+       *country*  'character'  country where study was conducted            
+       *design*   'character'  study design (either cohort or case-control) 
+       *cases*    'numeric'    number of lung cancer cases                  
+       *or*       'numeric'    odds ratio                                   
+       *or.lb*    'numeric'    lower bound of 95% CI for the odds ratio     
+       *or.ub*    'numeric'    upper bound of 95% CI for the odds ratio     
+       *yi*       'numeric'    log odds ratio                               
+       *vi*       'numeric'    corresponding sampling variance              
+      
+Details:
+
+     The dataset includes the results from 37 studies (4 cohort, 33
+     case-control) examining if women (who are lifelong nonsmokers)
+     have an elevated risk for lung cancer due to exposure to
+     environmental tobacco smoke (ETS) from their smoking spouse.
+     Values of the log odds ratio greater than 0 indicate an increased
+     risk of cancer in exposed women compared to women not exposed to
+     ETS from their spouse.
+
+     Note that the log odds ratios and corresponding sampling variances
+     were back-calculated from the reported odds ratios and confidence
+     interval (CI) bounds (see 'Examples'). Since the reported values
+     were rounded to some extent, this introduces some minor
+     inaccuracies into the back-calculations. The overall estimate
+     reported in Hackshaw et al. (1997) and Hackshaw (1998) can be
+     fully reproduced though.
+
+Concepts:
+
+     medicine, oncology, epidemiology, smoking, odds ratios
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Hackshaw, A. K., Law, M. R., & Wald, N. J. (1997). The accumulated
+     evidence on lung cancer and environmental tobacco smoke. _British
+     Medical Journal_, *315*(7114), 980-988.
+     https://doi.org/10.1136/bmj.315.7114.980
+
+     Hackshaw, A. K. (1998). Lung cancer and passive smoking.
+     _Statistical Methods in Medical Research_, *7*(2), 119-136.
+     https://doi.org/10.1177/096228029800700203
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.hackshaw1998
+     head(dat, 10)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### random-effects model using the log odds ratios
+     res <- rma(yi, vi, data=dat, method="DL")
+     res
+     
+     ### estimated average odds ratio with CI (and prediction interval)
+     predict(res, transf=exp, digits=2)
+     
+     ### illustrate how the log odds ratios and corresponding sampling variances
+     ### can be back-calculated based on the reported odds ratios and CI bounds
+     dat$yi <- NULL
+     dat$vi <- NULL
+     dat <- data.frame(dat)
+     head(dat, 10)
+     dat <- conv.wald(out=or, ci.lb=or.lb, ci.ub=or.ub, data=dat, transf=log)
+     head(dat, 10)
+     ## End(Not run)
+     

@@ -1,0 +1,106 @@
+Studies on the Effectiveness of Practice Facilitation Interventions
+
+Description:
+
+     Results from 23 studies on the effectiveness of practice
+     facilitation interventions within the primary care practice
+     setting.
+
+Usage:
+
+     dat.baskerville2012
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*     'character'  study author(s)                                                                                                           
+       *year*       'numeric'    publication year                                                                                                          
+       *score*      'numeric'    quality score (0 to 12 scale)                                                                                             
+       *design*     'character'  study design (cct = controlled clinical trial, rct = randomized clinical trial, crct = cluster randomized clinical trial) 
+       *alloconc*   'numeric'    allocation concealed (0 = no, 1 = yes)                                                                                    
+       *blind*      'numeric'    single- or double-blind study (0 = no, 1 = yes)                                                                           
+       *itt*        'numeric'    intention to treat analysis (0 = no, 1 = yes)                                                                             
+       *fumonths*   'numeric'    follow-up months                                                                                                          
+       *retention*  'numeric'    retention (in percent)                                                                                                    
+       *country*    'character'  country where study was conducted                                                                                         
+       *outcomes*   'numeric'    number of outcomes assessed                                                                                               
+       *duration*   'numeric'    duration of intervention                                                                                                  
+       *pperf*      'numeric'    practices per facilitator                                                                                                 
+       *meetings*   'numeric'    (average) number of meetings                                                                                              
+       *hours*      'numeric'    (average) hours per meeting                                                                                               
+       *tailor*     'numeric'    intervention tailored to the context and needs of the practice (0 = no, 1 = yes)                                          
+       *smd*        'numeric'    standardized mean difference                                                                                              
+       *se*         'numeric'    corresponding standard error                                                                                              
+      
+Details:
+
+     Baskerville et al. (2012) describe outreach or practice
+     facilitation as a "multifaceted approach that involves skilled
+     individuals who enable others, through a range of intervention
+     components and approaches, to address the challenges in
+     implementing evidence-based care guidelines within the primary
+     care setting". The studies included in this dataset examined the
+     effectiveness of practice facilitation interventions for improving
+     some relevant evidence-based practice behavior. The effect was
+     quantified in terms of a standardized mean difference, comparing
+     the change (from pre- to post-intervention) in the intervention
+     versus the comparison group (or the difference from baseline in
+     prospective cohort studies).
+
+Concepts:
+
+     medicine, primary care, standardized mean differences, publication
+     bias, meta-regression
+
+Note:
+
+     The quality score of 18 given for the study by Deitrich et al.
+     (1992) in Table 1 of Baskerville et al. (2012) appears to be a
+     typo. This was corrected to an 8 in the present dataset.
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Baskerville, N. B., Liddy, C., & Hogg, W. (2012). Systematic
+     review and meta-analysis of practice facilitation within primary
+     care settings. _Annals of Family Medicine_, *10*(1), 63-74.
+     https://doi.org/10.1370/afm.1312
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.baskerville2012
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### random-effects model
+     res <- rma(smd, sei=se, data=dat, method="DL")
+     print(res, digits=2)
+     
+     ### funnel plot
+     funnel(res, xlab="Standardized Mean Difference", ylim=c(0,0.6))
+     
+     ### rank and regression tests for funnel plot asymmetry
+     ranktest(res)
+     regtest(res)
+     
+     ### meta-regression analyses examining various potential moderators
+     rma(smd, sei=se, mods = ~ score, data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ alloconc, data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ blind,    data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ itt,      data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ duration, data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ tailor,   data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ pperf,    data=dat, method="DL")
+     rma(smd, sei=se, mods = ~ I(meetings * hours), data=dat, method="DL")
+     ## End(Not run)
+     

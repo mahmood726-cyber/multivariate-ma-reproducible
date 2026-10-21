@@ -1,0 +1,127 @@
+Summarizing mixmeta Models
+
+Description:
+
+     Print and summary method functions for fitted meta-analytical
+     models represented in objects of class '"mixmeta"'.
+
+Usage:
+
+     ## S3 method for class 'mixmeta'
+     summary(object, ci.level=0.95, ...)
+     
+     ## S3 method for class 'summary.mixmeta'
+     print(x, digits=4, report=c("sd","var"), ...)
+     
+     ## S3 method for class 'mixmeta'
+     print(x, digits=4, ...)
+     
+Arguments:
+
+  object: an object of class '"mixmeta"' produced by a call to
+          'mixmeta'.
+
+       x: an object of class '"mixmeta"' or '"summary.mixmeta"',
+          produced by calls to 'mixmeta' or 'summary.mixmeta',
+          respectively.
+
+ci.level: a numerical value between 0 and 1, specifying the confidence
+          level for the computation of confidence intervals.
+
+  digits: an integer specifying the number of digits to which printed
+          results must be rounded.
+
+  report: if standard deviations ('sd') or variances ('var') must be
+          reported for summarizing the random-effects (co)variance
+          structure.
+
+     ...: further arguments passed to or from other methods.
+
+Details:
+
+     The 'print' method function for class '"mixmeta"' only returns
+     basic information on the fitted model, namely the call, estimated
+     fixed-effects coefficients, dimensions and fit statistics
+     (log-likelihood, AIC, BIC).
+
+     The 'summary' method function computes additional statistics and
+     tests, and produces a list object of class '"summary.mixmeta"'.
+     The 'print' method function for this class shows additional
+     information, such as tables reporting the estimates for the fixed
+     and random-effects parts of the model, Cochran Q test for
+     heterogeneity and I-squared.
+
+Value:
+
+     The 'summary' method function for 'mixmeta' objects produces a
+     list of class '"summary.mixmeta"'. The components of the lists are
+     some of those stored in the related 'mixmeta' object, plus the
+     following:
+
+coefficients: a matrix reporting point estimates, standard errors, z
+          statistics and related p-values of the test, and confidence
+          intervals for the kp fixed-effects coefficients. Note this is
+          different than the component with the same name stored in
+          'mixmeta' objects, simply reporting the point estimates (see
+          'mixmetaObject').
+
+     AIC: the value of the Akaike information criterion for the fitted
+          'mixmeta' model, obtained through a call to 'AIC'.
+
+     BIC: the value of the Bayesian information criterion for the
+          fitted 'mixmeta' model, obtained through a call to 'BIC'.
+
+corFixed: the kp x kp correlation matrix of the fixed-effects
+          coefficients, obtained from the (co)variance matrix 'vcov'
+          (see 'mixmetaObject' and 'vcov').
+
+corRandom: the kq x kq correlation matrix of the random effects,
+          obtained from the random-effects (co)variance matrix 'Psi',
+          or a list of multiple matrices for multilevel models. See
+          'mixmetaObject'.
+
+   qstat: results from the Cochran Q test for heterogeneity, namely a
+          list corresponding to a 'qtest.mixmeta' object without its
+          class, obtained through 'qtest'.
+
+  i2stat: I-squared statistic for the meta-analytical model.
+
+ci.level: the confidence level used for defining the confidence
+          intervals for the estimates of the fixed-effects
+          coefficients.
+
+     As usual, the 'print' method functions for classes '"mixmeta"' and
+     '"summary.mixmeta"' do not return any value.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>> and
+     Francesco Sera <<mailto:francesco.sera@lshtm.ac.uk>>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+See Also:
+
+     See 'mixmeta' and 'mixmetaObject'.
+
+Examples:
+
+     # RUN THE MODEL
+     model <- mixmeta(cbind(PD,AL) ~ pubyear, S=berkey98[5:7], data=berkey98)
+     
+     # SIMPLE PRINT
+     model
+     
+     # DEFINE DIGITS
+     print(model, digit=2)
+     
+     # SUMMARY WITH 80TH CONFIDENCE INTERVALS
+     summary(model, ci.level=0.80)
+     
+     # REPORT RANDOM EFFECTS IN TERMS OF VARIANCES (USE print)
+     print(summary(model), report="var")
+     

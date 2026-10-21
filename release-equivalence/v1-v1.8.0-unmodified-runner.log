@@ -1,0 +1,18 @@
+../shared/alm-validate.js:109
+    if (location.protocol === 'file:') {
+    ^
+
+ReferenceError: location is not defined
+    at Object.mount (../shared/alm-validate.js:109:5)
+    at validate/plus-adapter.js:67:51
+    at validate/plus-adapter.js:68:3
+    at Script.runInContext (node:vm:149:12)
+    at Object.runInContext (node:vm:301:6)
+    at Object.<anonymous> (<AUDIT_ROOT>\run-v1-v18\run_node.cjs:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+
+Node.js v24.13.0
+exit=1

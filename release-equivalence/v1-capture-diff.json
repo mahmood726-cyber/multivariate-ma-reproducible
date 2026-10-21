@@ -1,0 +1,49 @@
+{
+  "numbers": 9685,
+  "numbers_equal": 8051,
+  "numbers_differing_by_path": {
+    "$[].capture.result.G[][]": 296,
+    "$[].capture.result.logLik": 63,
+    "$[].capture.result.muSE[]": 136,
+    "$[].capture.result.muVcov[][]": 284,
+    "$[].capture.result.mu[]": 137,
+    "$[].capture.result.rho": 43,
+    "$[].output.G[][]": 296,
+    "$[].output.logLik": 63,
+    "$[].output.muSE[]": 136,
+    "$[].output.mu[]": 137,
+    "$[].output.rho": 43
+  },
+  "max_scaled_difference_by_path": {
+    "$[].capture.result.G[][]": 6.59098725597218e-08,
+    "$[].capture.result.logLik": 1.2434497875801753e-14,
+    "$[].capture.result.muSE[]": 1.9892080399092288e-08,
+    "$[].capture.result.muVcov[][]": 4.3320542543724485e-08,
+    "$[].capture.result.mu[]": 6.559785492576964e-09,
+    "$[].capture.result.rho": 3.826368322190632e-08,
+    "$[].output.G[][]": 6.59098725597218e-08,
+    "$[].output.logLik": 1.2434497875801753e-14,
+    "$[].output.muSE[]": 1.9892080399092288e-08,
+    "$[].output.mu[]": 6.559785492576964e-09,
+    "$[].output.rho": 3.826368322190632e-08
+  },
+  "keys_only_in_one": {
+    "$[].capture.result.optimizer": 91,
+    "$[].output.labels": 91,
+    "$[].output.mode": 91,
+    "$[].output.muVcov": 91,
+    "$[].output.omitted": 91,
+    "$[].output.optimizer": 91,
+    "$[].output.outcomes": 91,
+    "$[].output.p": 91,
+    "$[].output.rhoW": 91,
+    "$[].output.z": 91
+  },
+  "other_differences_by_path": {
+    "$[].headline": 1,
+    "$[].output._schema": 91,
+    "$[].svg": 91
+  },
+  "configurations": 92,
+  "max_scaled_difference": 6.59098725597218e-08
+}

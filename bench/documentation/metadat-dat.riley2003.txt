@@ -1,0 +1,101 @@
+Studies on MYC-N as a Prognostic Marker for Neuroblastoma
+
+Description:
+
+     Results from 81 studies examining overall and disease-free
+     survival in neuroblastoma patients with amplified versus normal
+     MYC-N protein levels.
+
+Usage:
+
+     dat.riley2003
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*    'numeric'    study number                                                                               
+       *yi*       'numeric'    log hazard ratio of the outcome in those with amplified versus normal MYC-N protein levels 
+       *vi*       'numeric'    sampling variance of the log hazard ratio                                                  
+       *sei*      'numeric'    standard error of the log hazard ratio                                                     
+       *outcome*  'character'  outcome (OS = overall survival; DFS = disease-free survival)                               
+      
+Details:
+
+     The meta-analysis by Riley et al. (2003) examined a variety of
+     prognostic markers for overall and disease-free survival in
+     patients with neuroblastoma. One of the markers examined was
+     amplified levels of the MYC-N protein, with is associated with
+     poorer outcomes.
+
+     The dataset given here was extracted from Riley (2011) and has
+     been used in several other publications (e.g., Riley et al., 2004,
+     2007). The dataset provides the (log) hazard ratios (and
+     corresponding standard errors) with respect to these two outcomes
+     in 81 studies, with positive values indicating a greater risk of
+     death (for OS) or disease recurrence/death (for DFS) for patients
+     with high MYC-N levels compared to those with normal/low levels.
+     Note that information on both outcomes could only be extracted
+     from 17 studies (39 studies only provided sufficient information
+     to extract the OS estimate, while 25 studies only allowed for
+     extraction of the DFS estimate).
+
+Concepts:
+
+     medicine, oncology, hazard ratios
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Riley, R. D., Sutton, A. J., Abrams, K. R., & Lambert, P. C.
+     (2004). Sensitivity analyses allowed more appropriate and reliable
+     meta-analysis conclusions for multiple outcomes when missing data
+     was present. _Journal of Clinical Epidemiology_, *57*(9), 911-924.
+     https://doi.org/10.1016/j.jclinepi.2004.01.018
+
+     Riley, R. D., Abrams, K. R., Lambert, P. C., Sutton, A. J., &
+     Thompson, J. R. (2007). An evaluation of bivariate random-effects
+     meta-analysis for the joint synthesis of two correlated outcomes.
+     _Statistics in Medicine_, *26*(1), 78-97.
+     https://doi.org/10.1002/sim.2524
+
+     Riley, R. D. (2011). Erratum: An evaluation of bivariate
+     random-effects meta-analysis for the joint synthesis of two
+     correlated outcomes. _Statistics in Medicine_, *30*(4), 400.
+     https://doi.org/10.1002/sim.4100
+
+References:
+
+     Riley, R. D., Burchill, S. A., Abrams, K. R., Heney, D., Lambert,
+     P. C., Jones, D. R., Sutton, A. J., Young, B., Wailoo, A. J., &
+     Lewis, I. J. (2003). A systematic review and evaluation of the use
+     of tumour markers in paediatric oncology: Ewing's sarcoma and
+     neuroblastoma. _Health Technology Assessment_, *7*(5), 1-162.
+     https://doi.org/10.3310/hta7050
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.riley2003
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### random-effects model analysis for outcome DFS
+     res <- rma(yi, sei=sei, data=dat, subset=(outcome == "DFS"), method="DL")
+     res
+     predict(res, transf=exp, digits=2)
+     
+     ### random-effects model analysis for outcome OS
+     res <- rma(yi, sei=sei, data=dat, subset=(outcome == "OS"), method="DL")
+     res
+     predict(res, transf=exp, digits=2)
+     ## End(Not run)
+     

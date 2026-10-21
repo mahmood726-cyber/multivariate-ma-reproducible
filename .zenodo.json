@@ -1,0 +1,25 @@
+{
+  "title": "Multivariate (bivariate) meta-analysis in the browser: validation against the R packages mvmeta and metafor",
+  "creators": [
+    {
+      "name": "Ahmad, Mahmood"
+    }
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/mahmood726-cyber/allmeta",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/mahmood726-cyber/allmeta/releases/tag/v1.8.0",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    }
+  ],
+  "description": "Validation of the allmeta multivariate-ma page (bivariate REML meta-analysis with unstructured between-study covariance) against R mvmeta 1.0.3 with a metafor 5.2-1 rma.mv cross-check (92 configurations from 22 datasets; original 18591/18684, patched 18682/18682 checks pass, validated at the pull request #154 commit 1b9b9327d752); plus panel 54612/54612 and exported-R-script round trip 29473/29502 under the strict rule, re-executed on allmeta v1.8.0 (tag commit 1cb3f84), DOI 10.5281/zenodo.23515177. Source commit acd363fa33f0decd2fcafcf08814f663bb9d6178 plus fix.patch."
+}

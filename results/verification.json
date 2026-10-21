@@ -1,0 +1,13 @@
+{
+  "source_commit": "acd363fa33f0decd2fcafcf08814f663bb9d6178",
+  "source_unchanged": true,
+  "patch_replay_matches": true,
+  "exact_configuration_coverage": 92,
+  "unique_candidate_coverage": 132,
+  "input_membership_and_numeric_values_exact": true,
+  "patched_output_finite": true,
+  "patched_checks": 18682,
+  "patched_checks_pass": true,
+  "all_candidate_documentation_present": true,
+  "all_R_logs_have_versions_and_library_paths": true
+}

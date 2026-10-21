@@ -1,0 +1,96 @@
+Trials on Mucolytic Agents in Chronic Bronchitis or Chronic Obstructive
+Pulmonary Disease
+
+Description:
+
+     Results from 19 trials evaluating mucolytic agents in patients
+     with chronic bronchitis or chronic obstructive pulmonary disease.
+
+Usage:
+
+     dat.poole2003
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*    'character'  first author                                     
+       *year*      'integer'    publication year                                 
+       *Ne*        'integer'    sample size (mucolytic agents)                   
+       *Me*        'numeric'    mean exacerbations per months (mucolytic agents) 
+       *Se*        'numeric'    standard deviation (mucolytic agents)            
+       *Nc*        'integer'    sample size (placebo)                            
+       *Mc*        'numeric'    mean exacerbations per months (placebo)          
+       *Sc*        'numeric'    standard deviation (placebo)                     
+       *duration*  'character'  study duration                                   
+      
+Details:
+
+     Poole and Black (2003) conducted a Cochrane review to evaluate
+     mucolytic agents versus placebo for patients with chronic
+     bronchitis or chronic obstructive pulmonary disease. The outcome
+     used here is the mean number of acute exacerbations per month.
+     Acute exacerbation is defined as an increase in cough and in the
+     volume or purulence of sputum. All 17 studies included in the
+     meta-analysis report a mean number of exacerbations and we can
+     work with mean differences, rather than standardised mean
+     differences. Note, later versions of this Cochrane review no
+     longer evaluate the mean number of exacerbations per month.
+
+     This data set is used as an example in Schwarzer et al. (2015).
+
+Concepts:
+
+     medicine, pulmonology, raw mean differences, subgroup analysis
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Poole, P. J., & Black, P. N. (2003). Mucolytic agents for chronic
+     bronchitis or chronic obstructive pulmonary disease. _Cochrane
+     Database of Systematic Reviews_, *1*, CD001287.
+     https://doi.org/10.1002/14651858.cd001287
+
+References:
+
+     Schwarzer, G., Carpenter, J. R., & Ruecker, G. (2015).
+     _Meta-analysis with R_. Cham, Switzerland: Springer.
+
+Examples:
+
+     ### Show first five studies
+     head(dat.poole2003, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Use RevMan 5 settings
+     oldset <- settings.meta("RevMan5",
+       digits.I2 = 2, digits.tau = 3, digits.sd = 2)
+     
+     ### Conduct random effects meta-analysis
+     m <- metacont(Ne, Me, Se, Nc, Mc, Sc, data = dat.poole2003,
+       studlab = paste(author, year), common = FALSE,
+       subgroup = duration,
+       subgroup.name = "Duration", sep.subgroup = ": ",
+       label.e = "Mucolytic agent",
+       label.c = "Placebo",
+       label.left = "Favours mucolytic agent",
+       label.right = "Favours placebo",
+       col.label.left = "green", col.label.right = "red")
+     
+     ### Forest plot
+     forest(m, xlim = c(-0.5, 0.2),
+       xlab = paste0("Difference in mean number of\n",
+         "acute exacerbations per month"))
+     
+     ### Use previous settings
+     settings.meta(oldset)
+     ## End(Not run)
+     

@@ -1,0 +1,89 @@
+Extract Model Frame and Design Matrix from mixmeta Objects
+
+Description:
+
+     These method functions return the model frame and design matrix
+     for meta-analytical models represented in objects of class
+     '"mixmeta"'.
+
+Usage:
+
+     ## S3 method for class 'mixmeta'
+     model.frame(formula, ...)
+     
+     ## S3 method for class 'mixmeta'
+     model.matrix(object, ...)
+     
+Arguments:
+
+object, formula: an object of class '"mixmeta"'.
+
+     ...: further arguments passed to or from other methods.
+
+Details:
+
+     The model frame is produced by 'mixmeta' when fitting the
+     meta-analytical model, and stored in the 'mixmeta' object if
+     argument 'model=TRUE'. Alternatively, the model frame is directly
+     returned from a call to 'mixmeta' with argument
+     'method="model.frame"'. The method function 'model.frame' simply
+     extracts the saved model frame if available, or otherwise
+     evaluates a call to 'mixmeta' when 'method="model.frame"'.
+
+     The method function 'model.matrix' extracts the design matrix for
+     the fixed-effects part of a fitted meta-analytical model. It first
+     extract the model frame by calling 'model.frame', and then passes
+     the call to the default method.
+
+     Note that the model frame of 'mixmeta' models consist of terms for
+     both the fixed and random-effects parts, the latter including also
+     the grouping factors. This information can be used to reconstruct
+     the proper model frame or matrix for each part.
+
+     These methods functions are similar to those provided for
+     regression objects 'lm' and 'lm'.
+
+Value:
+
+     For 'model.frame', a data.frame with special attributes (see the
+     default method 'model.frame') and the additional class
+     '"data.frame.mixmeta"'.
+
+     For 'model.matrix', the design matrix used to fit the model.
+
+Note:
+
+     The reason why these specific method functions are made available
+     for class 'mixmeta', and in particular why a new class
+     '"data.frame.mixmeta"' has been defined for model frames, lies in
+     the special handling of missing values in multivariate
+     meta-analysis models fitted with 'mixmeta'. Methods 'na.omit' and
+     'na.exclude' for class '"data.frame.mixmeta"' are useful for
+     properly accounting for missing values when fitting these models.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+See Also:
+
+     See the default methods 'model.frame' and 'model.matrix'. See
+     'na.omit' and 'na.exclude' on the handling of missing values. See
+     'mixmeta-package' for an overview of the package and modelling
+     framework.
+
+Examples:
+
+     # RUN THE MODEL AND SUMMARIZE THE RESULTS
+     model <- mixmeta(cbind(PD,AL) ~ pubyear, S=berkey98[5:7], data=berkey98,
+       method="ml")
+     
+     # MODEL FRAME
+     model$model
+     model.frame(model)
+     update(model, method="model.frame")
+     class(model.frame(model))
+     
+     # MODEL MATRIX
+     model.matrix(model)
+     

@@ -1,0 +1,75 @@
+Studies on the Effectiveness of Nicotine Replacement Therapy for
+Smoking Cessation
+
+Description:
+
+     Results from 133 studies examining the effectiveness of nicotine
+     replacement therapy (NRT) for smoking cessation at 6+ months of
+     follow-up.
+
+Usage:
+
+     dat.hartmannboyce2018
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*      'numeric'    study identifier                                                                
+       *x.nrt*      'numeric'    number of participants in the NRT group who were abstinent at the follow-up     
+       *n.nrt*      'numeric'    number of participants in the NRT group                                         
+       *x.ctrl*     'numeric'    number of participants in the control group who were abstinent at the follow-up 
+       *n.ctrl*     'numeric'    number of participants in the control group                                     
+       *treatment*  'character'  type of NRT provided in the treatment group                                     
+      
+Details:
+
+     The dataset includes the results from 133 studies examining the
+     effectiveness of nicotine replacement therapy (NRT) for smoking
+     cessation. The results given in this dataset pertain to abstinence
+     at 6+ months of follow-up. NRT was provided to participants in the
+     treatment groups in various forms as indicated by the 'treatment'
+     variable (e.g., gum, patch, inhalator). Note that the dataset
+     includes 136 rows, since a few studies included multiple
+     treatments.
+
+Concepts:
+
+     medicine, smoking, risk ratios, Mantel-Haenszel method
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Hartmann<e2><80><90>Boyce, J., Chepkin, S. C., Ye, W., Bullen, C. &
+     Lancaster, T. (2018). Nicotine replacement therapy versus control
+     for smoking cessation. _Cochrane Database of Systematic Reviews_,
+     *5*, CD000146. https://doi.org//10.1002/14651858.CD000146.pub5
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.hartmannboyce2018
+     head(dat, 10)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### turn treatment into a factor with the desired ordering
+     dat$treatment <- factor(dat$treatment, levels=unique(dat$treatment))
+     
+     ### meta-analysis per treatment using the M-H method
+     lapply(split(dat, dat$treatment), function(x)
+            rma.mh(measure="RR", ai=x.nrt,  n1i=n.nrt,
+                                 ci=x.ctrl, n2i=n.ctrl, data=x, digits=2))
+     
+     ### all combined
+     rma.mh(measure="RR", ai=x.nrt,  n1i=n.nrt,
+                          ci=x.ctrl, n2i=n.ctrl, data=dat, digits=2)
+     ## End(Not run)
+     

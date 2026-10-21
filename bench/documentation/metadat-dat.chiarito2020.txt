@@ -1,0 +1,175 @@
+Studies Investigating the Efficacy of P2Y12-Inhibitors in
+Atherosclerosis
+
+Description:
+
+     Data on baseline parameters, efficacy endpoints and risk-of-bias
+     from nine studies.
+
+Usage:
+
+     dat.chiarito2020
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*                   'character'  study identifier                                                    
+       *year*                    'numeric'    publication year                                                    
+       *p2y12*                   'character'  type of P2Y12 inhibitor                                             
+       *duration.months*         'numeric'    study duration                                                      
+       *p2y12.daily.dosage*      'character'  daily dosage of P2Y12 inhibitor                                     
+       *aspirin.daily.dosage*    'character'  daily dosage of aspirin                                             
+       *p2y12.daily.mg*          'numeric'    daily dose of P2Y12 inhibitor (mg)                                  
+       *aspirin.daily.mg*        'numeric'    daily dose of aspirin (mg)                                          
+       *baseline.age*            'numeric'    mean age at baseline                                                
+       *baseline.males*          'numeric'    proportion of males in study population                             
+       *baseline.diabetes*       'numeric'    proportion of diabetic patients in study population                 
+       *baseline.hypertension*   'numeric'    proportion of patients with hypertension in study population        
+       *baseline.dyslipidaemia*  'numeric'    proportion of patients with dyslipidaemia in study population       
+       *p2y12.mi*                'numeric'    number of patients with myocardial infarction in experimental group 
+       *p2y12.stroke*            'numeric'    number of patients with stroke in experimental group                
+       *p2y12.death*             'numeric'    number of deaths in experimental group                              
+       *p2y12.vdeath*            'numeric'    number of vascular deaths in experimental group                     
+       *p2y12.total*             'numeric'    total number of patients experimental group                         
+       *aspirin.mi*              'numeric'    number of patients with myocardial infarction in control group      
+       *aspirin.stroke*          'numeric'    number of patients with stroke in control group                     
+       *aspirin.death*           'numeric'    number of deaths in control group                                   
+       *aspirin.vdeath*          'numeric'    number of vascular deaths in control group                          
+       *aspirin.total*           'numeric'    total number of patients in control group                           
+       *rob.R*                   'factor'     risk of bias arising from the randomization process (R)             
+       *rob.D*                   'factor'     risk of bias due to deviations from intended interventions (D)      
+       *rob.Mi*                  'factor'     risk of bias due to missing outcome data (Mi)                       
+       *rob.Me*                  'factor'     risk of bias in measurement of the outcome (Me)                     
+       *rob.S*                   'factor'     risk of bias in selection of the reported result (S)                
+       *rob.overall*             'factor'     overall risk of bias                                                
+      
+Details:
+
+     Chiarito et al. (2020) reviewed studies investigating the efficacy
+     of P2Y12-inhibitors (compared to aspirin) for the secondary
+     prevention of myocardial infarction in patients with established
+     atherosclerosis.
+
+     A diagnosis of atherosclerosis, the development of lesions in
+     arteries, is a risk factor for myocardial infarction or stroke,
+     and a range of therapies (including aspirin, other drugs, or
+     surgery) are available. P2Y12-inhibitors are antiplatelet drugs
+     and as such might serve as an alternative to the commonly used
+     aspirin; it was of interest to review and summarize the current
+     scientific evidence on the efficacy of this type of drug in
+     comparison to aspirin. To this end, Chiarito et al. (2020)
+     performed a systematic review and meta-analysis; the systematic
+     review had been pre-registered (PROSPERO CRD42018115037), and the
+     investigation included a risk-of-bias assessment of the nine
+     studies included. Co-primary endpoints were myocardial infarction
+     and stroke, secondary endpoints were death and vascular death.
+
+Concepts:
+
+     medicine, cardiology, odds ratios, risk-of-bias
+
+Author(s):
+
+     Christian Roever, <mailto:christian.roever@med.uni-goettingen.de>
+
+Source:
+
+     Chiarito, M., Sanz-S<c3><a1>nchez, J., Cannata, F., Cao, D., Sturla, M.,
+     Panico, C., Godino, C., Regazzoli, D., Reimers, B., De Caterina,
+     R., Condorelli, G., Ferrante, G., & Stefanini, G. G. (2020).
+     Monotherapy with a P2Y12 inhibitor or aspirin for secondary
+     prevention in patients with established atherosclerosis: A
+     systematic review and meta-analysis. _The Lancet_, *395*(10235),
+     1487-1495. https://doi.org/10.1016/s0140-6736(20)30315-9
+
+References:
+
+     Zapf, A., Roever, C. (2023). Metaanalyse. In J. Gertheiss, M.
+     Schmid, & M. Spindler (Eds.), _Moderne Verfahren der Angewandten
+     Statistik_. Berlin, Germany: Springer Spektrum.
+     https://doi.org/10.1007/978-3-662-63496-7_19-1
+
+Examples:
+
+     dat.chiarito2020
+     
+     ## Not run:
+     
+     library(metafor)
+     library(meta)
+     library(bayesmeta)
+     
+     # show plain data on stroke
+     dat.chiarito2020[-5, c("study","p2y12.stroke","p2y12.total","aspirin.stroke","aspirin.total")]
+     
+     # show event rates in both treatment groups
+     cbind.data.frame("study"   = dat.chiarito2020$study,
+                      "p2y12"   = dat.chiarito2020$p2y12.stroke / dat.chiarito2020$p2y12.total,
+                      "aspirin" = dat.chiarito2020$aspirin.stroke / dat.chiarito2020$aspirin.total)
+     
+     # compute effect measures (log-ORs)
+     # (using the "escalc()" function from the "metafor" package)
+     es.stroke <- escalc(measure="OR",
+                         ai=p2y12.stroke,   n1i=p2y12.total,
+                         ci=aspirin.stroke, n2i=aspirin.total,
+                         slab=study, subset=is.finite(p2y12.stroke),
+                         data=dat.chiarito2020)
+     
+     # show effect measures (log-ORs)
+     summary(es.stroke)
+     
+     # show effect measures (ORs und 95 percent CI)
+     cbind("study" = es.stroke$study,
+           exp(summary(es.stroke)[,c("yi","ci.lb","ci.ub")]))
+     
+     # show data in a forest plot
+     forestplot(es.stroke, xlab="log-OR")
+     forestplot(es.stroke, expo=TRUE, xlog=TRUE, xlab="odds ratio (OR)")
+     
+     ############################################################
+     #  meta-analysis (frequentist, "metafor" package)
+     
+     # using default settings (random-effects model, REML-estimator)
+     rma.uni(es.stroke)
+     
+     # analysis using Paule-Mandel estimator and HKSJ intervals
+     rma01 <- rma.uni(es.stroke, method="PM", test="knha")
+     
+     # show results
+     rma01
+     
+     # illustrate in a forest plot
+     forest(rma01)
+     forest(rma01, atransf=exp)
+     
+     ############################################################
+     #  meta-analysis (frequentist, "meta" package)
+     
+     # analogous analysis to above, using the "meta" package
+     meta01 <- metabin(event.e=p2y12.stroke,   n.e=p2y12.total,
+                       event.c=aspirin.stroke, n.c=aspirin.total,
+                       studlab=study, data=dat.chiarito2020,
+                       subset=is.finite(p2y12.stroke),
+                       sm="OR",
+                       method.tau="PM",
+                       method.random.ci="HK", method="Inverse")
+     
+     meta01
+     summary(meta01)
+     forest(meta01)
+     
+     ############################################################
+     #  meta-analysis (Bayesian, "bayesmeta" package)
+     
+     # analysis using default settings (uniform prior for mu und tau)
+     bma01 <- bayesmeta(es.stroke)
+     
+     # show results
+     bma01
+     
+     # show forest plots (for log-OR and OR)
+     forestplot(bma01, xlab="log-OR")
+     forestplot(bma01, exponentiate=TRUE, xlog=TRUE, xlab="OR")
+     ## End(Not run)
+     

@@ -1,0 +1,69 @@
+Extract Log-Likelihood from mvmeta Objects
+
+Description:
+
+     This method function returns the log-likelihood for fitted
+     univariate or multivariate meta-analytical models represented in
+     objects of class '"mvmeta"'.
+
+Usage:
+
+     ## S3 method for class 'mvmeta'
+     logLik(object, ...)
+     
+Arguments:
+
+  object: an object of class '"mvmeta"'.
+
+     ...: further arguments passed to or from other methods.
+
+Value:
+
+     A numeric scalar of class '"logLik"' with attributes, providing
+     the (restricted) log likelihood of the model. Attributes
+     correspond to the component 'df' of 'mvmeta' objects, namely the
+     following scalars: 'nall' (number of observations used for
+     estimation, excluding missing values), 'nobs' (equal to 'nall',
+     minus the number of fixed-effects coefficients for REML models,
+     'fixed' (number of estimated fixed-effects coefficients), 'random'
+     (number of estimated (co)variance terms).
+
+Note:
+
+     This functions is called by 'AIC' and 'BIC' for computing the
+     Akaike and Bayesian information criteria.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+See Also:
+
+     See the default method 'logLik'. See 'mvmeta-package' for an
+     overview of the package and modelling framework.
+
+Examples:
+
+     # RUN THE MODEL 
+     model <- mvmeta(cbind(PD,AL)~pubyear,S=berkey98[5:7],data=berkey98)
+     
+     # LOG-LIKELIHOOD
+     ll <- logLik(model)
+     ll
+     attributes(ll)
+     
+     # AIC and BIC
+     AIC(model)
+     BIC(model)
+     

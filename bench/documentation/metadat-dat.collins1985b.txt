@@ -1,0 +1,80 @@
+Studies on the Effects of Diuretics in Pregnancy
+
+Description:
+
+     Results from 9 studies examining the effects of diuretics in
+     pregnancy on various outcomes.
+
+Usage:
+
+     dat.collins1985b
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*       'numeric'    study number                                                                   
+       *author*   'character'  study author(s)                                                                
+       *year*     'numeric'    publication year                                                               
+       *pre.nti*  'numeric'    number of women in treatment group followed up for pre-eclampsia outcome       
+       *pre.nci*  'numeric'    number of women in control/placebo group followed up for pre-eclampsia outcome 
+       *pre.xti*  'numeric'    number of women in treatment group with any form of pre-eclampsia              
+       *pre.xci*  'numeric'    number of women in control/placebo group with any form of pre-eclampsia        
+       *oedema*   'numeric'    dummy variable indicating whether oedema was a diagnostic criterion            
+       *fup.nti*  'numeric'    number of women in treatment group followed up for mortality outcomes          
+       *fup.nci*  'numeric'    number of women in control/placebo group followed up for mortality outcomes    
+       *ped.xti*  'numeric'    number of perinatal deaths in treatment group                                  
+       *ped.xci*  'numeric'    number of perinatal deaths in control/placebo group                            
+       *stb.xti*  'numeric'    number of stillbirths in treatment group                                       
+       *stb.xci*  'numeric'    number of stillbirths in control/placebo group                                 
+       *ned.xti*  'numeric'    number of neonatal deaths in treatment group                                   
+       *ned.xci*  'numeric'    number of neonatal deaths in control/placebo group                             
+      
+Details:
+
+     The 9 studies in this dataset examined the effects of diuretics in
+     pregnancy on various outcomes, including the presence of any form
+     of pre-eclampsia, perinatal death, stillbirth, and neonatal death.
+
+Concepts:
+
+     medicine, obstetrics, odds ratios, Peto's method
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Collins, R., Yusuf, S., & Peto, R. (1985). Overview of randomised
+     trials of diuretics in pregnancy. _British Medical Journal_,
+     *290*(6461), 17-23. https://doi.org/10.1136/bmj.290.6461.17
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.collins1985b
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate (log) odds ratio and sampling variance
+     dat <- escalc(measure="OR", n1i=pre.nti, n2i=pre.nci, ai=pre.xti, ci=pre.xci, data=dat)
+     summary(dat, digits=2, transf=exp)
+     
+     ### meta-analysis using Peto's method for any form of pre-eclampsia
+     rma.peto(n1i=pre.nti, n2i=pre.nci, ai=pre.xti, ci=pre.xci, data=dat, digits=2)
+     
+     ### meta-analysis including only studies where oedema was not a diagnostic criterion
+     rma.peto(n1i=pre.nti, n2i=pre.nci, ai=pre.xti, ci=pre.xci, data=dat, digits=2, subset=(oedema==0))
+     
+     ### meta-analyses of mortality outcomes (perinatal deaths, stillbirths, and neonatal deaths)
+     rma.peto(n1i=fup.nti, n2i=fup.nci, ai=ped.xti, ci=ped.xci, data=dat, digits=2)
+     rma.peto(n1i=fup.nti, n2i=fup.nci, ai=stb.xti, ci=stb.xci, data=dat, digits=2)
+     rma.peto(n1i=fup.nti, n2i=fup.nci, ai=ned.xti, ci=ned.xci, data=dat, digits=2)
+     ## End(Not run)
+     

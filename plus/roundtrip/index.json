@@ -1,0 +1,660 @@
+[
+ {
+  "n": "001",
+  "id": "mvmeta::berkey98::PD+AL::REML::supplied",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "002",
+  "id": "mvmeta::fibrinogen::b2+b3::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "003",
+  "id": "mvmeta::fibrinogen::b2+b4::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "004",
+  "id": "mvmeta::fibrinogen::b2+b5::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "005",
+  "id": "mvmeta::fibrinogen::b3+b4::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "006",
+  "id": "mvmeta::fibrinogen::b3+b5::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "007",
+  "id": "mvmeta::fibrinogen::b4+b5::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "008",
+  "id": "mvmeta::hsls::b1+b2::REML::supplied",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "009",
+  "id": "mvmeta::hsls::b1+b3::REML::supplied",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "010",
+  "id": "mvmeta::hsls::b2+b3::REML::supplied",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "011",
+  "id": "mvmeta::hyp::sbp+dbp::REML::supplied",
+  "mode": "cov",
+  "k": 10,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "012",
+  "id": "mvmeta::p53::y1+y2::REML::documented-rho-0.95",
+  "mode": "cov",
+  "k": 3,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "013",
+  "id": "mvmeta::smoking::yB+yC::REML::supplied",
+  "mode": "cov",
+  "k": 2,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "014",
+  "id": "mvmeta::smoking::yB+yD::REML::supplied",
+  "mode": "cov",
+  "k": 2,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "015",
+  "id": "mvmeta::smoking::yC+yD::REML::supplied",
+  "mode": "cov",
+  "k": 4,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "016",
+  "id": "mixmeta::berkey98::PD+AL::REML::supplied",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "017",
+  "id": "mixmeta::fibrinogen::b2+b3::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "018",
+  "id": "mixmeta::fibrinogen::b2+b4::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "019",
+  "id": "mixmeta::fibrinogen::b2+b5::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "020",
+  "id": "mixmeta::fibrinogen::b3+b4::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "021",
+  "id": "mixmeta::fibrinogen::b3+b5::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "022",
+  "id": "mixmeta::fibrinogen::b4+b5::REML::supplied",
+  "mode": "cov",
+  "k": 31,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "023",
+  "id": "mixmeta::hsls::b1+b2::REML::supplied",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "024",
+  "id": "mixmeta::hsls::b1+b3::REML::supplied",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "025",
+  "id": "mixmeta::hsls::b2+b3::REML::supplied",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "026",
+  "id": "mixmeta::hyp::sbp+dbp::REML::supplied",
+  "mode": "cov",
+  "k": 10,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "027",
+  "id": "mixmeta::p53::y1+y2::REML::documented-rho-0.95",
+  "mode": "cov",
+  "k": 3,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "028",
+  "id": "mixmeta::smoking::yB+yC::REML::supplied",
+  "mode": "cov",
+  "k": 2,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "029",
+  "id": "mixmeta::smoking::yB+yD::REML::supplied",
+  "mode": "cov",
+  "k": 2,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "030",
+  "id": "mixmeta::smoking::yC+yD::REML::supplied",
+  "mode": "cov",
+  "k": 4,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "031",
+  "id": "mixmeta::dbs::eff_month3+eff_month6::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 11,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "032",
+  "id": "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 13,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "033",
+  "id": "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 4,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "034",
+  "id": "mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 11,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "035",
+  "id": "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "036",
+  "id": "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "037",
+  "id": "mixmeta::dbs::eff_month3+eff_month6::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 11,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "038",
+  "id": "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 13,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "039",
+  "id": "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 4,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "040",
+  "id": "mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 11,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "041",
+  "id": "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "042",
+  "id": "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "043",
+  "id": "metadat::dat.ishak2007::y1i+y2i::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 11,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "044",
+  "id": "metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 13,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "045",
+  "id": "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 4,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "046",
+  "id": "metadat::dat.ishak2007::y2i+y3i::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 11,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "047",
+  "id": "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "048",
+  "id": "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "049",
+  "id": "mixmeta::gliomas::month6+month12::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "050",
+  "id": "mixmeta::gliomas::month6+month18::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "051",
+  "id": "mixmeta::gliomas::month6+month24::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "052",
+  "id": "mixmeta::gliomas::month12+month18::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "053",
+  "id": "mixmeta::gliomas::month12+month24::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 17,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "054",
+  "id": "mixmeta::gliomas::month18+month24::REML::documented-AR1-0",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "055",
+  "id": "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "056",
+  "id": "mixmeta::gliomas::month6+month18::REML::documented-AR1-0.61",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "057",
+  "id": "mixmeta::gliomas::month6+month24::REML::documented-AR1-0.61",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "058",
+  "id": "mixmeta::gliomas::month12+month18::REML::documented-AR1-0.61",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "059",
+  "id": "mixmeta::gliomas::month12+month24::REML::documented-AR1-0.61",
+  "mode": "cov",
+  "k": 17,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "060",
+  "id": "mixmeta::gliomas::month18+month24::REML::documented-AR1-0.61",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "061",
+  "id": "metadat::dat.berkey1998::PD+AL::REML::supplied",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "062",
+  "id": "metadat::dat.berkey1998r::AL+PD::REML::supplied",
+  "mode": "cov",
+  "k": 5,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "063",
+  "id": "metadat::dat.kalaian1996::verbal+math::REML::documented-rho-0.66",
+  "mode": "cov",
+  "k": 20,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "064",
+  "id": "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "065",
+  "id": "metadat::dat.fine1993::month6+month18::REML::documented-covariance-raw",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "066",
+  "id": "metadat::dat.fine1993::month6+month24::REML::documented-covariance-raw",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "067",
+  "id": "metadat::dat.fine1993::month12+month18::REML::documented-covariance-raw",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "068",
+  "id": "metadat::dat.fine1993::month12+month24::REML::documented-covariance-raw",
+  "mode": "cov",
+  "k": 17,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "069",
+  "id": "metadat::dat.fine1993::month18+month24::REML::documented-covariance-raw",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "refused"
+ },
+ {
+  "n": "070",
+  "id": "metadat::dat.fine1993::month6+month12::REML::documented-covariance-ridge",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "071",
+  "id": "metadat::dat.fine1993::month6+month18::REML::documented-covariance-ridge",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "072",
+  "id": "metadat::dat.fine1993::month6+month24::REML::documented-covariance-ridge",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "073",
+  "id": "metadat::dat.fine1993::month12+month18::REML::documented-covariance-ridge",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "074",
+  "id": "metadat::dat.fine1993::month12+month24::REML::documented-covariance-ridge",
+  "mode": "cov",
+  "k": 17,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "075",
+  "id": "metadat::dat.fine1993::month18+month24::REML::documented-covariance-ridge",
+  "mode": "cov",
+  "k": 16,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "076",
+  "id": "metadat::dat.craft2003::acog.perf+asom.perf::REML::rcalc",
+  "mode": "cov",
+  "k": 9,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "077",
+  "id": "metadat::dat.craft2003::acog.perf+conf.perf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "078",
+  "id": "metadat::dat.craft2003::acog.perf+acog.asom::REML::rcalc",
+  "mode": "cov",
+  "k": 9,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "079",
+  "id": "metadat::dat.craft2003::acog.perf+acog.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "080",
+  "id": "metadat::dat.craft2003::acog.perf+asom.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "081",
+  "id": "metadat::dat.craft2003::asom.perf+conf.perf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "082",
+  "id": "metadat::dat.craft2003::asom.perf+acog.asom::REML::rcalc",
+  "mode": "cov",
+  "k": 9,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "083",
+  "id": "metadat::dat.craft2003::asom.perf+acog.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "084",
+  "id": "metadat::dat.craft2003::asom.perf+asom.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "085",
+  "id": "metadat::dat.craft2003::conf.perf+acog.asom::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "086",
+  "id": "metadat::dat.craft2003::conf.perf+acog.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "087",
+  "id": "metadat::dat.craft2003::conf.perf+asom.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "088",
+  "id": "metadat::dat.craft2003::acog.asom+acog.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "089",
+  "id": "metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "090",
+  "id": "metadat::dat.craft2003::acog.conf+asom.conf::REML::rcalc",
+  "mode": "cov",
+  "k": 8,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "091",
+  "id": "metadat::dat.kearon1998::logit_sensitivity+logit_specificity::REML::disjoint-binomial-samples",
+  "mode": "cov",
+  "k": 30,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "092",
+  "id": "metadat::dat.rivera2025::logit_sensitivity+logit_specificity::REML::disjoint-binomial-samples",
+  "mode": "cov",
+  "k": 10,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "093",
+  "id": "example::hyp::per-study-r",
+  "mode": "r",
+  "k": 10,
+  "pageStatus": "ok"
+ },
+ {
+  "n": "094",
+  "id": "example::berkey::assumed-rhoW-0.5",
+  "mode": "rhoW",
+  "k": 5,
+  "pageStatus": "ok"
+ }
+]

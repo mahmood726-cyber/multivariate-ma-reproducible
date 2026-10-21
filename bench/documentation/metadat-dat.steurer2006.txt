@@ -1,0 +1,89 @@
+Trials on Single-Agent Purine Analogues for the Treatment of Chronic
+Lymphocytic Leukaemia
+
+Description:
+
+     Results from 4 trials evaluating single-agent purine analogues in
+     patients with chronic lymphocytic leukaemia.
+
+Usage:
+
+     dat.steurer2006
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*  'character'  first author                            
+       *year*    'integer'    publication year                        
+       *Ne*      'integer'    number of patients (purine antagonists) 
+       *Nc*      'integer'    number of patients (alkylator-based)    
+       *HR*      'numeric'    hazard ratio                            
+       *lowHR*   'numeric'    lower limit                             
+       *uppHR*   'numeric'    upper limit                             
+       *lnHR*    'numeric'    log hazard ratio                        
+       *selnHR*  'numeric'    standard error                          
+      
+Details:
+
+     Steurer et al. (2006) conducted a Cochrane review to evaluate the
+     effect of single-agent purine analogues for the treatment of
+     chronic lymphocytic leukaemia. This dataset contains data from the
+     main outcome, overall survival. Note, the hazard ratios and
+     confidence limits have been reported in the Cochrane review with
+     only two significant figures and were recalculated using the
+     reported log hazard ratios and standard errors.
+
+     This data set is used as an example in Schwarzer et al. (2015).
+
+Concepts:
+
+     medicine, oncology, hazard ratios
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Steurer, M., Pall, G., Richards, S., Schwarzer, G., Bohlius, J., &
+     Greil, R. (2006). Purine antagonists for chronic lymphocytic
+     leukaemia. _Cochrane Database of Systematic Reviews_, *3*,
+     CD004270. https://doi.org/10.1002/14651858.cd004270.pub2
+
+References:
+
+     Schwarzer, G., Carpenter, J. R., & Ruecker, G. (2015).
+     _Meta-analysis with R_. Cham, Switzerland: Springer.
+
+Examples:
+
+     ### Show dataset
+     dat.steurer2006
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Use RevMan 5 settings
+     oldset <- settings.meta("RevMan5")
+     
+     ### Conduct common effect meta-analysis
+     m1 <- metagen(lnHR, selnHR, data = dat.steurer2006,
+       studlab = paste(author, year),
+       sm = "HR", random = FALSE, n.e = Ne, n.c = Nc)
+     m1
+     
+     ### Same analysis using lower and upper confidence limits
+     m2 <- metagen(HR, lower = lowHR, upper = uppHR,
+       data = dat.steurer2006, transf = FALSE,
+       studlab = paste(author, year),
+       sm = "HR", random = FALSE, n.e = Ne, n.c = Nc)
+     m2
+     
+     ### Use previous settings
+     settings.meta(oldset)
+     ## End(Not run)
+     

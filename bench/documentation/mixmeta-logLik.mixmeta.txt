@@ -1,0 +1,64 @@
+Extract Log-Likelihood from mixmeta Objects
+
+Description:
+
+     This method function returns the (restricted) log-likelihood for
+     fitted meta-analytical models represented in objects of class
+     '"mixmeta"'.
+
+Usage:
+
+     ## S3 method for class 'mixmeta'
+     logLik(object, ...)
+     
+Arguments:
+
+  object: an object of class '"mixmeta"'.
+
+     ...: further arguments passed to or from other methods.
+
+Value:
+
+     A numeric scalar of class '"logLik"' with attributes, providing
+     the (restricted) log likelihood of the model. Attributes
+     correspond to the component 'df' of 'mixmeta' objects, namely the
+     following scalars: 'nall' (number of observations used for
+     estimation, excluding missing values), 'nobs' (equal to 'nall',
+     minus the number of fixed-effects coefficients for REML models,
+     'fixed' (number of estimated fixed-effects coefficients), 'random'
+     (number of estimated (co)variance terms).
+
+Note:
+
+     This functions is called by 'AIC' and 'BIC' for computing the
+     Akaike and Bayesian information criteria.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+See Also:
+
+     See the default method 'logLik'. See 'mixmeta-package' for an
+     overview of the package and modelling framework.
+
+Examples:
+
+     # RUN THE MODEL
+     model <- mixmeta(cbind(PD,AL)~pubyear,S=berkey98[5:7],data=berkey98)
+     
+     # LOG-LIKELIHOOD
+     ll <- logLik(model)
+     ll
+     attributes(ll)
+     
+     # AIC and BIC
+     AIC(model)
+     BIC(model)
+     

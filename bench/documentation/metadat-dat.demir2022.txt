@@ -1,0 +1,72 @@
+Studies on the Reliability of the MIBS Scale
+
+Description:
+
+     Results from 26 studies on the reliability of the Mother-to-Infant
+     Bonding Scale (MIBS).
+
+Usage:
+
+     dat.demir2022
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *studyid*       'numeric'    study ID                             
+       *esid*          'numeric'    effect size ID                       
+       *author*        'character'  author(s) of the study               
+       *year*          'numeric'    publication year                     
+       *pubtype*       'character'  publication type (Article or Thesis) 
+       *country*       'character'  country                              
+       *participants*  'character'  participant characteristics          
+       *n*             'numeric'    sample size                          
+       *alpha*         'numeric'    Cronbach's alpha                     
+       *items*         'numeric'    number of items in the scale         
+      
+Details:
+
+     The Mother-to-Infant Bonding Scale (MIBS) is an 8-item Likert-type
+     questionnaire to evaluate caregiver-infant attachment. Demir et
+     al. (2022) carried out a meta-analysis of 26 studies (reporting 33
+     Cronbach's alpha values) to assess the reliability of the scale.
+
+Concepts:
+
+     psychology, Cronbach's alpha, reliability generalization
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Demir, E., <c3><96>z, S., Aral, N., & G<c3><bc>rsoy, F. (2022). A reliability
+     generalization meta-analysis of the Mother-to-Infant Bonding
+     Scale. _Psychological Reports_, *127*(1), 447-464.
+     https://doi.org/10.1177/00332941221114413
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.demir2022
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### transform the alpha values using the Bonett (2022) transformation
+     dat <- escalc(measure="ABT", ai=alpha, ni=n, mi=items, data=dat)
+     dat
+     
+     ### meta-analysis using a random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     
+     ### back-transform the results
+     predict(res, transf=transf.iabt, digits=2)
+     ## End(Not run)
+     

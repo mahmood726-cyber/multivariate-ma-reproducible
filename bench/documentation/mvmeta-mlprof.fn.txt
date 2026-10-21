@@ -1,0 +1,159 @@
+Likelihood Functions for mvmeta Models
+
+Description:
+
+     These functions compute the value of the log-likelihood and the
+     related vectors of first partial derivatives for random-effects
+     multivariate and univariate meta-analysis and meta-regression, in
+     terms of model parameters. They are meant to be used internally
+     and not directly run by the users.
+
+Usage:
+
+     mlprof.fn(par, Xlist, ylist, Slist, nalist, k, m, p, nall, bscov, ctrl)
+     mlprof.gr(par, Xlist, ylist, Slist, nalist, k, m, p, nall, bscov, ctrl)
+     
+     remlprof.fn(par, Xlist, ylist, Slist, nalist, k, m, p, nall, bscov, ctrl)
+     remlprof.gr(par, Xlist, ylist, Slist, nalist, k, m, p, nall, bscov, ctrl)
+     
+     iter.igls(Psi, Xlist, ylist, Slist, nalist, k, m)
+     
+Arguments:
+
+     Assuming a meta-analysis or meta-regression based on m studies, k
+     outcomes and p predictors:
+
+     par: a vector representing the random-effects parameters defining
+          the between-study (co)variance matrix.
+
+     Psi: a k x k matrix representing the current estimate of the
+          between-study (co)variance matrix.
+
+   Xlist: a m-dimensional list of study-specific design matrices for
+          the fixed-effects part of the model. Rows corresponding to
+          missing outcomes have been excluded.
+
+   ylist: a m-dimensional list of study-specific of vectors of
+          estimated outcomes. Entries corresponding to missing outcomes
+          have been excluded.
+
+   Slist: a m-dimensional list of within-study (co)variance matrices of
+          estimated outcomes. Rows and columns corresponding to missing
+          outcomes have been excluded.
+
+  nalist: a m-dimensional list of k-dimensional study-specific logical
+          vectors, identifying missing outcomes.
+
+k, m, p, nall: numeric scalars: number of outcomes, number of studies
+          included in estimation (equal to the length of lists above),
+          number of predictors (including the intercept), number of
+          observations (excluding missing).
+
+   bscov: a string defining the between-study (co)variance structure in
+          likelihood based models. See Details.
+
+    ctrl: list of parameters for controlling the fitting process,
+          usually internally set to default values by 'mvmeta.control'.
+          The name is chosen to avoid conflicts with the argument
+          'control' in 'optim'.
+
+Details:
+
+     These functions are called internally by the fitting functions
+     'mvmeta.ml' and 'mvmeta.reml' to perform iterative optimization
+     algorithms for estimating random effects meta-analytical models.
+
+     The maximization of the (restricted) likelihood starts with few
+     runs of an iterative generalized least square algorithm
+     implemented in 'iter.igls'. This can be regarded as a fast and
+     stable way to get starting values close to the maximum for the
+     Quasi-Newton iterative algorithm, implemented in 'optim'.
+     Alternatively, starting values can be provided by the user in the
+     control list (see 'mvmeta.control'). The function 'optim' requires
+     the algorithms to compute the value of the (restricted) likelihood
+     and (optionally) the vector of its first partial derivatives,
+     provided by the related likelihood functions.
+
+     These functions actually specify the _profiled_ version of the
+     (restricted) likelihood, expressed only in terms of random-effects
+     parameters, while the estimate of the fixed-effects coefficients
+     is provided at each iteration by the internal function 'glsfit',
+     based on the current value of the between-study (co)variance
+     matrix. At convergence, the value of this profiled version is
+     identical to the full (restricted) likelihood. This approach is
+     computationally efficient, as it reduces the number of parameters
+     in the optimization routine, especially for meta-regression
+     models.
+
+     The random-effects parameters in 'par' depends on the chosen
+     'structure' for the between-study (co)variance matrix. The
+     parameterization ensures the positive-definiteness of the
+     estimated matrix. A Cholesky decomposition is then performed on
+     the marginal (co)variance matrix in order to re-express the
+     problem as standard least square equations, an approach which
+     speeds up the computation of matrix inverses and determinants.
+     These equations are finally solved through a QR decomposition,
+     which guarantees stability. More details are provided in the
+     references below.
+
+     Some parameters of the fitting procedures are determined through
+     'mvmeta.control'. Specifically, the user can obtain the Hessian
+     matrix of the estimated parameters (appropriately transformed, see
+     'mvmetaCovStruct') in the optimization function by setting
+     'hessian=TRUE', and specific control settings in the optimization
+     process can be defined by the control list argument 'optim'. These
+     values are passed to the optimization function 'optim'.
+
+Value:
+
+     'mlprof.fn' and 'remlprof.fn' return the value of the (restricted)
+     log-likelihood for a given set of parameters in 'par'. 'mlprof.gr'
+     and 'remlprof.gr' return instead the related vector of first
+     partial derivatives. 'iter.igls' returns an updated estimate of
+     'Psi' given its initial value or the value at the previous
+     iteration.
+
+Note:
+
+     As stated earlier, these functions are called internally by
+     'mvmeta.ml' and 'mvmeta.reml', and are not meant to be used
+     directly. In particular, their code does not contain any check on
+     the arguments provided, which are expected in specific formats.
+     They are however exported in the namespace and documented for
+     completeness.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+     Goldstein H (1986). Multilevel mixed linear model analysis using
+     iterative generalized least squares. _Biometrika_. *73*(1):43.
+
+     Lindstrom MJ and Bates DM (1988). Newton-Raphson and EM algorithms
+     for linear mixed-effects models for repeated-measures data.
+     _Journal of the American Statistical Association_.
+     *83*(404):1014-1022.
+
+     Pinheiro JC and Bates DM (2000). _Mixed-Effects Models in S and
+     S-PLUS_. New York, Springer Verlag.
+
+See Also:
+
+     See 'mvmeta.fit' and 'mvmeta.ml' for additional info on the
+     fitting procedures. See 'mvmeta.control' to determine specific
+     parameters of the fitting procedures. See 'mvmetaCovStruct' for
+     (co)variance structures. See 'chol' and 'qr' for info on the
+     Cholesky and QR decomposition. See 'mvmeta-package' for an
+     overview of the package and modelling framework.
+

@@ -1,0 +1,119 @@
+Studies on Assortative Mating
+
+Description:
+
+     Results from 457 studies on assortative mating in various species.
+
+Usage:
+
+     dat.moura2021
+     
+Format:
+
+     The object is a list containing a data frame called 'dat' that
+     contains the following columns and a phylogenetic tree called
+     'tree':
+
+       *study.id*           'character'  study id                                                    
+       *effect.size.id*     'numeric'    effect size id                                              
+       *species*            'character'  species                                                     
+       *species.id*         'character'  species id (as in the Open Tree of Life reference taxonomy) 
+       *subphylum*          'character'  the subphyla of the species                                 
+       *phylum*             'character'  the phyla of the species                                    
+       *assortment.trait*   'character'  the measure of body size                                    
+       *trait.dimensions*   'character'  dimensionality of the measure                               
+       *field.collection*   'character'  whether data were collected in the field                    
+       *publication.year*   'numeric'    publication year of the study                               
+       *pooled.data*        'character'  whether data were pooled either spatially and/or temporally 
+       *spatially.pooled*   'character'  whether data were pooled spatially                          
+       *temporally.pooled*  'character'  whether data were pooled temporally                         
+       *ri*                 'numeric'    correlation coefficient                                     
+       *ni*                 'numeric'    sample size                                                 
+      
+Details:
+
+     The 457 studies included in this dataset provide 1828 correlation
+     coefficients describing the similarity in some measure of body
+     size in mating couples in 341 different species.
+
+Concepts:
+
+     ecology, evolution, correlation coefficients, multivariate models,
+     phylogeny, meta-regression
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Rios Moura, R., Oliveira Gonzaga, M., Silva Pinto, N.,
+     Vasconcellos-Neto, J., & Requena, G. S. (2021). Assortative mating
+     in space and time: Patterns and biases. _Ecology Letters_,
+     *24*(5), 1089-1102. https://doi.org/10.1111/ele.13690
+
+References:
+
+     Cinar, O., Nakagawa, S., & Viechtbauer, W. (in press).
+     Phylogenetic multilevel meta-analysis: A simulation study on the
+     importance of modelling the phylogeny. _Methods in Ecology and
+     Evolution_. https://doi.org/10.1111/2041-210X.13760
+
+     Hadfield, J. D., & Nakagawa, S. (2010). General quantitative
+     genetic methods for comparative biology: Phylogenies, taxonomies
+     and multi-trait models for continuous and categorical characters.
+     _Journal of Evolutionary Biology_, *23*(3), 494-508.
+     https://doi.org/10.1111/j.1420-9101.2009.01915.x
+
+     Nakagawa, S., & Santos, E. S. A. (2012). Methodological issues and
+     advances in biological meta-analysis. _Evolutionary Ecology_,
+     *26*(5), 1253-1274. https://doi.org/10.1007/s10682-012-9555-5
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.moura2021$dat
+     head(dat)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### load ape package
+     library(ape, warn.conflicts=FALSE)
+     
+     ### calculate r-to-z transformed correlations and corresponding sampling variances
+     dat <- escalc(measure="ZCOR", ri=ri, ni=ni, data=dat)
+     
+     ### copy tree to 'tree'
+     tree <- dat.moura2021$tree
+     
+     ### turn tree into an ultrametric one
+     tree <- compute.brlen(tree)
+     
+     ### compute phylogenetic correlation matrix
+     A <- vcv(tree, corr=TRUE)
+     
+     ### make copy of the species.id variable
+     dat$species.id.phy <- dat$species.id
+     
+     ### fit multilevel phylogenetic meta-analytic model
+     res <- rma.mv(yi, vi,
+        random = list(~ 1 | study.id, ~ 1 | effect.size.id, ~ 1 | species.id, ~ 1 | species.id.phy),
+        R=list(species.id.phy=A), data=dat)
+     res
+     
+     ### examine if spatial and/or temporal pooling of data tends to yield larger correlations
+     res <- rma.mv(yi, vi,
+        mods = ~ spatially.pooled * temporally.pooled,
+        random = list(~ 1 | study.id, ~ 1 | effect.size.id, ~ 1 | species.id, ~ 1 | species.id.phy),
+        R=list(species.id.phy=A), data=dat)
+     res
+     
+     ### estimated average correlation without pooling, when pooling spatially,
+     ### when pooling temporally, and when pooling spatially and temporally
+     predict(res, newmods = rbind(c(0,0,0),c(1,0,0),c(0,1,0),c(1,1,1)), transf=transf.ztor, digits=2)
+     ## End(Not run)
+     

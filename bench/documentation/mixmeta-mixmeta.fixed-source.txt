@@ -1,0 +1,20 @@
+function (Xlist, ylist, Slist, nall, control, ...) 
+{
+    gls <- glsfit(Xlist, ylist, Slist, onlycoef = FALSE)
+    qrinvtUX <- qr(gls$invtUX)
+    R <- qr.R(qrinvtUX)
+    Qty <- qr.qty(qrinvtUX, gls$invtUy)
+    vcov <- tcrossprod(backsolve(R, diag(1, ncol(gls$invtUX))))
+    res <- NULL
+    fitted <- lapply(Xlist, "%*%", gls$coef)
+    rank <- qrinvtUX$rank
+    pconst <- -0.5 * nall * log(2 * pi)
+    pres <- -0.5 * (crossprod(gls$invtUy - gls$invtUX %*% gls$coef))
+    pdet <- -sum(sapply(gls$Ulist, function(U) sum(log(diag(U)))))
+    logLik <- as.numeric(pconst + pdet + pres)
+    list(coefficients = gls$coef, vcov = vcov, residuals = res, 
+        fitted.values = fitted, df.residual = nall - rank, rank = rank, 
+        logLik = logLik)
+}
+<bytecode: 0x000002046e41b450>
+<environment: namespace:mixmeta>

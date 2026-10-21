@@ -1,0 +1,34 @@
+{
+  "node": "v24.13.0",
+  "linkedom": "0.18.12",
+  "mode": "Node VM with linkedom; all shipped page scripts executed",
+  "defaultUninstrumented": {
+    "_schema": "multivariate-ma-results-v1",
+    "k": 5,
+    "mu": [
+      0.35679479239607015,
+      -0.35675435789045523
+    ],
+    "muSE": [
+      0.059705047640278695,
+      0.08175109058998906
+    ],
+    "G": [
+      [
+        0.012178623067725547,
+        0.008900039761702635
+      ],
+      [
+        0.008900039761702635,
+        0.0311744822008607
+      ]
+    ],
+    "rho": 0.4567654308424906,
+    "logLik": 3.751802206426391
+  },
+  "notVerified": [
+    "browser layout",
+    "native rendering",
+    "accessibility interactions"
+  ]
+}

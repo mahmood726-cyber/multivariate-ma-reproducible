@@ -1,0 +1,147 @@
+{
+ "url": "http://127.0.0.1:8099/multivariate-ma/index.html",
+ "source": "allmeta PR #152 head d089222 (feat/multivariate-ma-plus), served locally",
+ "steps": [
+  {
+   "clicksSoFar": 0,
+   "action": "fresh load (no click)",
+   "observed": "k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692",
+   "screenshot": "01_fresh_load.png"
+  },
+  {
+   "clicksSoFar": 1,
+   "action": "click \"Berkey example\"",
+   "observed": "k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692",
+   "pooled": {
+    "PD": 0.35342816963732965,
+    "AL": -0.3392151784592923,
+    "seP": 0.0588486314903215,
+    "seA": 0.08790513609247724,
+    "rho": 0.608798682281344,
+    "logLik": 3.6917676943703244
+   },
+   "stats": "PD pooled 0.353 [0.238, 0.469] AL pooled -0.339 [-0.512, -0.167] Between-study SD PD 0.1083 Between-study SD AL 0.1807 Between-study ρ 0.609",
+   "screenshot": "02_berkey_core_output.png"
+  },
+  {
+   "clicksSoFar": 1,
+   "action": "read comparison table (no click)",
+   "observed": "4 rows",
+   "table": "PD | Multivariate (bivariate REML) | 0.353 [0.238, 0.469] | 0.0588 | 6.01 | <0.0001 | 0.01173 | 0.988\nPD | Univariate (REML, same studies) | 0.361 [0.245, 0.477] | 0.0592 | 6.09 | <0.0001 | 0.01187 | \nAL | Multivariate (bivariate REML) | -0.339 [-0.512, -0.167] | 0.0879 | -3.86 | 0.0001 | 0.03265 | 0.987\nAL | Univariate (REML, same studies) | -0.346 [-0.519, -0.172] | 0.0885 | -3.91 | <0.0001 | 0.03309 | ",
+   "screenshot": "03_uv_mv_table.png"
+  },
+  {
+   "clicksSoFar": 2,
+   "action": "click \"Run sweep\"",
+   "observed": "Sweep complete: 19 of 19 ρw values fitted.",
+   "rows": 19,
+   "screenshot": "04_sweep.png"
+  },
+  {
+   "clicksSoFar": 3,
+   "action": "click \"Download R script\"",
+   "observed": "multivariate-ma-analysis.R (4091 bytes; contains mvmeta: true, rma.mv: true, machine path: false)"
+  }
+ ],
+ "badInputs": [
+  {
+   "input": "malformed_number",
+   "mode": "cov",
+   "text": "a, .1oops, .2, .3, .4, .1\nb, .5, .3, .6, .5, .1\nc, .2, .2, .2, .2, .05\nd, .3, .2, .1, .3, .05",
+   "headline": "k = 3 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -1.235",
+   "omitted": "k used = 3; 1 row omitted: line 1 (missing or non-numeric value).",
+   "statsShown": 5,
+   "resultObject": "present",
+   "flaggedRows": 0,
+   "screenshot": "05_bad_malformed_number.png"
+  },
+  {
+   "input": "r_ge_1",
+   "mode": "r",
+   "text": "a, .1, .2, .3, .4, 1.0\nb, .5, .3, .6, .5, .2\nc, .2, .2, .2, .2, .1",
+   "headline": "k = 2 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -0.782",
+   "omitted": "k used = 2; 1 row omitted: line 1 (within-study r must satisfy |r| < 1).",
+   "statsShown": 5,
+   "resultObject": "present",
+   "flaggedRows": 0,
+   "screenshot": "05_bad_r_ge_1.png"
+  },
+  {
+   "input": "non_pd_covariance",
+   "mode": "cov",
+   "text": "a, .1, .2, .3, .4, 1\nb, .5, .3, .6, .5, .1\nc, .2, .2, .2, .2, 0",
+   "headline": "Refused: Within-study covariance must be positive definite. (|r| ≥ 1 on line 1)",
+   "omitted": "k used = 3; 0 rows omitted.",
+   "statsShown": 0,
+   "resultObject": "null (cleared)",
+   "flaggedRows": 1,
+   "screenshot": "05_bad_non_pd_covariance.png"
+  }
+ ],
+ "keyboard": [
+  {
+   "path": "Tab from page start to \"Run sweep\", then Enter",
+   "tabsToRunSweep": 17,
+   "focusOrder": [
+    "a:Skip to main content",
+    "hub-back",
+    "btn-ex-berkey",
+    "btn-ex-hyp",
+    "btn-clear",
+    "f-csv",
+    "f-mode",
+    "f-data",
+    "f-o1",
+    "f-o2",
+    "summary:Derived within-study",
+    "btn-plot-svg",
+    "btn-plot-png",
+    "plus-from",
+    "plus-to",
+    "plus-step",
+    "plus-run"
+   ],
+   "sweepStatus": "Sweep complete: 19 of 19 ρw values fitted.",
+   "focusStyleOnRun": {
+    "id": "plus-run",
+    "outline": "solid 2px",
+    "boxShadow": "none"
+   }
+  },
+  {
+   "path": "Tab onward to \"Download R script\", then Enter",
+   "tabsFromRunSweep": 5,
+   "download": "multivariate-ma-analysis.R"
+  }
+ ],
+ "defaults": {
+  "mode": "cov",
+  "outcome1": "PD",
+  "outcome2": "AL",
+  "rhoW": "0.5",
+  "sweepFrom": "-0.9",
+  "sweepTo": "0.9",
+  "sweepStep": "0.1",
+  "dataFirstLine": "# label, y_PD, var_PD, y_AL, var_AL, cov"
+ },
+ "axe": {
+  "tags": "wcag2a, wcag2aa, wcag21a, wcag21aa",
+  "axeVersion": "4.11.4",
+  "violations": [],
+  "passes": 27,
+  "incomplete": [
+   "aria-prohibited-attr",
+   "color-contrast"
+  ]
+ },
+ "errors": [
+  "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ],
+ "browser": "Microsoft Edge 151.0.4129.78",
+ "coreOutputClicks": {
+  "fromFreshLoad": 0,
+  "viaExplicitExampleButton": 1,
+  "sameAsDefault": true
+ },
+ "totalClicks": 3
+}

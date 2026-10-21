@@ -1,0 +1,88 @@
+Studies on Gender Differences in Grant and Fellowship Awards
+
+Description:
+
+     Results from 21 studies on gender differences in grant and
+     fellowship awards.
+
+Usage:
+
+     dat.bornmann2007
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*       'character'  study reference                                       
+       *obs*         'numeric'    observation within study                              
+       *doctype*     'character'  document type                                         
+       *gender*      'character'  gender of the study authors                           
+       *year*        'numeric'    (average) cohort year                                 
+       *org*         'character'  funding organization / program                        
+       *country*     'character'  country of the funding organization / program         
+       *type*        'character'  fellowship or grant application                       
+       *discipline*  'character'  discipline / field                                    
+       *waward*      'numeric'    number of women who received a grant/fellowship award 
+       *wtotal*      'numeric'    number of women who applied for an award              
+       *maward*      'numeric'    number of men who received a grant/fellowship award   
+       *mtotal*      'numeric'    number of men who applied for an award                
+      
+Details:
+
+     The studies in this dataset examine whether the chances of
+     receiving a grant or fellowship award differs for men and women.
+     Note that many studies provide multiple comparisons (e.g., for
+     different years / cohorts / disciplines). A multilevel
+     meta-analysis model can be used to account for the multilevel
+     structure in these data.
+
+Concepts:
+
+     sociology, odds ratios, multilevel models
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Bornmann, L., Mutz, R., & Daniel, H. (2007). Gender differences in
+     grant peer review: A meta-analysis. _Journal of Informetrics_,
+     *1*(3), 226-238. https://doi.org/10.1016/j.joi.2007.03.001
+
+References:
+
+     Marsh, H. W., Bornmann, L., Mutz, R., Daniel, H.-D., & O'Mara, A.
+     (2009). Gender effects in the peer reviews of grant proposals: A
+     comprehensive meta-analysis comparing traditional and multilevel
+     approaches. _Review of Educational Research_, *79*(3), 1290-1326.
+     https://doi.org/10.3102/0034654309334143
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.bornmann2007
+     head(dat, 16)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate log odds ratios and corresponding sampling variances
+     dat <- escalc(measure="OR", ai=waward, n1i=wtotal, ci=maward, n2i=mtotal, data=dat)
+     
+     ### fit multilevel meta-analysis model
+     res <- rma.mv(yi, vi, random = ~ 1 | study/obs, data=dat)
+     res
+     
+     ### estimated average odds ratio (with 95% CI/PI)
+     predict(res, transf=exp, digits=2)
+     
+     ### test for a difference between fellowship and grant applications
+     res <- rma.mv(yi, vi, mods = ~ type, random = ~ 1 | study/obs, data=dat)
+     res
+     predict(res, newmods=0:1, transf=exp, digits=2)
+     ## End(Not run)
+     

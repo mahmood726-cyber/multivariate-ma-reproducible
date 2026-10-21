@@ -1,0 +1,1 @@
+5bdf400 multivariate-ma plus: pixel references (joint + sweep plots, Berkey and hyp), generated with Edge on Windows at 42b2e5b

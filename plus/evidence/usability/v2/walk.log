@@ -1,0 +1,30 @@
+STEP 0 fresh load (no click) | k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692
+STEP 1 click "Berkey example" | k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692
+STEP 1 read comparison table (no click) | 4 rows
+STEP 2 click "Run sweep" | Sweep complete: 19 of 19 ρw values fitted.
+STEP 3 click "Download R script" | multivariate-ma-analysis.R (4091 bytes; contains mvmeta: true, rma.mv: true, machine path: false)
+CHECK PASS hyp pasted mu0 -9.508636077458798 -9.508636077458826 2.9890416668464696e-15
+CHECK PASS hyp pasted muSE0 0.7330511498201082 0.7330511498201305 2.2315482794965646e-14
+CHECK PASS hyp pasted mu1 -4.432438829506512 -4.4324388295065225 2.4045771292884615e-15
+CHECK PASS hyp pasted muSE1 0.4681468666475189 0.46814686664752525 6.328271240363392e-15
+CHECK PASS hyp pasted rho 0.6749637386191288 0.6749637386191483 1.942890293094024e-14
+CHECK PASS hyp pasted logLik -36.69323643302986 -36.69323643302986 0
+STEP 4 click "Clear", select "Per-study correlation", paste 10 hyp rows (typed input, no click), type outcome names | k = 10 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -36.693
+CHECK PASS hyp sweep rhoW=-0.5 mu0 -9.948226255199907 -9.948226255199957 4.9996843886827435e-15
+CHECK PASS hyp sweep rhoW=-0.5 mu1 -4.707346906089957 -4.7073469060899535 7.547167756436882e-16
+CHECK PASS hyp sweep rhoW=0 mu0 -9.680248399508562 -9.6802483995086 3.8535678102329384e-15
+CHECK PASS hyp sweep rhoW=0 mu1 -4.530848906029645 -4.530848906029647 3.9205828228707374e-16
+CHECK PASS hyp sweep rhoW=0.5 mu0 -9.516990354112627 -9.516990354112634 7.466044509050586e-16
+CHECK PASS hyp sweep rhoW=0.5 mu1 -4.440544142144854 -4.440544142144854 0
+STEP 5 change sweep grid to -0.5..0.5 step 0.25 (typed), click "Run sweep" | Sweep complete: 5 of 5 ρw values fitted.
+STEP 6 click "Download results (JSON)" | multivariate-ma-results.json (8593 bytes; contains -9.50: true)
+RHOW6 {"headline":"Enter ≥ 2 studies.","omitted":"k used = 0; 10 rows omitted: line 2 (variance must be > 0); line 3 (variance must be > 0); line 4 (variance must be > 0); line 5 (variance must be > 0); line 6 (variance must be > 0); line 7 (variance must be > 0); line 8 (variance must be > 0); line 9 (variance must be > 0); line 10 (variance must be > 0); line 11 (variance must be > 0).","firstRows":[],"screenshot":"08_rhoW_mode_six_fields.png"}
+BAD malformed_number | k = 3 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -1.235 | k used = 3; 1 row omitted: line 1 (missing or non-numeric value).
+BAD r_ge_1 | k = 2 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -0.782 | k used = 2; 1 row omitted: line 1 (within-study r must satisfy |r| < 1).
+BAD non_pd_covariance | Refused: Within-study covariance must be positive definite. (|r| ≥ 1 on line 1) | k used = 3; 0 rows omitted.
+KEYBOARD 17 tabs to Run sweep; 5 more to R download -> multivariate-ma-analysis.R
+AXE violations 0 passes 27 incomplete ["aria-prohibited-attr","color-contrast"]
+ERRORS ["console: Failed to load resource: the server responded with a status of 404 (Not Found)"]
+TOTAL CLICKS (load Berkey -> read -> sweep -> export R): 3 ; incl. own data -> option -> JSON: 6
+REFERENCE CHECKS 12/12
+exit=0 

@@ -1,0 +1,85 @@
+function (formula, S, data, random, method = "reml", bscov = "unstr", 
+    offset, subset, contrasts = NULL, na.action, model = TRUE, 
+    control = list()) 
+{
+    if (missing(data)) 
+        data <- parent.frame()
+    if (!inherits(eval(substitute(formula), data, parent.frame()), 
+        "formula")) {
+        formula <- as.formula(paste(deparse(substitute(formula), 
+            width.cutoff = 499L), "~ 1"), env = parent.frame())
+    }
+    else if (length(formula) != 3) 
+        stop("'formula' must be a two-sided formula")
+    method <- match.arg(method, c("fixed", "ml", "reml", "mm", 
+        "vc", "model.frame"))
+    control <- do.call("mixmeta.control", control)
+    random <- getRandom(random, method, env = environment(formula))
+    bscov <- getBSCov(bscov, random, method)
+    call <- match.call()
+    mcall <- match.call(expand.dots = FALSE)
+    mn <- match(c("formula", "data", "subset", "na.action", "offset"), 
+        names(mcall), 0L)
+    mcall <- mcall[c(1L, mn)]
+    mcall$drop.unused.levels <- TRUE
+    mcall[[1L]] <- as.name("model.frame")
+    mcall$formula <- getFullFormula(formula, random, data)
+    mcall$na.action <- "na.pass"
+    mf <- eval(mcall, parent.frame())
+    class(mf) <- c("data.frame.mixmeta", class(mf))
+    if (missing(na.action)) 
+        na.action <- getOption("na.action")
+    if (length(na.action)) 
+        mf <- do.call(na.action, list(mf))
+    if (method == "model.frame") 
+        return(mf)
+    terms <- getFixTerms(formula, attr(mf, "terms"), data)
+    groups <- getGroups(random, mf)
+    ord <- do.call(order, lapply(seq(ncol(groups)), function(i) groups[, 
+        i]))
+    groups <- groups[ord, , drop = FALSE]
+    mf <- mf[ord, , drop = FALSE]
+    y <- as.matrix(model.response(mf, "numeric"))
+    fixcontr <- getContrXlev(terms, contrasts)
+    X <- model.matrix(terms, mf, fixcontr)
+    offset <- as.vector(model.offset(mf))
+    if (!is.null(offset)) {
+        if (length(offset) != NROW(y)) 
+            stop("number of offsets should equal number of observations")
+        y <- y - offset
+    }
+    Z <- getZ(random, mf, contrasts)
+    S <- eval(call$S, data, parent.frame())
+    S <- getS(S, y, attr(mf, "na.action"), if (missing(subset)) 
+        NULL
+    else eval(call$subset, data, parent.frame()), ord, control$Scor, 
+        control$checkPD)
+    fit <- mixmeta.fit(X, Z, y, S, groups, method, bscov, control)
+    if (!is.null(offset)) 
+        fit$fitted.values <- fit$fitted.values + offset
+    fit$fitted.values <- fit$fitted.values[order(ord), ]
+    fit$residuals <- fit$residuals[order(ord), ]
+    fit$offset <- offset[order(ord)]
+    fit$S <- S[order(ord), ]
+    fit$call <- call
+    fit$formula <- formula
+    fit$model <- if (model) 
+        mf <- mf[order(ord), , drop = FALSE]
+    else NULL
+    fit$terms <- terms
+    contrasts <- do.call(c, lapply(c(getList(X), getList(Z)), 
+        attr, "contrasts"))
+    fit$contrasts <- if (length(contrasts)) 
+        contrasts[!duplicated(names(contrasts))]
+    else NULL
+    fit$xlevels <- .getXlevels(attr(mf, "terms"), mf)
+    fit$na.action <- attr(mf, "na.action")
+    fit$method <- method
+    fit$random <- random
+    fit$bscov <- bscov
+    fit$control <- control
+    class(fit) <- "mixmeta"
+    fit
+}
+<bytecode: 0x000002046e520b58>
+<environment: namespace:mixmeta>

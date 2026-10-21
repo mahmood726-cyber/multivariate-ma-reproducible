@@ -1,0 +1,339 @@
+Fitting Multivariate and Univariate Meta-Analysis and Meta-Regression
+Models
+
+Description:
+
+     The function 'mvmeta' performs fixed and random-effects
+     multivariate and univariate meta-analysis and meta-regression,
+     with various estimation methods. The function 'mvmeta.fit' is a
+     wrapper for actual fitting functions based on different estimation
+     methods, usually called internally. See 'mvmeta-package' for an
+     overview.
+
+Usage:
+
+     mvmeta(formula, S, data, subset, method="reml", bscov="unstr", model=TRUE,
+       contrasts=NULL, offset, na.action, control=list())
+         
+     mvmeta.fit(X, y, S, offset=NULL, method="reml", bscov="unstr", control=list())
+     
+Arguments:
+
+     Assuming a meta-analysis or meta-regression based on m studies, k
+     outcomes and p predictors:
+
+ formula: an object of class '"formula"' (or one that can be coerced to
+          that class) offering a symbolic description of the linear
+          predictor of the model to be fitted to each outcome.
+          Alternatively, for meta-analysis with no predictor, a single
+          vector (for univariate models) or matrix-type object (for
+          multivariate models). Terms in 'formula' must be vector or
+          matrix-type objects, optionally provided in the 'data'
+          argument below. See Details.
+
+       X: a m x p design matrix containing the study-specific
+          predictors. Usually produced internally by 'mvmeta' from
+          'formula' above.
+
+       y: a m-dimensional vector (for univariate models) or m x k
+          matrix (for multivariate models) of outcomes. Usually
+          produced internally by 'mvmeta' from 'formula' above.
+
+       S: series of within-study (co)variance matrices of the estimated
+          outcomes for each one of the m studies. Accepted formats by
+          'mvmeta' are: a m-dimensional list of k x k matrices; a
+          tri-dimensional k x k x m array; a matrix or data frame with
+          m rows and k(k+1)/2 or k columns, depending on the
+          availability of the within-study correlations. Optionally,
+          terms may be provided in the 'data' argument below.
+          'mvmeta.fit' accepts only the last option. See Details below.
+
+    data: an optional data frame, list or environment (or object
+          coercible by 'as.data.frame' to a data frame) containing the
+          variables in 'formula'. If not found in data, the variables
+          are taken from 'environment(formula)', typically the
+          environment from which 'mvmeta' is called.
+
+  subset: an optional vector specifying a subset of observations to be
+          used in the fitting process.
+
+  method: estimation method: '"fixed"' for fixed-effects models, '"ml"'
+          or '"reml"' for random-effects models fitted through
+          (restricted) maximum likelihood, '"mm"' for random-effects
+          models fitted through method of moments, and '"vc"' for
+          random-effects models fitted through variance components. See
+          Details below. If '"model.frame"', the model frame is
+          returned, as in 'lm' or 'glm'.
+
+   bscov: a string defining the between-study (co)variance structure in
+          likelihood based models. Default to '"unstr"' (unstructured).
+          Among other options, the user can select '"diag"' (diagonal),
+          '"cs"' (compound symmetry), '"hcs"' (heterogeneous compound
+          symmetry), '"ar1"' (autoregressive of first order), '"fixed"'
+          (fixed). See Details.
+
+   model: a logical value indicating whether the model frame should be
+          included as a component of the returned value. See the
+          'model.frame' method function.
+
+contrasts: an optional list. See the 'contrasts.arg' of 'model.matrix'.
+
+  offset: optionally, a m-dimensional numeric vector used to specify an
+          a priori known component in the linear predictor. One or more
+          'offset' terms can be included in the formula instead or as
+          well. See 'model.offset'.
+
+na.action: a function which indicates what should happen when the data
+          contain 'NA's. Default to 'na.action' setting of 'options',
+          usually 'na.omit'. 'na.exclude' can be useful. See details on
+          'missing values' in 'mvmeta'.
+
+ control: list of parameters for controlling the fitting process. These
+          are passed to 'mvmeta.control' by 'mvmeta.fit' to replace
+          otherwise selected default values.
+
+Details:
+
+     The function 'mvmeta' resembles standard regression functions in R
+     (see 'lm' or 'glm'). This function defines the design matrix and
+     the vector (for univariate models) or matrix (for multivariate
+     models) of outcome responses, and calls the wrapper 'mvmeta.fit'
+     to perform the actual fitting. The latter prepares the data and
+     calls specific fitting functions, depending on the chosen
+     'method'. Functions other than 'mvmeta' are not expected to be
+     called directly for model fitting.
+
+     The model is specified through a regression formula. Simple
+     meta-analysis is specified with the formula 'y ~ 1', where the
+     left-hand side is a vector (in univariate models) or a matrix (in
+     multivariate models), optionally of form 'cbind(y1,...,yk)', with
+     terms stored in 'data'. Alternatively, matrix or vector objects
+     are allowed, and the formula is retrieved internally adding '~ 1'.
+     In meta-regression, other terms are added in the right-hand side
+     of the formula, defining the linear predictor common to all
+     outcomes. Factors, variable transformations and interactions are
+     allowed, following the standard formula specification. Labels are
+     automatically retrieved from the objects in 'formula'. See
+     'formula' for further details. See 'lm' or 'glm' for info on the
+     other arguments.
+
+     The within-study (co)variances are provided through the argument
+     'S', usually as a matrix. If the correlations are available, each
+     of the m row represents the k(k+1)/2 vectorized entries of the
+     lower triangle of the related (co)variance matrix, taken by column
+     (see 'xpndMat'). If correlations are not available, each row
+     represents the k variances, and the correlations are inputted
+     internally through the argument 'Scor' of the 'control' list. See
+     'inputcov'.
+
+     Different estimator are available in the package 'mvmeta' and
+     chosen through the argument 'method'. In the current version, the
+     options are:
+
+        * 'method="fixed"': 'Fixed-effects estimator'
+
+        * 'method="ml"': 'Maximum likelihood (ML) estimator'
+
+        * 'method="reml"': 'Restricted maximum likelihood (REML)
+          estimator'
+
+        * 'method="mm"': 'Method of moments estimator'
+
+        * 'method="vc"': 'Variance components estimator'
+
+     Specific fitting functions are called internally. Likelihood-based
+     methods allow alternative '(co)variance structures' for the
+     between-study random effects through the argument 'bscov'. See
+     their help pages for further details on the estimation methods,
+     following the links above.
+
+     Missing values are allowed in both sides of 'formula'. In the case
+     of missing predictors (right-hand side of 'formula'), the related
+     study is entirely excluded from estimation. In contrast, a study
+     still contributes to estimation if at least outcome is
+     non-missing. This behaviour is different than in standard
+     regression functions such as 'lm' or 'glm'. Before the call to
+     'mvmeta.fit', studies matching such missing definition are removed
+     from the the model frame. The missing pattern in 'S' must be
+     consistent with that in 'y'. See further details on handling
+     'missing values' in 'mvmeta'.
+
+     The fitting procedure can be controlled through the additional
+     terms specified in 'control', which are passed to the function
+     'mvmeta.control'.
+
+Value:
+
+     The 'mvmeta' function typically returns a list object of class
+     '"mvmeta"' representing the meta-analytical model fit, as
+     described in 'mvmetaObject'. When 'method="data.frame"', the model
+     is not fitted and the model frame is returned, namely a data frame
+     with special attributes (see the default method 'model.frame')
+     and, in this case, the additional class '"data.frame.mvmeta"'.
+
+     The wrapper function 'mvmeta.fit' is usually called internally in
+     'mvmeta', and returns an intermediate list object with some of the
+     components expected in the '"mvmeta"' class.
+
+     Several method functions for regression objects are available,
+     either default or specifically-written for the '"mvmeta"' class.
+     See 'mvmetaObject' for a complete list.
+
+Note:
+
+     In the current version, the same linear predictor specified in
+     'formula' is set for all the outcomes.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+     Jackson D, Riley R, White IR (2011). Multivariate meta-analysis:
+     Potential and promise. _Statistics in Medicine_.
+     *30*(20);2481-2498.
+
+     White IR (2009). Multivariate random-effects meta-analysis. _Stata
+     Journal_. *9*(1):40-56.
+
+     White IR (2011). Multivariate random-effects meta-regression:
+     updates to mvmeta. _Stata Journal_. *11*(2):255-270.
+
+     Berkey, CS, Hoaglin DC, et al. (1998). Meta-analysis of multiple
+     outcomes by regression with random effects. _Statistics in
+     Medicine_. *17*(22):2537-2550.
+
+See Also:
+
+     See additional info on the estimation procedures at the related
+     page of the fitting functions. See alternative '(co)variance
+     structures' for likelihood-based estimation methods. See handling
+     of 'missing values' in 'mvmeta'. See 'lm' or 'glm' for standard
+     regression functions. See 'mvmeta-package' for an overview of this
+     modelling framework.
+
+Examples:
+
+     ### BIVARIATE META-ANALYSIS, ESTIMATED THROUGH REML
+     
+     # RUN THE MODEL
+     model <- mvmeta(cbind(PD,AL),S=berkey98[5:7],data=berkey98)
+     
+     # SUMMARIZE THE RESULTS
+     summary(model)
+     
+     # RESIDUALS AND FITTED VALUES
+     residuals(model)
+     fitted(model)
+     
+     # LOG-LIKELIHOOD AND AIC VALUE
+     logLik(model)
+     AIC(model)
+     
+     
+     ### BIVARIATE META-REGRESSION, ESTIMATED THROUGH METHOD OF MOMENTS
+     
+     # RUN THE MODEL AND SUMMARIZE THE RESULTS
+     model <- mvmeta(cbind(PD,AL)~pubyear,S=berkey98[5:7],data=berkey98,method="mm")
+     summary(model)
+     
+     # BLUP ESTIMATES AND 90% PREDICTION INTERVALS, AGGREGATED BY OUTCOME
+     blup(model,pi=TRUE,aggregate="y",pi.level=0.90)
+     
+     # COCHRAN Q TEST FOR RESIDUAL HETEROGENEITY
+     qtest(model)
+     
+     # PREDICTED AVERAGED OUTOCOMES AND STANDARD ERRORS FROM YEAR 1985 TO 1989
+     newdata <- data.frame(pubyear=1985:1989)
+     predict(model,newdata,se=TRUE)
+     
+     # MODEL FRAME AND MODEL MATRIX
+     model.frame(model)
+     model.matrix(model)
+     
+     
+     ### UNIVARIATE META-REGRESSION, FIXED-EFFECTS MODEL
+     
+     # RUN THE MODEL
+     model <- mvmeta(sbp~ish,S=sbp_se^2,data=hyp,method="fixed")
+     summary(model)
+     
+     # RESIDUALS AND FITTED VALUES
+     residuals(model)
+     fitted(model)
+     
+     # COCHRAN Q TEST FOR RESIDUAL HETEROGENEITY
+     qtest(model)
+     
+     
+     ### MULTIVARIATE META-ANALYSIS WITH MORE THAN 2 OUTCOMES
+     
+     # RUN THE MODEL
+     y <- as.matrix(fibrinogen[2:5])
+     S <- as.matrix(fibrinogen[6:15])
+     model <- mvmeta(y,S)
+     summary(model)
+     
+     
+     ### IN THE PRESENCE OF MISSING VALUES
+     
+     # RUN THE MODEL
+     y <- as.matrix(smoking[11:13])
+     S <- as.matrix(smoking[14:19])
+     model <- mvmeta(y,S)
+     summary(model)
+     
+     # MODEL FRAME: SEE help(na.omit.data.frame.mvmeta) FOR MORE EXAMPLES
+     model.frame(model)
+     
+     
+     ### WHEN WITHIN-STUDY COVIARIANCES ARE NOT AVAILABLE AND/OR NEED TO BE INPUTTED
+     
+     # GENERATE S
+     (S <- inputcov(hyp[c("sbp_se","dbp_se")],cor=hyp$rho))
+     
+     # RUN THE MODEL
+     model <- mvmeta(cbind(sbp,dbp),S=S,data=hyp)
+     
+     # INPUTTING THE CORRELATION DIRECTLY IN THE MODEL
+     model <- mvmeta(cbind(y1,y2),cbind(V1,V2),data=p53,control=list(Scor=0.95))
+     summary(model)
+     
+     # SEE help(hyp) AND help(p53) FOR MORE EXAMPLES
+     
+     
+     ### STRUCTURING THE BETWEEN-STUDY (CO)VARIANCE
+     
+     # DIAGONAL
+     S <- as.matrix(hsls[5:10])
+     model <- mvmeta(cbind(b1,b2,b3),S,data=hsls,bscov="diag")
+     summary(model)
+     model$Psi
+     
+     # COMPOUND SYMMETRY
+     model <- mvmeta(cbind(b1,b2,b3),S,data=hsls,bscov="cs")
+     summary(model)
+     model$Psi
+     
+     # SEE help(mvmetaCovStruct) FOR DETAILS AND ADDITIONAL EXAMPLES
+     
+     
+     ### USE OF THE CONTROL LIST
+     
+     # PRINT THE ITERATIONS AND CHANGE THE DEFAULT FOR STARTING VALUES
+     y <- as.matrix(smoking[11:13])
+     S <- as.matrix(smoking[14:19])
+     model <- mvmeta(y,S,control=list(showiter=TRUE,igls.iter=20))
+     
+     # SEE help(mvmeta.control) FOR FURTHER DETAILS
+     

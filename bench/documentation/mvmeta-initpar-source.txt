@@ -1,0 +1,48 @@
+function (Xlist, ylist, Slist, nalist, k, m, p, bscov, control) 
+{
+    if (bscov %in% c("prop", "fixed")) {
+        if (!is.null(fix <- control$Psifix)) {
+            Psifix <- if (is.matrix(fix)) 
+                fix
+            else xpndMat(fix)
+            Psifix <- checkPD(Psifix, k, "Psifix")
+        }
+    }
+    else if (bscov == "cor") {
+        Psicor <- inputcov(rep(1, k), control$Psicor)
+        Psicor <- checkPD(Psicor, k, "Psicor")
+    }
+    if (!is.null(initPsi <- control$initPsi)) {
+        if (is.vector(initPsi)) 
+            initPsi <- xpndMat(initPsi)
+        initPsi <- checkPD(initPsi, k, "initPsi")
+    }
+    else if (!bscov %in% c("fixed")) {
+        initPsi <- diag(0.001, k)
+        for (i in seq(control$igls.iter)) initPsi <- iter.igls(initPsi, 
+            Xlist, ylist, Slist, nalist, k, m)
+    }
+    par <- switch(bscov, unstr = vechMat(t(chol(initPsi))), diag = log(diag(initPsi)), 
+        id = log(mean(diag(initPsi))), cs = {
+            if (k < 2) stop("bscov='cs' only meaningful with more than 1 outcome")
+            cor <- mean(cov2cor(initPsi)[row(initPsi) != col(initPsi)])
+            if (cor <= -1/(k - 1)) cor <- -1/k
+            c(log(mean(diag(initPsi)))/2, log((cor + 1/(k - 1))/(1 - 
+                cor)))
+        }, hcs = {
+            if (k < 2) stop("bscov='hcs' only meaningful with more than 1 outcome")
+            cor <- mean(cov2cor(initPsi)[row(initPsi) != col(initPsi)])
+            if (cor <= -1/(k - 1)) cor <- -1/k
+            c(log(diag(initPsi))/2, log((cor + 1/(k - 1))/(1 - 
+                cor)))
+        }, ar1 = {
+            if (k < 2) stop("bscov='ar1' only meaningful with more than 1 outcome")
+            cor <- mean(cov2cor(initPsi)[row(initPsi) - col(initPsi) == 
+                1L])
+            c(log(diag(initPsi)), (qlogis((cor + 1)/2)))
+        }, prop = log(mean(diag(Psifix/initPsi))), cor = log(diag(initPsi)), 
+        fixed = NULL)
+    par
+}
+<bytecode: 0x000001c4ed96a880>
+<environment: namespace:mvmeta>

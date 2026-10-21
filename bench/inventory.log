@@ -1,0 +1,22 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+R version 4.6.0 (2026-04-24 ucrt) 
+[1] "<R_LIBS>"
+[2] "<R_LIBS_USER>"  
+[3] "<R_HOME>/library"         
+mvmeta 1.0.3 
+mixmeta 1.2.2 
+metafor 5.2.1 
+metadat 1.6.0 
+jsonlite 2.0.0 
+Warning messages:
+1: In get(on, e) :
+  strings not representable in native encoding will be translated to UTF-8
+2: In get(on, e) :
+  strings not representable in native encoding will be translated to UTF-8
+3: In get(on, e) :
+  strings not representable in native encoding will be translated to UTF-8
+INVENTORY 132 datasets

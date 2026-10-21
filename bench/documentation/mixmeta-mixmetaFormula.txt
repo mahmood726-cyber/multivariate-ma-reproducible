@@ -1,0 +1,100 @@
+Formulae in mixmeta Models
+
+Description:
+
+     Meta-analytical models fitted with 'mixmeta' are defined by
+     specific formulae in its arguments 'formula' and 'random'. The
+     formulae offer compact symbolic expressions with form 'y ~ x + z',
+     where the response 'y' in the left-hand side of the operator '~'
+     is modelled in terms of meta-predictors 'x' and 'z' in the
+     right-hand side. Terms are separated by '+', and additional
+     syntactic operators and existing functions can be used within a
+     formula to specify transformations such as categorization and
+     interactions, among others, as in standard formula expressions
+     (see 'formula' for details). The usage of formulae in 'mixmeta'
+     for the random-effects part follows closely the definition in the
+     the 'nlme' package.
+
+Fixed-effects formula:
+
+     The argument 'formula' of 'mixmeta' defines the fixed-effects
+     part. Models for meta-analysis with no meta-predictors can be
+     specified using the form 'y ~ 1', or alternatively including only
+     the term 'y' (in this case, the formula is reconstructed
+     internally). Multivariate models can be defined by using a
+     matrix-type 'y', with columns as multiple outcomes, or directly in
+     the formula with form 'cbind(y1 + y2) ~ 1'. In meta-regression
+     models, other terms are added in the right-hand side of the
+     formula as 'y ~ x1 + ... + xp', defining the linear
+     meta-predictor. In multivariate meta-regression, the same linear
+     predictor is specified for each outcome.
+
+Random-effects formula or formulae:
+
+     The argument 'random' of 'mixmeta' defines the random-effects
+     part. When this is not specified, it is assumed that each row of
+     data is from an independent study and assigned to a different
+     group, as in standard meta-analytical models. If provided, this is
+     usually represented by a one-sided formula whose basic
+     random-intercept form is '~ 1 | g'. The term 'g' at the right-hand
+     side of the special operator '|' is the grouping factor, always
+     required in a single random-effects formula. A more complex
+     random-effects part can be also specified by '~ z1 + ... + zq |
+     g', where the terms in the left-hand side defines a linear
+     meta-predictor, with syntax identical to the usual formulae.
+
+     The argument 'random' also accepts a list of one-sided formulae
+     referring to multiple random-effects levels in multilevel
+     meta-analytical models. In this case, levels are assumed to be
+     nested in the order of the list, from the lowest (outer) to the
+     highest (inner), consistently with the grouping factors. These are
+     usually defined by different terms in the right-hand side of the
+     '|' operator, although in the list form can also be provided as
+     names of the list components. This information is used internally
+     to reconstruct the grouping structure and the random-effects
+     design matrices. Each level can have different linear predictors,
+     but if these are identical across levels the random-effects part
+     can be defined by a single equation '~ z | g1 / g2', where the
+     special operator '/' separates the grouping factors 'g2' nested in
+     'g1'.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>> and
+     Francesco Sera <<mailto:francesco.sera@lshtm.ac.uk>>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+See Also:
+
+     See 'mixmeta'. See 'formula' for standard regression formulae. See
+     'mixmeta-package' for an overview of this modelling framework.
+
+Examples:
+
+     # STANDARD RANDOM-EFFECTS META-ANALYSIS (WITH DIFFERENT SYNTAXES)
+     mixmeta(logor, logorvar, data=bcg)
+     mixmeta(logor ~ 1, logorvar, data=bcg)
+     
+     # META-REGRESSION
+     mixmeta(logor ~ ablat, logorvar, data=bcg)
+     
+     # MULTIVARIATE MODEL
+     model <- mixmeta(cbind(PD,AL) ~ pubyear, S=berkey98[5:7], data=berkey98)
+     
+     # NON-STANDARD MODEL: REPEATED MEASURED WITHING THE SAME GROUPS
+     mixmeta(effect, var, random= ~ 1|district, data=school)
+     mixmeta(absrisk, var, random= ~ 1|trial, data=thrombolytic)
+     
+     # NON-STANDARD MODEL: MORE COMPLEX RANDOM-EFFECTS PREDICTOR
+     mixmeta(logOR~time, logORvar, random= ~ I(time-15)|study, data=gliomas)
+     
+     # MULTILEVEL MODEL (WITH DIFFERENT SYNTAXES)
+     mixmeta(effect, var, random= ~ 1|district/study, data=school)
+     mixmeta(effect, var, random=list(~ 1|district, ~ 1|study), data=school)
+     mixmeta(effect, var, random=list(district = ~ 1, study = ~ 1), data=school)
+     

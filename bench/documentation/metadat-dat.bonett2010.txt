@@ -1,0 +1,98 @@
+Studies on the Reliability of the CES-D Scale
+
+Description:
+
+     Results from 9 studies on the reliability of the Center for
+     Epidemiologic Studies Depression (CES-D) Scale administered to
+     children providing care to an elderly parent.
+
+Usage:
+
+     dat.bonett2010
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*       'numeric'    study number                         
+       *source*      'character'  source of data                       
+       *ni*          'numeric'    sample size                          
+       *mi*          'numeric'    number of items in the scale         
+       *ai*          'numeric'    observed value of Cronbach's alpha   
+       *caregivers*  'character'  gender of the children in the sample 
+      
+Details:
+
+     The Center for Epidemiologic Studies Depression (CES-D) Scale is a
+     20-item questionnaire assessing various symptoms of depression,
+     with each item scored on a 4-point scale. The scale has been used
+     in several studies to examine depressive symptoms in children
+     providing care to an elderly parent. The dataset includes
+     information on the reliability of the scale as measured with
+     Cronbach's alpha in 9 such studies. Also, the gender composition
+     of the children in each sample is indicated.
+
+Concepts:
+
+     psychology, Cronbach's alpha, reliability generalization,
+     meta-regression
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Bonett, D. G. (2010). Varying coefficient meta-analytic methods
+     for alpha reliability. _Psychological Methods_, *15*(4), 368-385.
+     https://doi.org/10.1037/a0020142
+
+References:
+
+     Bonett, D. G. (2002). Sample size requirements for testing and
+     estimating coefficient alpha. _Journal of Educational and
+     Behavioral Statistics_, *27*(4), 335-340.
+     https://doi.org/10.3102/10769986027004335
+
+     Hakstian, A. R., & Whalen, T. E. (1976). A k-sample significance
+     test for independent alpha coefficients. _Psychometrika_, *41*(2),
+     219-231. https://doi.org/10.1007/BF02291840
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.bonett2010
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### meta-analysis using the raw alpha values
+     res <- rma(measure="ARAW", ai=ai, mi=mi, ni=ni, data=dat)
+     res
+     
+     ### meta-analysis using transformed alpha values (using the
+     ### transformation suggested by Hakstian & Whalen, 1976)
+     res <- rma(measure="AHW", ai=ai, mi=mi, ni=ni, data=dat)
+     res
+     predict(res, transf=transf.iahw)
+     
+     ### meta-analysis using transformed alpha values (using the
+     ### transformation suggested by Bonett, 2002)
+     res <- rma(measure="ABT", ai=ai, mi=mi, ni=ni, data=dat)
+     res
+     predict(res, transf=transf.iabt)
+     
+     ### forest plot
+     forest(res, slab=source, xlim=c(0,4.5),
+            atransf=transf.iabt, refline=coef(res))
+     
+     ### examine whether female/mixed samples yield different alphas (with raw alphas)
+     res <- rma(measure="ARAW", ai=ai, mi=mi, ni=ni, mods = ~ caregivers, data=dat)
+     res
+     predict(res, newmods=c(0,1), digits=2)
+     ## End(Not run)
+     

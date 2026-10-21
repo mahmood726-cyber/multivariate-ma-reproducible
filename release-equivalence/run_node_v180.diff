@@ -1,0 +1,15 @@
+--- run_node.cjs	2026-10-21 08:23:30.483281200 +0100
++++ run_node_v180.cjs	2026-10-21 08:24:26.601095500 +0100
+@@ -5,9 +5,11 @@
+ const html=fs.readFileSync(`${root}/multivariate-ma/index.html`,'utf8');
+ const {window,document}=parseHTML(html);
+ window.matchMedia=()=>({matches:false});document.readyState='complete';
+-const context=vm.createContext({window,document,matchMedia:window.matchMedia,console});
++const context=vm.createContext({window,document,matchMedia:window.matchMedia,console,setTimeout,clearTimeout,URL,Blob:function(){},navigator:{},performance:{now:()=>Date.now()}});
++window.setTimeout=setTimeout;window.clearTimeout=clearTimeout;
+ for(const script of document.querySelectorAll('script')) {
+  const src=script.getAttribute('src');
++ if(src&&/alm-validate\.js$/.test(src))continue; // v1.8.0 browser widget; skipped as in the plus runner (run-plus-node.cjs)
+  vm.runInContext(src?fs.readFileSync(path.join(root,'multivariate-ma',src),'utf8'):script.textContent,context,{filename:src||'index.html:inline'});
+ }
+ const defaultUninstrumented=JSON.parse(JSON.stringify(window._almLastMultivariate()));

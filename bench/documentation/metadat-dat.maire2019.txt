@@ -1,0 +1,114 @@
+Studies on Temporal Trends in Fish Community Structures in French
+Rivers
+
+Description:
+
+     Results from studies examining changes in the abundance of fish
+     species in French rivers.
+
+Usage:
+
+     dat.maire2019
+     
+Format:
+
+     The object is a list containing a data frame called 'dat' that
+     contains the following columns and distance matrix called 'dmat':
+
+       *site*          'character'  study site                                                               
+       *station*       'character'  sampling station at site                                                 
+       *site_station*  'character'  site and station combined                                                
+       *s1*            'numeric'    Mann-Kendal trend statistic for relative abundance of non-local species  
+       *vars1*         'numeric'    corresponding sampling variance (corrected for temporal autocorrelation) 
+       *s2*            'numeric'    Mann-Kendal trend statistic for relative abundance of northern species   
+       *vars2*         'numeric'    corresponding sampling variance (corrected for temporal autocorrelation) 
+       *s3*            'numeric'    Mann-Kendal trend statistic for relative abundance of non-native species 
+       *vars3*         'numeric'    corresponding sampling variance (corrected for temporal autocorrelation) 
+       *const*         'numeric'    constant value of 1                                                      
+      
+Details:
+
+     The dataset includes the results from 35 sampling stations (at 11
+     sites along various French rivers) examining the abundance of
+     various fish species over time (i.e., over 19-37 years, all until
+     2015). The temporal trend in these abundance data was quantified
+     in terms of Mann-Kendal trend statistics, with positive values
+     indicating monotonically increasing trends. The corresponding
+     sampling variances were corrected for the temporal autocorrelation
+     in the data (Hamed & Rao, 1998).
+
+     The distance matrix 'dmat' indicates the distance of the sampling
+     stations (1-423 river-km). For stations not connected through the
+     river network, a high distance value of 10,000 river-km was set
+     (effectively forcing the spatial correlation to be 0 for such
+     stations).
+
+     The dataset can be used to illustrate a meta-analysis allowing for
+     spatial correlation in the outcomes.
+
+Concepts:
+
+     ecology, climate change, spatial correlation
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Maire, A., Thierry, E., Viechtbauer, W., & Daufresne, M. (2019).
+     Poleward shift in large-river fish communities detected with a
+     novel meta-analysis framework. _Freshwater Biology_, *64*(6),
+     1143-1156. https://doi.org/10.1111/fwb.13291
+
+References:
+
+     Hamed, K. H., & Rao, A. R. (1998). A modified Mann-Kendall trend
+     test for autocorrelated data. _Journal of Hydrology_, *204*(1-4),
+     182-196. https://doi.org/10.1016/S0022-1694(97)00125-X
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.maire2019$dat
+     dat[-10]
+     
+     ### copy distance matrix into 'dmat' and examine first 5 rows/columns
+     dmat <- dat.maire2019$dmat
+     dmat[1:5,1:5]
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### fit a standard random-effects model ignoring spatial correlation
+     res1 <- rma.mv(s1, vars1, random = ~ 1 | site_station, data=dat)
+     res1
+     
+     ### fit model allowing for spatial correlation
+     res2 <- rma.mv(s1, vars1, random = ~ site_station | const, struct="SPGAU",
+                    data=dat, dist=list(dmat), control=list(rho.init=10))
+     res2
+     
+     ### add random effects for sites and stations within sites
+     res3 <- rma.mv(s1, vars1, random = list(~ 1 | site/station, ~ site_station | const), struct="SPGAU",
+                    data=dat, dist=list(dmat), control=list(rho.init=10))
+     res3
+     
+     ### likelihood ratio tests comparing the models
+     anova(res1, res2)
+     anova(res2, res3)
+     
+     ### profile likelihood plots for model res2
+     profile(res2, cline=TRUE)
+     
+     ### effective range (river-km for which the spatial correlation is >= 0.05)
+     sqrt(3) * res2$rho
+     
+     ### note: it was necessary to adjust the starting value for rho in models
+     ### res2 and res3 so that the optimizer does not get stuck in a local maximum
+     profile(res2, rho=1, xlim=c(0,200), steps=100)
+     ## End(Not run)
+     

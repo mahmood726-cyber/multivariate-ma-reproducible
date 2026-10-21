@@ -1,0 +1,143 @@
+Best Linear Unbiased Predictions from mvmeta Models
+
+Description:
+
+     This method function computes (empirical) best linear unbiased
+     predictions from fitted univariate or multivariate meta-analytical
+     models represented in objects of class '"mvmeta"'. Such
+     predictions are optionally accompanied by standard errors,
+     prediction intervals or the entire (co)variance matrix of the
+     predicted outcomes.
+
+Usage:
+
+     ## S3 method for class 'mvmeta'
+     blup(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95,
+       format=c("matrix","list"), aggregate=c("stat","y"), ...)
+     
+Arguments:
+
+  object: an object of class '"mvmeta"'.
+
+      se: logical switch indicating if standard errors must be
+          included.
+
+      pi: logical switch indicating if prediction intervals must be
+          included.
+
+    vcov: logical switch indicating if the (co)variance matrix must be
+          included.
+
+pi.level: a numerical value between 0 and 1, specifying the confidence
+          level for the computation of prediction intervals.
+
+  format: the format for the returned results. See Value.
+
+aggregate: when 'format="matrix"' and 'se' or 'ci' are required, the
+          results may be aggregated by statistic or by outcome. See
+          Value.
+
+     ...: further arguments passed to or from other methods.
+
+Details:
+
+     The method function 'blup' produces (empirical) best linear
+     unbiased predictions from 'mvmeta' objects. For random-effects
+     models, predictions are given by the sum of the estimated mean
+     outcomes from the fixed part of the model, plus study-specific
+     deviations predicted as random effects given the between-study
+     distribution.
+
+     Predicted outcomes from 'blup' are a shrunk version of
+     study-specific realizations, where study-specific estimates borrow
+     strength from the assumption of an underlying multivariate
+     distribution of outcomes in a (usually hypothetical) population of
+     studies. In practice, the results from 'blup' represent a weighted
+     average between population mean outcomes (estimated by the fixed
+     part of the model) and study-specific estimates. The weights
+     depend from the relative size of the within and between-study
+     covariance matrices reported as components 'S' and 'Psi' in
+     'mvmeta' objects (see 'mvmetaObject').
+
+     Fixed-effects models do not assume study-specific random effects,
+     and the results of 'blup' for these models are identical to
+     'predict' with 'interval="confidence"'.
+
+     How to handle predictions for studies removed from estimation due
+     to invalid missing pattern is determined by the 'na.action'
+     argument used in 'mvmeta' to produce 'object'. If
+     'na.action=na.omit', studies excluded from estimation will not
+     appear, whereas if 'na.action=na.exclude' they will appear, with
+     values set to 'NA' for all the outcomes. This step is performed by
+     'napredict'. See Note below.
+
+     In the presence of missing values in the study-specific estimated
+     outcome 'y' of the fitted model, correspondent values of point
+     estimates and covariance terms are set to 0, while the variance
+     terms are set to '1e+10'. In this case, in practice, the
+     study-specific estimates do not provide any information (their
+     weight is virtually 0), and the prediction tends to the value
+     returned by 'predict' with 'interval="prediction"', when applied
+     to a new but identical set of predictors. See also Note below.
+
+Value:
+
+     The results may be aggregated in matrices (the default), or
+     returned as lists, depending on the argument 'format'. For
+     multivariate models, the aggregation is ruled by the argument
+     'aggregate', and the results may be grouped by statistic or by
+     outcome. If 'vcov=TRUE', lists are always returned.
+
+Note:
+
+     The definition of missing in model frames used for estimation in
+     'mvmeta' is different than that commonly adopted in other
+     regression models such as 'lm' or 'glm'. See info on 'missing
+     values' in 'mvmeta'.
+
+     Differently from 'predict', this method function computes the
+     predicted values in the presence of partially missing outcomes.
+     Interestingly, BLUPs for missing outcomes may be slightly
+     different than predictions returned by 'predict' on a new but
+     identical set of predictors, as the BLUP also depends on the
+     random part of the model. Specifically, the function uses
+     information from the between-study covariance to predict missing
+     outcomes given the observed ones.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+See Also:
+
+     See 'predict' for standard predictions. See 'mvmeta-package' for
+     an overview of the package and modelling framework.
+
+Examples:
+
+     # RUN THE MODEL
+     model <- mvmeta(cbind(PD,AL)~1,S=berkey98[5:7],data=berkey98)
+     
+     # ONLY BLUP
+     blup(model)
+     
+     # BLUP AND SE
+     blup(model,se=TRUE)
+     
+     # SAME AS ABOVE, AGGREGATED BY OUTCOME, WITH PREDICTION INTERVALS
+     blup(model,se=TRUE,pi=TRUE,aggregate="y")
+     
+     # WITH VCOV, FORCED TO A LIST
+     blup(model,se=TRUE,pi=TRUE,vcov=TRUE,aggregate="y")
+     

@@ -1,0 +1,72 @@
+Studies on the Prevalence of Depression After Myocardial Infarction
+
+Description:
+
+     Results from 19 studies assessing the prevalence of depression
+     after myocardial infarction
+
+Usage:
+
+     dat.feng2019
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*         'character'  first author                    
+       *year*           'integer'    publication year                
+       *region*         'character'  country                         
+       *design*         'character'  study design                    
+       *source*         'character'  sample source                   
+       *age*            'numeric'    mean age                        
+       *males*          'numeric'    percentage of males             
+       *first*          'numeric'    percentage of first-time MI     
+       *questionnaire*  'character'  self-report questionnaire       
+       *interview*      'character'  structured interview            
+       *timing*         'character'  timing of depression assessment 
+       *depr*           'integer'    subjects with depression        
+       *n*              'integer'    sample size                     
+      
+Details:
+
+     This data set comes from a meta-analysis with 19 studies to
+     estimate the prevalence of depression after a myocardial
+     infarction. The variables 'depr' and 'n' contain the number of
+     depressive patients and the total number of patients.
+
+Concepts:
+
+     psychology, cardiology, prevalence
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Feng, L., Li, L., Liu, W., Yang, J., Wang, Q., Shi, L., & Luo, M.
+     (2019). Prevalence of depression in myocardial infarction: A
+     PRISMA-compliant meta-analysis. _Medicine_, *98*(8), e14596.
+     https://doi.org/10.1097/md.0000000000014596
+
+Examples:
+
+     ### Show results of first six studies
+     head(dat.feng2019)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Conduct random effects meta-analysis
+     mp1 <- metaprop(depr, n, data = dat.feng2019,
+       studlab = paste(author, year),
+       common = FALSE, prediction = TRUE)
+     
+     ### Create forest plot
+     forest(mp1, digits = 3, xlim = c(0, 1),
+       print.pval.Q = FALSE, details = TRUE)
+     ## End(Not run)
+     

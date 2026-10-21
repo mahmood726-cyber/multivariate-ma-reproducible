@@ -1,0 +1,90 @@
+Mortality Outcomes with Hydroxychloroquine and Chloroquine in COVID-19
+from an International Collaborative Meta-Analysis of Randomized Trials
+
+Description:
+
+     Results from 33 trials examining the effectiveness of
+     hydroxychloroquine or chloroquine in patients with COVID-19.
+
+Usage:
+
+     dat.axfors2021
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*                 'character'  registry number                                                
+       *acronym*            'character'  shortened registry number                                      
+       *patient_setting*    'character'  patient setting                                                
+       *blinding_exact*     'character'  study blinding                                                 
+       *high_dose*          'character'  high or low dose of medication                                 
+       *Published*          'character'  publication status                                             
+       *hcq_cq*             'character'  medication type (hcq = hydroxychloroquine or cq = chloroquine) 
+       *hcq_arm_event*      'numeric'    number of deaths in the treatment group                        
+       *hcq_arm_total*      'numeric'    number of patients in the treatment group                      
+       *control_arm_event*  'numeric'    number of deaths in the control group                          
+       *control_arm_total*  'numeric'    number of patients in the control group                        
+       *Control*            'character'  control group type (Standard of Care or Placebo)               
+      
+Details:
+
+     The dataset includes the results from 33 published and unpublished
+     randomized clinical trials that examined the effectiveness of
+     hydroxychloroquine or chloroquine in patients with COVID-19. The
+     results given here are focused on the total mortality in the
+     treatment versus control groups.
+
+Concepts:
+
+     medicine, covid-19, odds ratios
+
+Author(s):
+
+     W. Kyle Hamilton <mailto:whamilton@ucmerced.edu>
+     <https://kylehamilton.com>
+
+Source:
+
+     Axfors, C., Schmitt, A., Janiaud, P., van <e2><80><99>t Hooft, J., Moher, D.,
+     Goodman, S., <e2><80><a6> Hemkens, L. G. (2021, March 9). Hydroxychloroquine
+     and chloroquine for survival in COVID-19: An international
+     collaborative meta-analysis of randomized trials.
+     https://doi.org/10.17605/OSF.IO/QESV4
+
+References:
+
+     Axfors, C., Schmitt, A. M., Janiaud, P., van<e2><80><99>t Hooft, J.,
+     Abd-Elsalam, S., Abdo, E. F., Abella, B. S., Akram, J., Amaravadi,
+     R. K., Angus, D. C., Arabi, Y. M., Azhar, S., Baden, L. R., Baker,
+     A. W., Belkhir, L., Benfield, T., Berrevoets, M. A. H., Chen,
+     C.-P., Chen, T.-C., <e2><80><a6> Hemkens, L. G. (2021). Mortality outcomes
+     with hydroxychloroquine and chloroquine in COVID-19 from an
+     international collaborative meta-analysis of randomized trials.
+     Nature Communications, 12(1), 2349.
+     https://doi.org/10.1038/s41467-021-22446-z
+
+Examples:
+
+     # copy data into 'dat' and examine data
+     dat <- dat.axfors2021
+     dat
+     
+     ## Not run:
+     
+     # load metafor package
+     library(metafor)
+     
+     # calculate log odds ratios and corresponding sampling variances
+     dat <- escalc(measure="OR", ai=hcq_arm_event, n1i=hcq_arm_total,
+                                 ci=control_arm_event, n2i=control_arm_total, data=dat)
+     
+     # meta-analysis Hydroxychloroquine
+     res_hcq <- rma(yi, vi, subset=(hcq_cq=="hcq"), slab = id, data=dat)
+     print(res_hcq, digits=2)
+     
+     # meta-analysis Chloroquine
+     res_cq <- rma(yi, vi, subset=(hcq_cq=="cq"), slab = id, data=dat)
+     print(res_cq, digits=2)
+     ## End(Not run)
+     

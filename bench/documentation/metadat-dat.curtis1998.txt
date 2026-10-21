@@ -1,0 +1,135 @@
+Studies on the Effects of Elevated CO2 Levels on Woody Plant Mass
+
+Description:
+
+     Results from studies examining the effects of elevated CO2 levels
+     on woody plant mass.
+
+Usage:
+
+     dat.curtis1998
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*        'numeric'    observation number                                                         
+       *paper*     'numeric'    paper number                                                               
+       *genus*     'character'  genus name                                                                 
+       *species*   'character'  species name                                                               
+       *fungrp*    'character'  plant functional group                                                     
+       *co2.ambi*  'numeric'    ambient CO2 level (control group)                                          
+       *co2.elev*  'numeric'    elevated CO2 level (treatment group)                                       
+       *units*     'character'  units for CO2 exposure levels                                              
+       *time*      'numeric'    maximum length of time (days) of CO2 exposure                              
+       *pot*       'character'  growing method (see 'Details')                                             
+       *method*    'character'  CO2 exposure facility (see 'Details')                                      
+       *stock*     'character'  planting stock code                                                        
+       *xtrt*      'character'  interacting treatment code (see 'Details')                                 
+       *level*     'character'  interacting treatment level codes (see 'Details')                          
+       *m1i*       'numeric'    mean plant mass under elevated CO2 level (treatment group)                 
+       *sd1i*      'numeric'    standard deviation of plant mass underelevated CO2 level (treatment group) 
+       *n1i*       'numeric'    number of observations under elevated CO2 level (treatment group)          
+       *m2i*       'numeric'    mean plant mass under ambient CO2 level (control group)                    
+       *sd2i*      'numeric'    standard deviation of plant mass under ambient CO2 level (control group)   
+       *n2i*       'numeric'    number of observations under ambient CO2 level (control group)             
+      
+Details:
+
+     The studies included in this dataset compared the total above-
+     plus below-ground biomass (in grams) for plants that were either
+     exposed to ambient (around 35 Pa) and elevated CO2 levels (around
+     twice the ambient level). The 'co2.ambi' and 'co2.elev' variables
+     indicate the CO2 levels in the control and treatment groups,
+     respectively (with the 'units' variable specifying the units for
+     the CO2 exposure levels). Many of the studies also varied one or
+     more additional environmental variables (defined by the 'xtrt' and
+     'level' variables):
+
+        * NONE = no additional treatment factor
+
+        * FERT = soil fertility (either a 'CONTROL', 'HIGH', or 'LOW'
+          level)
+
+        * LIGHT = light treatment (always a 'LOW' light level)
+
+        * FERT+L = soil fertility and light (a 'LOW' light and soil
+          fertility level)
+
+        * H2O = well watered vs drought (either a 'WW' or 'DRT' level)
+
+        * TEMP = temperature treatment (either a 'HIGH' or 'LOW' level)
+
+        * OZONE = ozone exposure (either a 'HIGH' or 'LOW' level)
+
+        * UVB = ultraviolet-B radiation exposure (either a 'HIGH' or
+          'LOW' level)
+
+     In addition, the studies differed with respect to various design
+     variables, including CO2 exposure duration ('time'), growing
+     method ('pot': number = pot size in liters; 'GRND' = plants rooted
+     in ground; 'HYDRO' = solution or aeroponic culture), CO2 exposure
+     facility ('method': 'GC' = growth chamber; 'GH' = greenhouse;
+     'OTC' = field-based open-top chamber), and planting stock
+     ('stock': 'SEED' = plants started from seeds; 'SAP' = plants
+     started from cuttings). The goal of the meta-analysis was to
+     examine the effects of elevated CO2 levels on plant physiology and
+     growth and the interacting effects of the environmental (and
+     design) variables.
+
+Concepts:
+
+     ecology, ratios of means
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Hedges, L. V., Gurevitch, J., & Curtis, P. S. (1999). The
+     meta-analysis of response ratios in experimental ecology.
+     _Ecology_, *80*(4), 1150-1156.
+     https://doi.org/10.1890/0012-9658(1999)080[1150:TMAORR]2.0.CO;2
+     (data obtained from _Ecological Archives_, E080-008-S1, at:
+     https://doi.org/10.6084/m9.figshare.c.3297278)
+
+References:
+
+     Curtis, P. S., & Wang, X. (1998). A meta-analysis of elevated CO2
+     effects on woody plant mass, form, and physiology. _Oecologia_,
+     *113*(3), 299-313. https://doi.org/10.1007/s004420050381
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.curtis1998
+     head(dat)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate (log transformed) ratios of means and corresponding sampling variances
+     dat <- escalc(measure="ROM", m1i=m1i, sd1i=sd1i, n1i=n1i,
+                                  m2i=m2i, sd2i=sd2i, n2i=n2i, data=dat)
+     head(dat)
+     
+     ### meta-analysis using a random-effects model
+     res <- rma(yi, vi, method="DL", data=dat)
+     res
+     
+     ### average ratio of means with 95% CI
+     predict(res, transf=exp, digits=2)
+     
+     ### meta-analysis for plants grown under nutrient stress
+     res <- rma(yi, vi, method="DL", data=dat, subset=(xtrt=="FERT" & level=="LOW"))
+     predict(res, transf=exp, digits=2)
+     
+     ### meta-analysis for plants grown under low light conditions
+     res <- rma(yi, vi, method="DL", data=dat, subset=(xtrt=="LIGHT" & level=="LOW"))
+     predict(res, transf=exp, digits=2)
+     ## End(Not run)
+     

@@ -1,0 +1,18 @@
+[
+  {
+    "stored": "results/checks-original.json.xz",
+    "original_name": "checks-original.json",
+    "original_bytes": 4309895,
+    "original_sha256": "12f1949ff31a2107a849a9d3d94e1f45fa58befd5188de593931a509757a8b04",
+    "stored_bytes": 131180,
+    "stored_sha256": "2b0ace2e8072e5b795017ffbc682d668ac6400d26928aef48b1bf1203f1138e1"
+  },
+  {
+    "stored": "results/checks-patched.json.xz",
+    "original_name": "checks-patched.json",
+    "original_bytes": 4294344,
+    "original_sha256": "d21d3aebfe147653d2bf39a47c53fff773b15ead2241b6be742d4140a7e9ba6e",
+    "stored_bytes": 128300,
+    "stored_sha256": "db2090e56616afe6a899a7f6f0107d50434d17b12e40c23d42108ca0191e7ef2"
+  }
+]

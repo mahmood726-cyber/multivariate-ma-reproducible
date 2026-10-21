@@ -1,0 +1,75 @@
+Studies on Potassium Supplementation to Reduce Diastolic Blood Pressure
+
+Description:
+
+     Results from 21 cross-over studies evaluating the effect of
+     potassium supplementation to reduce diastolic blood pressure.
+
+Usage:
+
+     dat.curtin2002
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*  'character'  first author                                
+       *year*    'character'  year of publication                         
+       *N*       'integer'    total sample size                           
+       *mean*    'numeric'    mean difference in diastolic blood pressure 
+       *SE*      'numeric'    standard error                              
+       *corr*    'numeric'    within-patient correlation                  
+      
+Details:
+
+     Results from 21 cross-over studies evaluating the effect of
+     potassium supplementation to reduce diastolic blood pressure
+     (Curtin et al., 2002, Table II).
+
+     This data set is used as an example in Schwarzer et al. (2015),
+     Chapter 2.
+
+Concepts:
+
+     raw mean differences
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Curtin, F., Altman, D. G., & Elbourne, D. (2002). Meta-analysis
+     combining parallel and cross-over clinical trials. I: Continuous
+     outcomes. _Statistics in Medicine_, *21*(15), 2131-2144.
+     https://doi.org/10.1002/sim.1205
+
+References:
+
+     Schwarzer, G., Carpenter, J. R., & R<c3><bc>cker, G. (2015).
+     _Meta-analysis with R_. Cham, Switzerland: Springer.
+
+Examples:
+
+     ### Show first five studies
+     head(dat.curtin2002, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Use DerSimonian-Laird estimator (which was the default in meta in the year 2015).
+     ### Furthermore, print meta-analysis results with two digits.
+     oldset <- settings.meta(method.tau = "DL", digits = 2)
+     
+     ### Conduct meta-analysis
+     mg2 <- metagen(mean, SE, studlab = paste(author, year),
+                    data = dat.curtin2002, sm = "MD")
+     mg2
+     
+     ### Use previous settings
+     settings.meta(oldset)
+     ## End(Not run)
+     

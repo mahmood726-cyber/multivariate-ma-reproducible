@@ -1,0 +1,108 @@
+Studies on the Relationship between Conscientiousness and Medication
+Adherence
+
+Description:
+
+     Results from 16 studies on the correlation between
+     conscientiousness and medication adherence.
+
+Usage:
+
+     dat.molloy2014
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *authors*    'character'  study authors                                            
+       *year*       'numeric'    publication year                                         
+       *ni*         'numeric'    sample size of the study                                 
+       *ri*         'numeric'    observed correlation                                     
+       *controls*   'character'  number of variables controlled for                       
+       *design*     'character'  whether a cross-sectional or prospective design was used 
+       *a_measure*  'character'  type of adherence measure (self-report or other)         
+       *c_measure*  'character'  type of conscientiousness measure (NEO or other)         
+       *meanage*    'numeric'    mean age of the sample                                   
+       *quality*    'numeric'    methodological quality                                   
+      
+Details:
+
+     Conscientiousness, one of the big-5 personality traits, can be
+     defined as "socially prescribed impulse control that facilitates
+     task- and goal-directed behaviour, such as thinking before acting,
+     delaying gratification, following norms and rules and planning,
+     organising and prioritising tasks" (John & Srivastava, 1999).
+     Conscientiousness has been shown to be related to a number of
+     health-related behaviors (e.g., tobacco/alcohol/drug use, diet and
+     activity patterns, risky behaviors). A recent meta-analysis by
+     Molloy et al. (2014) examined to what extent conscientiousness is
+     related to medication adherence, that is, the extent to which
+     (typically chronically ill) patients follow a prescribed
+     medication regimen (e.g., taking a daily dose of a cholesterol
+     lowering drug in patients with high LDL serum cholesterol levels).
+     The results from the 16 studies included in this meta-analysis are
+     provided in this dataset.
+
+     Variable 'a_measure' indicates whether adherence was measured
+     based on self-reports or a more 'objective' measure (e.g.,
+     electronic monitoring of pill bottle openings, pill counts).
+     Variable 'c_measure' indicates whether conscientiousness was
+     measured with some version of the NEO personality inventory or
+     some other scale. Methodological quality was scored by the authors
+     on a 1 to 4 scale with higher scores indicating higher quality
+     (see article for details on how this score was derived).
+
+Concepts:
+
+     psychology, medicine, correlation coefficients
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Molloy, G. J., O'Carroll, R. E., & Ferguson, E. (2014).
+     Conscientiousness and medication adherence: A meta-analysis.
+     _Annals of Behavioral Medicine_, *47*(1), 92-101.
+     https://doi.org/10.1007/s12160-013-9524-4
+
+References:
+
+     John, O. P., & Srivastava, S. (1999). The Big Five Trait taxonomy:
+     History, measurement, and theoretical perspectives. In L. A.
+     Pervin & O. P. John (Eds.), _Handbook of personality: Theory and
+     research_ (2nd ed., pp. 102-138). New York: Guilford Press.
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.molloy2014
+     dat[-c(5:6)]
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate r-to-z transformed correlations and corresponding sampling variances
+     dat <- escalc(measure="ZCOR", ri=ri, ni=ni, data=dat, slab=paste(authors, year, sep=", "))
+     dat[-c(5:6)]
+     
+     ### meta-analysis of the transformed correlations using a random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     
+     ### average correlation with 95% CI
+     predict(res, digits=3, transf=transf.ztor)
+     
+     ### forest plot
+     forest(res, addpred=TRUE, xlim=c(-1.6,1.6), atransf=transf.ztor,
+            at=transf.rtoz(seq(-0.4, 0.6, by=0.2)), digits=c(2,1), cex=0.9,
+            header="Author(s), Year")
+     
+     ### funnel plot
+     funnel(res)
+     ## End(Not run)
+     

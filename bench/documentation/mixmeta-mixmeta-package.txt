@@ -1,0 +1,338 @@
+An Extended Mixed-Effects Framework for Meta-Analysis
+
+Description:
+
+     The package 'mixmeta' consists of a collection of functions to
+     perform various meta-analytical models in R through a unified
+     mixed-effects framework, including standard univariate fixed and
+     random-effects meta-analysis and meta-regression, and non-standard
+     extensions such as multivariate, multilevel, longitudinal, and
+     dose-response models.
+
+Modelling framework:
+
+     Standard applications of meta-analysis amount to the pooling of
+     estimates of a single effect size, here defined generally as
+     outcome, collected as unique observations in a set of independent
+     studies, together with a measure of uncertainty (usually standard
+     errors). Fixed-effects models do not assume heterogeneity across
+     studies, and the estimates are conditional on the set of studies
+     collected in the meta-analysis. Random-effects meta-analysis,
+     instead, allows a degree of heterogeneity among studies, assuming
+     the (true but unobserved) study-specific outcomes as randomly
+     sampled from a (usually hypothetical) population of studies.
+     Meta-regression extends both fixed and random-effects methods by
+     allowing the pooled outcome to depend on study-level
+     meta-predictors.
+
+     However, this traditional setting can be limited for many modern
+     applications of meta-analysis. For instance, studies can provide
+     estimates of different outcomes. Alternatively, studies can
+     collect multiple estimates of the same outcome, either
+     longitudinally or referring to different groups or levels of a
+     continuous variable. Similarly, studies can be clustered, or being
+     characterized by a hierarchical structure (i.e., by country). In
+     all these instances, the key assumption of independence across
+     estimates is not met, and basic models must be extended to
+     consider potentially complex correlation structures within and
+     between studies. This leads to extension to multivariate,
+     multilevel, longitudinal, or dose-response models for
+     meta-analysis, among others.
+
+     A unified modelling framework can be defined by casting the
+     meta-analytical problem as a linear mixed model. In general terms,
+     we assume that there is a set of n observations of k different
+     outcomes, representing _units_ of analysis aggregated in i =
+     1,...,m _groups_ that are considered independent. An extended
+     random-effects meta-regression model for the yi outcomes in group
+     i can be generally written as:
+
+                        yi = Xibeta + Zib + epsiloni                    
+     
+                      b ~ N(0,Psi) , epsiloni ~ N(0,Si)                 
+     
+     Here, Xibeta defines the fixed effects that represent the
+     population-averaged outcomes in terms of p unit-level predictors
+     in the design matrix Xi with fixed-effects coefficients beta. The
+     random part of the model Zib describes the deviation from the
+     population averages in terms of q unit-level predictors in the
+     design matrix Zi and random-effects coefficients b. The marginal
+     (co)variance matrix Sigmai = ZPsiZt + Si is given by the sum of
+     within (assumed known) and between-group contributions, defined by
+     (co)variance matrices Si and Psi, respectively.
+
+     All the models mentioned above, and other extensions, can be
+     described as special cases of this unified framework.
+     Specifically, in the standard random-effects univariate
+     meta-analysis or meta-regression, each group represents a study
+     with a single observation (n=m), where Zi=1 (q=1), and yi, Si and
+     Psi are scalars. In fixed-effects models, Psi and Zi do not exist.
+     In multivariate models, the k-dimensional yi represents the
+     different outcomes from study i, Xi is Kronecker-expanded to k x
+     kp, and Si and Psi are k x k matrices representing within and
+     between-study correlations among outcomes, respectively. In
+     multilevel models, where additional inner levels of grouping exist
+     within each of the m outer-level groups, q is the sum of
+     level-specific meta-predictors, while Psi and Zi have a
+     block-diagonal and column-binded (and expanded) forms,
+     respectively, with each part referring to a different level. In
+     longitudinal and dose-response models, repeated measures are
+     accomodated in a similar way through random-effects grouping.
+
+Estimation methods:
+
+     The aim is to estimate the kp coefficients beta and, for
+     random-effects models, the components of the between-group
+     (co)variance matrix Psi. The parameters for the random part depend
+     on the number of random-effects levels, and for each of them, on
+     the number of random-effects meta-predictors and the structure of
+     the related part of the (co)variance matrix, with a maximum of
+     kq(kq+1)/2 for single-level unstructured Psi.
+
+     Different estimators are implemented in the package 'mixmeta'. The
+     options available in the current version are:
+
+        * *Fixed-effects*
+
+        * *Maximum likelihood* (ML)
+
+        * *Restricted maximum likelihood* (REML)
+
+        * *Method of moments*
+
+        * *Variance components*
+
+     The fixed-effects model is fitted through generalized least
+     squares (GLS), assuming the (co)variance structure, composed by
+     the within-study errors only, as completely known.
+     Likelihood-based random-effects estimators, ML and REML, represent
+     the most comprehensive implementation of the modelling framework,
+     and allow the specification all the various models described in
+     the previous section through a flexible definition of the
+     random-effects structure. They rely on two alternative iterative
+     optimization procedures, based on Newton-type and (restricted)
+     iterative generalized least squares (IGLS and RIGLS) algorithms,
+     respectively. Estimators based on semiparametric alternatives such
+     as the non-iterative method of moments or the iterative variance
+     components are also included, although they are only available for
+     models with a basic random-effects structure. Further details on
+     estimation methods are given in the related help pages.
+
+Functions included in the package:
+
+     The main function in the package is 'mixmeta', which performs the
+     various models illustrated above. This function resembles standard
+     regression functions in R, and specifies the model through
+     regression formulae for fixed and random-effects (see
+     'mixmetaFormula'). The function returns a list object of class
+     '"mixmeta"' (see 'mixmetaObject').
+
+     The estimation is carried out internally through 'mixmeta.fit', a
+     wrapper which accepts data in a specific format, then prepares the
+     various data components and calls ad hoc estimation functions for
+     fitting the models. Specifically, 'mixmeta.fixed' is applied for
+     fixed-effects models, while estimators for random-effects models
+     are implemented in the functions 'mixmeta.ml' and 'mixmeta.reml'
+     for (restricted) maximum likelihood, 'mixmeta.mm' for the method
+     of moments, and 'mixmeta.vc' for variance components. For
+     likelihood-based methods, alternative iterative optimizations
+     methods are provided in two sets of functions implementing
+     'Newton-type' and '(R)IGLS' algorithms used for maximizing the
+     (restricted) likelihood. The former method applies specific
+     'likelihood functions'. Various types of likelihood-based models
+     are defined by separate regression formulae for fixed and
+     random-effects (see 'mixmetaFormula'). Specific '(co)variance
+     structures' for the between-group random effects at single or
+     multiple levels are available. Fitting parameter options are set
+     by 'mixmeta.control'.
+
+     Method functions are available for objects of class '"mixmeta"'
+     (see 'mixmetaObject' for a complete list). The method 'summary'
+     produces a list of class '"summary.mixmeta"' for summarizing the
+     fit of the model and providing additional results. The method
+     function 'predict' computes predicted values, optionally for a set
+     of new values of the predictors. 'blup' gives the (empirical) best
+     linear unbiased predictions for the set of studies used for
+     estimation. Other default or specific method functions for
+     regression can be used on objects of class '"mixmeta"', such as
+     'fitted' and 'residuals', 'logLik', 'AIC' and 'BIC', or 'drop1'
+     and 'add1', among others.
+
+     Methods for 'model.frame', 'model.matrix', and 'terms' are used to
+     extract or construct the model frame, the design matrix, or the
+     terms of the regression meta-analytical model, respectively. These
+     specific methods for objects of class '"mixmeta"' are needed to
+     appropriately deal with missing values and to account for model
+     frames that include terms for both the fixed and random parts. In
+     particular, methods for 'na.omit' and 'na.exclude' are used to
+     handle correctly missing values.
+
+     Simulations can be produced using the function 'mixmetaSim' and
+     the method function 'simulate', which return one or multiple sets
+     of simulated outcomes for a group of studies. The function
+     'inputna' and 'inputcov' are used internally to augment the
+     missing data values and to input missing correlations,
+     respectively.
+
+     The method function 'qtest.mixmeta' (producing an object with
+     class of the same name) performs the (multivariate) Cochran Q test
+     for (residual) heterogeneity. For multivariate models, the
+     function returns both an overall estimate and those for each
+     single outcome. The generic method function is 'qtest'.
+
+     Printing functions for the objects of classes defined above are
+     also provided. Other functions are used internally in the source
+     code, and not exported in the namespace. For users interested in
+     getting into details of the package structure, these functions can
+     be displayed using the triple colon ('':::'') operator. For
+     instance, 'mixmeta:::glsfit' displays the code of the function
+     'glsfit'. Also, some comments are added in the original source
+     code.
+
+Datasets and applications:
+
+     The package includes several datasets used for applications of the
+     extended meta-analytical framework. The related help pages provide
+     examples of specific models, and fully demonstrate the flexibility
+     of the extended meta-analytical framework. In particular:
+
+        * *Standard meta-analysis* is illustrated using the dataset
+          'bcg', including examples of meta-regression.
+
+        * *Multivariate meta-analysis* is performed using various
+          datasets, including bivariate models ('berkey98', 'hyp',
+          'p53') and multivariate models with three or more outcomes
+          ('fibrinogen' and 'hsls'). The examples describe also how to
+          deal with missing data or missing within-group correlations,
+          and multivariate meta-regression.
+
+        * *Network meta-analysis* is shown in the dataset 'smoking'.
+          The examples illustrate an indirect mixed-treatment
+          comparison including consistency and inconsistency models.
+
+        * *Multilevel meta-analysis* is displayed in the examples of
+          the datasets 'school' and 'thrombolytic', and include data
+          with multiple nested levels of grouping and/or repeated
+          measures within each group.
+
+        * *Dose-response meta-analysis* is illustrated in the dataset
+          'alcohol', using the recently proposed one-stage approach.
+
+        * *Longitudinal meta-analysis* is performed using the datasets
+          'dbs' and 'gliomas'. The two sets of examples present
+          different cases using data in wide and long format,
+          respectively.
+
+Additional information:
+
+     The 'mixmeta' package is available on the Comprehensive R Archive
+     Network (CRAN), with info at the related web page
+     (CRAN.R-project.org/package=mixmeta). A development website is
+     available on GitHub (github.com/gasparrini/mixmeta). General
+     information on the development and applications of this extended
+     meta-analytical modelling framework, together with an updated
+     version of the R scripts for running the examples in published
+     papers, can be found in GitHub (github.com/gasparrini) or at the
+     personal web page of the package maintainer
+     (www.ag-myresearch.com).
+
+     The package 'mixmeta' is an extension of the package 'mvmeta',
+     previously developed to perform multivariate meta-analytical
+     models. The latter now depends on the former, and while both are
+     still maintained, users are encouraged to switch to 'mixmeta' as
+     it represents a more general and updated option. A list of changes
+     included in the current and previous versions of 'mixmeta' can be
+     found by typing:
+
+     'news(package="mixmeta")'
+
+     Use 'citation("mixmeta")' to cite this package.
+
+Warnings:
+
+     This release of the package 'mixmeta' has been tested with
+     different simulated and real datasets. The functions generally
+     perform well under several scenarios, and comparisons with
+     alternative software implementations show good agreement. However,
+     bugs and bad performance under un-tested conditions may not be
+     excluded. Please report any error or unexpected behaviour to the
+     e-mail address below.
+
+Note:
+
+     The package 'mixmeta' provides a unified modelling framework to
+     perform standard and non-standard meta-analytical models. However,
+     some of these can also be fitted using routines available in other
+     R packages.
+
+     For instance, many packages such as 'metafor', 'meta', 'rmeta'
+     provide a more exhaustive and efficient set of methods for
+     standard univariate meta-analysis and meta-regression, including a
+     wide range or functions for specific plots and statistical tests.
+
+     Specific modelling extensions are also provided by other packages.
+     For example, multivariate or multilevel models can be also be
+     fitted using functions in 'metafor' and 'metaSEM', while
+     dose-response meta-analysis and meta-analysis of diagnostic
+     measures can be performed using 'dosresmeta' and 'mada',
+     respectively.
+
+     See the CRAN Task View Meta-Analysis for a comprehensive
+     illustration of methods available in various R packages.
+
+Author(s):
+
+     Antonio Gasparrini and Francesco Sera
+
+     Maintainer: Antonio Gasparrini
+     <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+     Pinheiro JC and Bates DM (2000). _Mixed-Effects Models in S and
+     S-PLUS_. New York, Springer Verlag.
+
+     Lindstrom MJ and Bates DM (1988). Newton-Raphson and EM algorithms
+     for linear mixed-effects models for repeated-measures data.
+     _Journal of the American Statistical Association_.
+     *83*(404):1014-1022.
+
+     Goldstein H (1986). Multilevel mixed linear model analysis using
+     iterative generalized least squares. _Biometrika_. *73*(1):43-56.
+
+     Goldstein H (1992). Efficient computational procedures for the
+     estimation of parameters in multilevel models based on iterative
+     generalized least squares. _Computational Statistics & Data
+     Analysis_. *13*(1):63-71.
+
+     Stram DO (1996). Meta-analysis of published data using a linear
+     mixed-effects model. _Biometrics_. *52*(2):536-544.
+
+     Stevens JR, Taylor AM. Hierarchical dependence in meta-analysis.
+     _Journal of Educational and Behavioral Statistics_. *34*(1):46-73.
+
+     Jackson D, Riley R, White IR (2011). Multivariate meta-analysis:
+     Potential and promise. _Statistics in Medicine_.
+     *30*(20);2481-2498.
+
+     Goldstein H, et al (2000). Meta-analysis using multilevel models
+     with an application to the study of class size effects. _Journal
+     of the Royal Statistical Society: Series C (Applied Statistics)_.
+     *49*(3):399-412.
+
+     Crippa A, et al (2019). One-stage dose-response meta-analysis for
+     aggregated data. _Statistical Methods in Medical Research_.
+     *28*(5):1579-1596.
+
+     Ishak KJ, Platt RW, Joseph L, et al (2007). Meta-analysis of
+     longitudinal studies. _Clinical Trials_. *4*(5):525-539.
+

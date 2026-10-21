@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Please cite this validation archive."
+title: "Multivariate (bivariate) meta-analysis in the browser: validation against the R packages mvmeta and metafor"
+type: software
+authors:
+  - family-names: Ahmad
+    given-names: Mahmood
+version: 1.0.0
+license: MIT
+references:
+  - type: software
+    title: allmeta
+    authors:
+      - family-names: Ahmad
+        given-names: Mahmood
+    url: https://github.com/mahmood726-cyber/allmeta
+    notes: "isDerivedFrom; multivariate-ma page at source commit acd363fa33f0decd2fcafcf08814f663bb9d6178 plus bench/fix.patch; fixes not yet merged upstream at archive build time"
+  - type: software
+    title: allmeta
+    authors:
+      - family-names: Ahmad
+        given-names: Mahmood
+    version: "v1.8.0"
+    doi: "10.5281/zenodo.23515177"
+    url: "https://github.com/mahmood726-cyber/allmeta/releases/tag/v1.8.0"
+    notes: "isDerivedFrom; allmeta release containing the fixes (pull request #154) and the plus panel (pull request #152); tag commit 1cb3f8409c7af75ed41f7e1811f9c502f900fc79; see RELEASE_EQUIVALENCE.md"

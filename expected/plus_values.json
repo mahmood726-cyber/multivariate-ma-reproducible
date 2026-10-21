@@ -1,0 +1,285 @@
+{
+  "paper": 18,
+  "layer": "plus",
+  "source_commit": "d0892228c2c0af009ca5270cfc8eb73ffa12eb31",
+  "configurations": 92,
+  "bivariate_fits_ok": 1839,
+  "bivariate_refusals": 1,
+  "univariate_fits_ok": 184,
+  "checks": 54612,
+  "numeric_checks": 38626,
+  "display_checks": 15986,
+  "adjudicated": [
+    "metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc#rhoW=-0.3"
+  ],
+  "roundtrip": {
+    "rule": "strict: allmeta v1.8.0 (1cb3f84) multivariate-ma/validate/roundtrip-compare.cjs; z/p never adjudicated; recomputed REML logLik and fit integrity",
+    "cases": 94,
+    "checks": 29502,
+    "passed": 29473,
+    "failed_by_quantity": {
+      "z": 23,
+      "p": 6
+    },
+    "failed": [
+      [
+        "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#rhoW=0.8",
+        "p"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#rhoW=0.8",
+        "p"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#rhoW=0.8",
+        "z"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#rhoW=0.8",
+        "z"
+      ],
+      [
+        "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.7",
+        "z"
+      ],
+      [
+        "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#main",
+        "z"
+      ],
+      [
+        "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#main",
+        "z"
+      ],
+      [
+        "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.7",
+        "z"
+      ],
+      [
+        "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.7",
+        "z"
+      ],
+      [
+        "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#main",
+        "z"
+      ],
+      [
+        "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#main",
+        "z"
+      ],
+      [
+        "mixmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.2",
+        "z"
+      ],
+      [
+        "mixmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.2",
+        "z"
+      ],
+      [
+        "mixmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.9",
+        "z"
+      ],
+      [
+        "mixmeta::fibrinogen::b3+b5::REML::supplied#rhoW=-0.9",
+        "z"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0#rhoW=0.8",
+        "p"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0#rhoW=0.8",
+        "p"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0#rhoW=0.8",
+        "z"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0#rhoW=0.8",
+        "z"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#rhoW=0.8",
+        "p"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#rhoW=0.8",
+        "p"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#rhoW=0.8",
+        "z"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#rhoW=0.8",
+        "z"
+      ],
+      [
+        "mixmeta::hsls::b2+b3::REML::supplied#rhoW=0.7",
+        "z"
+      ],
+      [
+        "mvmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.2",
+        "z"
+      ],
+      [
+        "mvmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.2",
+        "z"
+      ],
+      [
+        "mvmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.9",
+        "z"
+      ],
+      [
+        "mvmeta::fibrinogen::b3+b5::REML::supplied#rhoW=-0.9",
+        "z"
+      ],
+      [
+        "mvmeta::hsls::b2+b3::REML::supplied#rhoW=0.7",
+        "z"
+      ]
+    ],
+    "adjudicated": [
+      "example::hyp::per-study-r#rhoW=-0.1",
+      "example::hyp::per-study-r#rhoW=-0.7",
+      "example::hyp::per-study-r#rhoW=-0.8",
+      "example::hyp::per-study-r#rhoW=-0.9",
+      "example::hyp::per-study-r#rhoW=0.7",
+      "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#rhoW=0.8",
+      "metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97#rhoW=0.3",
+      "metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97#rhoW=0.4",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.3",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.6",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.7",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.8",
+      "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#main",
+      "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#rhoW=0.8",
+      "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#rhoW=0.9",
+      "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97#rhoW=-0.1",
+      "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97#rhoW=-0.3",
+      "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97#rhoW=0",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#main",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#rhoW=-0.1",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#rhoW=-0.3",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#rhoW=0",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97#rhoW=-0.1",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97#rhoW=-0.3",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97#rhoW=0",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.6",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.7",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.8",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.6",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.7",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.8",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0#rhoW=0.4",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97#rhoW=0.4",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0#rhoW=0.8",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0#rhoW=0.9",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#main",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#rhoW=0.8",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#rhoW=0.9",
+      "mixmeta::fibrinogen::b3+b5::REML::supplied#rhoW=-0.9",
+      "mixmeta::gliomas::month6+month12::REML::documented-AR1-0#rhoW=0.8",
+      "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#rhoW=0.8",
+      "mixmeta::hsls::b1+b3::REML::supplied#rhoW=-0.6",
+      "mixmeta::hsls::b1+b3::REML::supplied#rhoW=-0.8",
+      "mixmeta::hsls::b2+b3::REML::supplied#rhoW=0.7",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.1",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.7",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.8",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.9",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=0.7",
+      "mixmeta::smoking::yB+yD::REML::supplied#main",
+      "mvmeta::fibrinogen::b3+b5::REML::supplied#rhoW=-0.9",
+      "mvmeta::hsls::b1+b3::REML::supplied#rhoW=-0.6",
+      "mvmeta::hsls::b1+b3::REML::supplied#rhoW=-0.8",
+      "mvmeta::hsls::b2+b3::REML::supplied#rhoW=0.7",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.1",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.7",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.8",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.9",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=0.7",
+      "mvmeta::smoking::yB+yD::REML::supplied#main"
+    ]
+  },
+  "roundtrip_v1rule_history": {
+    "rule": "HISTORY (superseded): plus source commit d089222 roundtrip-compare.cjs; z/p adjudicated with the other parameters on the reported logLik",
+    "cases": 94,
+    "checks": 29502,
+    "passed": 29502,
+    "adjudicated": [
+      "example::hyp::per-study-r#rhoW=-0.1",
+      "example::hyp::per-study-r#rhoW=-0.7",
+      "example::hyp::per-study-r#rhoW=-0.8",
+      "example::hyp::per-study-r#rhoW=-0.9",
+      "example::hyp::per-study-r#rhoW=0.7",
+      "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#rhoW=0.8",
+      "metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97#rhoW=0.3",
+      "metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97#rhoW=0.4",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.3",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.6",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.7",
+      "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97#rhoW=0.8",
+      "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#main",
+      "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#rhoW=0.8",
+      "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97#rhoW=0.9",
+      "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97#rhoW=-0.1",
+      "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97#rhoW=-0.3",
+      "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97#rhoW=0",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#main",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#rhoW=-0.1",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#rhoW=-0.3",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0#rhoW=0",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97#rhoW=-0.1",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97#rhoW=-0.3",
+      "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97#rhoW=0",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.6",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.7",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0#rhoW=0.8",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.6",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.7",
+      "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97#rhoW=0.8",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0#rhoW=0.4",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97#rhoW=0.3",
+      "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97#rhoW=0.4",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0#rhoW=0.8",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0#rhoW=0.9",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#main",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#rhoW=0.8",
+      "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#rhoW=0.9",
+      "mixmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.2",
+      "mixmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.9",
+      "mixmeta::fibrinogen::b3+b5::REML::supplied#rhoW=-0.9",
+      "mixmeta::gliomas::month6+month12::REML::documented-AR1-0#rhoW=0.8",
+      "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#rhoW=0.8",
+      "mixmeta::hsls::b1+b3::REML::supplied#rhoW=-0.6",
+      "mixmeta::hsls::b1+b3::REML::supplied#rhoW=-0.8",
+      "mixmeta::hsls::b2+b3::REML::supplied#rhoW=0.7",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.1",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.7",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.8",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.9",
+      "mixmeta::hyp::sbp+dbp::REML::supplied#rhoW=0.7",
+      "mixmeta::smoking::yB+yD::REML::supplied#main",
+      "mvmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.2",
+      "mvmeta::fibrinogen::b2+b3::REML::supplied#rhoW=-0.9",
+      "mvmeta::fibrinogen::b3+b5::REML::supplied#rhoW=-0.9",
+      "mvmeta::hsls::b1+b3::REML::supplied#rhoW=-0.6",
+      "mvmeta::hsls::b1+b3::REML::supplied#rhoW=-0.8",
+      "mvmeta::hsls::b2+b3::REML::supplied#rhoW=0.7",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.1",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.7",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.8",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=-0.9",
+      "mvmeta::hyp::sbp+dbp::REML::supplied#rhoW=0.7",
+      "mvmeta::smoking::yB+yD::REML::supplied#main"
+    ]
+  }
+}

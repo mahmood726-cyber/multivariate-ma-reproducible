@@ -1,0 +1,105 @@
+Studies on the Treatment of Upper Gastrointestinal Bleeding by a
+Histamine H2 Antagonist
+
+Description:
+
+     Results from studies examining the effectiveness of histamine H2
+     antagonists (cimetidine or ranitidine) in treating patients with
+     acute upper gastrointestinal hemorrhage.
+
+Usage:
+
+     dat.collins1985a
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*     'numeric'    study number                                                                 
+       *trial*  'character'  first author of trial                                                        
+       *year*   'numeric'    year of publication                                                          
+       *ref*    'numeric'    reference number                                                             
+       *trt*    'character'  C = cimetidine, R = ranitidine                                               
+       *ctrl*   'character'  P = placebo, AA = antacids, UT = usual treatment                             
+       *nti*    'numeric'    number of patients in treatment group                                        
+       *b.xti*  'numeric'    number of patients in treatment group with persistent or recurrent bleedings 
+       *o.xti*  'numeric'    number of patients in treatment group in need of operation                   
+       *d.xti*  'numeric'    number of patients in treatment group that died                              
+       *nci*    'numeric'    number of patients in control group                                          
+       *b.xci*  'numeric'    number of patients in control group with persistent or recurrent bleedings   
+       *o.xci*  'numeric'    number of patients in control group in need of operation                     
+       *d.xci*  'numeric'    number of patients in control group that died                                
+      
+Details:
+
+     The data were obtained from Tables 1 and 2 in Collins and Langman
+     (1985). The authors used Peto's (one-step) method for
+     meta-analyzing the 27 trials. This approach is implemented in the
+     'rma.peto' function. Using the same dataset, van Houwelingen,
+     Zwinderman, and Stijnen (1993) describe some alternative
+     approaches for analyzing these data, including fixed- and
+     random-effects conditional logistic models. Those are implemented
+     in the 'rma.glmm' function.
+
+Concepts:
+
+     medicine, odds ratios, Peto's method, generalized linear models
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Collins, R., & Langman, M. (1985). Treatment with histamine H2
+     antagonists in acute upper gastrointestinal hemorrhage. _New
+     England Journal of Medicine_, *313*(11), 660-666.
+     https://doi.org/10.1056/NEJM198509123131104
+
+References:
+
+     van Houwelingen, H. C., Zwinderman, K. H., & Stijnen, T. (1993). A
+     bivariate approach to meta-analysis. _Statistics in Medicine_,
+     *12*(24), 2273-2284. https://doi.org/10.1002/sim.4780122405
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.collins1985a
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### meta-analysis of log ORs using Peto's method (outcome: persistent or recurrent bleedings)
+     res <- rma.peto(ai=b.xti, n1i=nti, ci=b.xci, n2i=nci, data=dat)
+     print(res, digits=2)
+     
+     ### meta-analysis of log ORs using a conditional logistic regression model (FE model)
+     res <- rma.glmm(measure="OR", ai=b.xti, n1i=nti, ci=b.xci, n2i=nci, data=dat,
+                     model="CM.EL", method="FE")
+     summary(res)
+     predict(res, transf=exp, digits=2)
+     
+     ### plot the likelihoods of the odds ratios
+     llplot(measure="OR", ai=b.xti, n1i=nti, ci=b.xci, n2i=nci, data=dat,
+            lwd=1, refline=NA, xlim=c(-4,4), drop00=FALSE)
+     
+     ### meta-analysis of log odds ratios using a conditional logistic regression model (RE model)
+     res <- rma.glmm(measure="OR", ai=b.xti, n1i=nti, ci=b.xci, n2i=nci, data=dat,
+                     model="CM.EL", method="ML")
+     summary(res)
+     predict(res, transf=exp, digits=2)
+     
+     ### meta-analysis of log ORs using Peto's method (outcome: need for surgery)
+     res <- rma.peto(ai=o.xti, n1i=nti, ci=o.xci, n2i=nci, data=dat)
+     print(res, digits=2)
+     
+     ### meta-analysis of log ORs using Peto's method (outcome: death)
+     res <- rma.peto(ai=d.xti, n1i=nti, ci=d.xci, n2i=nci, data=dat)
+     print(res, digits=2)
+     ## End(Not run)
+     

@@ -1,0 +1,1233 @@
+{
+  "variant": "patched",
+  "total": 18682,
+  "passed": 18581,
+  "summary": [
+    {
+      "quantity": "G",
+      "checks": 368,
+      "passed": 368,
+      "max_error": 9.59227121133196e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "accessor_G",
+      "checks": 404,
+      "passed": 404,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_k",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_logLik",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_mu",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_muSE",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_rho",
+      "checks": 80,
+      "passed": 80,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_rho_undefined",
+      "checks": 21,
+      "passed": 21,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "api_refusal",
+      "checks": 4,
+      "passed": 4,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ciLower",
+      "checks": 182,
+      "passed": 182,
+      "max_error": 5.998910568294491e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "ciUpper",
+      "checks": 182,
+      "passed": 182,
+      "max_error": 3.6194868184209037e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_G",
+      "checks": 4,
+      "passed": 4,
+      "max_error": 2.3146696365161645e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_logLik",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 4.811670144112978e-16,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_mu",
+      "checks": 2,
+      "passed": 2,
+      "max_error": 7.844280780489044e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_muSE",
+      "checks": 2,
+      "passed": 2,
+      "max_error": 2.7577737315986894e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_rho",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 1.3168263146567938e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "display_cards",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "display_headline",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_in_viewport",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_mahalanobis",
+      "checks": 8100,
+      "passed": 8100,
+      "max_error": 2.7621674741045866e-12,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "ellipse_vertices",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "fit_status",
+      "checks": 91,
+      "passed": 91,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "focused_k",
+      "checks": 10,
+      "passed": 10,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "input_membership",
+      "checks": 92,
+      "passed": 92,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "k",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "logLik",
+      "checks": 92,
+      "passed": 92,
+      "max_error": 1.6891094949231962e-13,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "m",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "mu",
+      "checks": 184,
+      "passed": 184,
+      "max_error": 4.2109824993641354e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muSE",
+      "checks": 184,
+      "passed": 184,
+      "max_error": 1.8528958109563177e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muVcov",
+      "checks": 364,
+      "passed": 364,
+      "max_error": 4.181983237457694e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "outcome_labels",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "plot_study_coordinate",
+      "checks": 6434,
+      "passed": 6434,
+      "max_error": 6.2138019323910806e-15,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "plot_study_count",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "refusal",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "rho",
+      "checks": 79,
+      "passed": 79,
+      "max_error": 1.0582998555275225e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "rho_undefined",
+      "checks": 13,
+      "passed": 13,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "schema",
+      "checks": 101,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "sd",
+      "checks": 182,
+      "passed": 182,
+      "max_error": 4.705007294008194e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "svg_finite",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ui_refusal",
+      "checks": 4,
+      "passed": 4,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "valid_capture",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    }
+  ],
+  "failures": [
+    {
+      "id": "mvmeta::berkey98::PD+AL::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::fibrinogen::b2+b3::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::fibrinogen::b2+b4::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::fibrinogen::b2+b5::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::fibrinogen::b3+b4::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::fibrinogen::b3+b5::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::fibrinogen::b4+b5::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::hsls::b1+b2::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::hsls::b1+b3::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::hsls::b2+b3::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::hyp::sbp+dbp::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::p53::y1+y2::REML::documented-rho-0.95",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yC+yD::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::berkey98::PD+AL::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::fibrinogen::b2+b3::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::fibrinogen::b2+b4::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::fibrinogen::b2+b5::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::fibrinogen::b3+b4::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::fibrinogen::b3+b5::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::fibrinogen::b4+b5::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::hsls::b1+b2::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::hsls::b1+b3::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::hsls::b2+b3::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::hyp::sbp+dbp::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::p53::y1+y2::REML::documented-rho-0.95",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yC+yD::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_month6::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_month6::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y1i+y2i::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y2i+y3i::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month12::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month18::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month24::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month12+month18::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month12+month24::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month18+month24::REML::documented-AR1-0",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month18::REML::documented-AR1-0.61",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month24::REML::documented-AR1-0.61",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month12+month18::REML::documented-AR1-0.61",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month12+month24::REML::documented-AR1-0.61",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month18+month24::REML::documented-AR1-0.61",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.berkey1998::PD+AL::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.berkey1998r::AL+PD::REML::supplied",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.kalaian1996::verbal+math::REML::documented-rho-0.66",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month18::REML::documented-covariance-raw",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month24::REML::documented-covariance-raw",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month12+month18::REML::documented-covariance-raw",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month12+month24::REML::documented-covariance-raw",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month12::REML::documented-covariance-ridge",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month18::REML::documented-covariance-ridge",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month24::REML::documented-covariance-ridge",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month12+month18::REML::documented-covariance-ridge",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month12+month24::REML::documented-covariance-ridge",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month18+month24::REML::documented-covariance-ridge",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.perf+asom.perf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.perf+conf.perf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.perf+acog.asom::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.perf+acog.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.perf+asom.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::asom.perf+conf.perf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::asom.perf+acog.asom::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::asom.perf+acog.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::asom.perf+asom.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::conf.perf+acog.asom::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::conf.perf+acog.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::conf.perf+asom.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.asom+acog.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.craft2003::acog.conf+asom.conf::REML::rcalc",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.kearon1998::logit_sensitivity+logit_specificity::REML::disjoint-binomial-samples",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.rivera2025::logit_sensitivity+logit_specificity::REML::disjoint-binomial-samples",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::negative-variance",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::partial-outcome",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::numeric-junk",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::nonfinite",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::blank-number",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::comments",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::escaped-outcomes",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::constant-effects",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::two-studies",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::no-study-cap",
+      "quantity": "schema",
+      "actual": "multivariate-ma-results-v2",
+      "reference": "multivariate-ma-results-v1",
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    }
+  ]
+}

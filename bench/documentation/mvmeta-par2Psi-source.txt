@@ -1,0 +1,38 @@
+function (par, k, bscov, control) 
+{
+    Psi <- switch(bscov, unstr = {
+        L <- diag(0, k)
+        L[lower.tri(L, diag = TRUE)] <- par
+        tcrossprod(L)
+    }, diag = diag(exp(par), k), id = diag(k) * exp(par[1]), 
+        cs = {
+            R <- matrix((exp(par[2]) - 1/(k - 1))/(exp(par[2]) + 
+                1), k, k)
+            R[row(R) == col(R)] <- 1
+            exp(par[1] * 2) * R
+        }, hcs = {
+            R <- matrix((exp(par[k + 1]) - 1/(k - 1))/(exp(par[k + 
+                1]) + 1), k, k)
+            R[row(R) == col(R)] <- 1
+            D <- diag(sqrt(exp(par[seq(k)] * 2)), k)
+            D %*% R %*% D
+        }, ar1 = {
+            cor <- plogis(par[k + 1]) * 2 - 1
+            R <- cor^abs(outer(seq(k), seq(k), "-"))
+            D <- diag(sqrt(exp(par[seq(k)])), k)
+            D %*% R %*% D
+        }, prop = {
+            Psifix <- if (!is.null(fix <- control$Psifix)) {
+                if (is.matrix(fix)) fix else xpndMat(fix)
+            } else diag(k)
+            exp(par) * Psifix
+        }, cor = inputcov(sqrt(exp(par)), control$Psicor), fixed = {
+            Psifix <- if (!is.null(fix <- control$Psifix)) {
+                if (is.matrix(fix)) fix else xpndMat(fix)
+            } else diag(0, k)
+            Psifix
+        })
+    Psi
+}
+<bytecode: 0x000001c4ec3b6880>
+<environment: namespace:mvmeta>

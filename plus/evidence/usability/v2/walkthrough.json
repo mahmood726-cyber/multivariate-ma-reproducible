@@ -1,0 +1,297 @@
+{
+ "url": "http://127.0.0.1:8099/multivariate-ma/index.html",
+ "source": "allmeta PR #152 head d089222 (feat/multivariate-ma-plus), served locally",
+ "steps": [
+  {
+   "clicksSoFar": 0,
+   "action": "fresh load (no click)",
+   "observed": "k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692",
+   "screenshot": "01_fresh_load.png"
+  },
+  {
+   "clicksSoFar": 1,
+   "action": "click \"Berkey example\"",
+   "observed": "k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692",
+   "pooled": {
+    "PD": 0.35342816963732965,
+    "AL": -0.3392151784592923,
+    "seP": 0.0588486314903215,
+    "seA": 0.08790513609247724,
+    "rho": 0.608798682281344,
+    "logLik": 3.6917676943703244
+   },
+   "stats": "PD pooled 0.353 [0.238, 0.469] AL pooled -0.339 [-0.512, -0.167] Between-study SD PD 0.1083 Between-study SD AL 0.1807 Between-study ρ 0.609",
+   "screenshot": "02_berkey_core_output.png"
+  },
+  {
+   "clicksSoFar": 1,
+   "action": "read comparison table (no click)",
+   "observed": "4 rows",
+   "table": "PD | Multivariate (bivariate REML) | 0.353 [0.238, 0.469] | 0.0588 | 6.01 | <0.0001 | 0.01173 | 0.988\nPD | Univariate (REML, same studies) | 0.361 [0.245, 0.477] | 0.0592 | 6.09 | <0.0001 | 0.01187 | \nAL | Multivariate (bivariate REML) | -0.339 [-0.512, -0.167] | 0.0879 | -3.86 | 0.0001 | 0.03265 | 0.987\nAL | Univariate (REML, same studies) | -0.346 [-0.519, -0.172] | 0.0885 | -3.91 | <0.0001 | 0.03309 | ",
+   "screenshot": "03_uv_mv_table.png"
+  },
+  {
+   "clicksSoFar": 2,
+   "action": "click \"Run sweep\"",
+   "observed": "Sweep complete: 19 of 19 ρw values fitted.",
+   "rows": 19,
+   "screenshot": "04_sweep.png"
+  },
+  {
+   "clicksSoFar": 3,
+   "action": "click \"Download R script\"",
+   "observed": "multivariate-ma-analysis.R (4091 bytes; contains mvmeta: true, rma.mv: true, machine path: false)"
+  },
+  {
+   "clicksSoFar": 4,
+   "action": "click \"Clear\", select \"Per-study correlation\", paste 10 hyp rows (typed input, no click), type outcome names",
+   "observed": "k = 10 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -36.693",
+   "omitted": "k used = 10; 0 rows omitted.",
+   "stats": "SBP pooled -9.509 [-10.945, -8.072] DBP pooled -4.432 [-5.350, -3.515] Between-study SD SBP 1.9799 Between-study SD DBP 1.3531 Between-study ρ 0.675",
+   "screenshot": "06_own_data_hyp.png"
+  },
+  {
+   "clicksSoFar": 5,
+   "action": "change sweep grid to -0.5..0.5 step 0.25 (typed), click \"Run sweep\"",
+   "observed": "Sweep complete: 5 of 5 ρw values fitted.",
+   "sweepAccessor": "present",
+   "sweepChecks": "6/6",
+   "table": "-0.5\tok\t-9.948 [-11.582, -8.314]\t-4.707 [-5.799, -3.616]\t5.670\t2.773\t0.783\t-38.466\n-0.25\tok\t-9.802 [-11.369, -8.234]\t-4.610 [-5.651, -3.569]\t5.015\t2.439\t0.753\t-38.081\n0\tok\t-9.680 [-11.193, -8.168]\t-4.531 [-5.528, -3.534]\t4.524\t2.182\t0.723\t-37.679\n0.25\tok\t-9.586 [-11.057, -8.116]\t-4.473 [-5.434, -3.513]\t4.179\t1.998\t0.698\t-37.263\n0.5\tok\t-9.517 [-10.957, -8.077]\t-4.441 [-5.372, -3.509]\t3.944\t1.881\t0.677\t-36.825",
+   "screenshot": "07_hyp_sweep.png"
+  },
+  {
+   "clicksSoFar": 6,
+   "action": "click \"Download results (JSON)\"",
+   "observed": "multivariate-ma-results.json (8593 bytes; contains -9.50: true)"
+  }
+ ],
+ "badInputs": [
+  {
+   "input": "malformed_number",
+   "mode": "cov",
+   "text": "a, .1oops, .2, .3, .4, .1\nb, .5, .3, .6, .5, .1\nc, .2, .2, .2, .2, .05\nd, .3, .2, .1, .3, .05",
+   "headline": "k = 3 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -1.235",
+   "omitted": "k used = 3; 1 row omitted: line 1 (missing or non-numeric value).",
+   "statsShown": 5,
+   "resultObject": "present",
+   "flaggedRows": 0,
+   "screenshot": "05_bad_malformed_number.png"
+  },
+  {
+   "input": "r_ge_1",
+   "mode": "r",
+   "text": "a, .1, .2, .3, .4, 1.0\nb, .5, .3, .6, .5, .2\nc, .2, .2, .2, .2, .1",
+   "headline": "k = 2 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -0.782",
+   "omitted": "k used = 2; 1 row omitted: line 1 (within-study r must satisfy |r| < 1).",
+   "statsShown": 5,
+   "resultObject": "present",
+   "flaggedRows": 0,
+   "screenshot": "05_bad_r_ge_1.png"
+  },
+  {
+   "input": "non_pd_covariance",
+   "mode": "cov",
+   "text": "a, .1, .2, .3, .4, 1\nb, .5, .3, .6, .5, .1\nc, .2, .2, .2, .2, 0",
+   "headline": "Refused: Within-study covariance must be positive definite. (|r| ≥ 1 on line 1)",
+   "omitted": "k used = 3; 0 rows omitted.",
+   "statsShown": 0,
+   "resultObject": "null (cleared)",
+   "flaggedRows": 1,
+   "screenshot": "05_bad_non_pd_covariance.png"
+  }
+ ],
+ "keyboard": [
+  {
+   "path": "Tab from page start to \"Run sweep\", then Enter",
+   "tabsToRunSweep": 17,
+   "focusOrder": [
+    "a:Skip to main content",
+    "hub-back",
+    "btn-ex-berkey",
+    "btn-ex-hyp",
+    "btn-clear",
+    "f-csv",
+    "f-mode",
+    "f-data",
+    "f-o1",
+    "f-o2",
+    "summary:Derived within-study",
+    "btn-plot-svg",
+    "btn-plot-png",
+    "plus-from",
+    "plus-to",
+    "plus-step",
+    "plus-run"
+   ],
+   "sweepStatus": "Sweep complete: 19 of 19 ρw values fitted.",
+   "focusStyleOnRun": {
+    "id": "plus-run",
+    "outline": "solid 2px",
+    "boxShadow": "none"
+   }
+  },
+  {
+   "path": "Tab onward to \"Download R script\", then Enter",
+   "tabsFromRunSweep": 5,
+   "download": "multivariate-ma-analysis.R"
+  }
+ ],
+ "defaults": {
+  "mode": "cov",
+  "outcome1": "PD",
+  "outcome2": "AL",
+  "rhoW": "0.5",
+  "sweepFrom": "-0.9",
+  "sweepTo": "0.9",
+  "sweepStep": "0.1",
+  "dataFirstLine": "# label, y_PD, var_PD, y_AL, var_AL, cov"
+ },
+ "axe": {
+  "tags": "wcag2a, wcag2aa, wcag21a, wcag21aa",
+  "axeVersion": "4.11.4",
+  "violations": [],
+  "passes": 27,
+  "incomplete": [
+   "aria-prohibited-attr",
+   "color-contrast"
+  ]
+ },
+ "errors": [
+  "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ],
+ "browser": "Microsoft Edge 155.0.4283.62",
+ "coreOutputClicks": {
+  "fromFreshLoad": 0,
+  "viaExplicitExampleButton": 1,
+  "sameAsDefault": true
+ },
+ "totalClicks": 3,
+ "checks": [
+  {
+   "name": "hyp pasted mu0",
+   "page": -9.508636077458798,
+   "R": -9.508636077458826,
+   "relErr": 2.9890416668464696e-15,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp pasted muSE0",
+   "page": 0.7330511498201082,
+   "R": 0.7330511498201305,
+   "relErr": 2.2315482794965646e-14,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp pasted mu1",
+   "page": -4.432438829506512,
+   "R": -4.4324388295065225,
+   "relErr": 2.4045771292884615e-15,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp pasted muSE1",
+   "page": 0.4681468666475189,
+   "R": 0.46814686664752525,
+   "relErr": 6.328271240363392e-15,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp pasted rho",
+   "page": 0.6749637386191288,
+   "R": 0.6749637386191483,
+   "relErr": 1.942890293094024e-14,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp pasted logLik",
+   "page": -36.69323643302986,
+   "R": -36.69323643302986,
+   "relErr": 0,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp sweep rhoW=-0.5 mu0",
+   "page": -9.948226255199907,
+   "R": -9.948226255199957,
+   "relErr": 4.9996843886827435e-15,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp sweep rhoW=-0.5 mu1",
+   "page": -4.707346906089957,
+   "R": -4.7073469060899535,
+   "relErr": 7.547167756436882e-16,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp sweep rhoW=0 mu0",
+   "page": -9.680248399508562,
+   "R": -9.6802483995086,
+   "relErr": 3.8535678102329384e-15,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp sweep rhoW=0 mu1",
+   "page": -4.530848906029645,
+   "R": -4.530848906029647,
+   "relErr": 3.9205828228707374e-16,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp sweep rhoW=0.5 mu0",
+   "page": -9.516990354112627,
+   "R": -9.516990354112634,
+   "relErr": 7.466044509050586e-16,
+   "tol": 0.000001,
+   "ok": true
+  },
+  {
+   "name": "hyp sweep rhoW=0.5 mu1",
+   "page": -4.440544142144854,
+   "R": -4.440544142144854,
+   "relErr": 0,
+   "tol": 0.000001,
+   "ok": true
+  }
+ ],
+ "totalClicksIncludingOwnData": 6,
+ "rhoWModeWithSixFields": {
+  "headline": "Enter ≥ 2 studies.",
+  "omitted": "k used = 0; 10 rows omitted: line 2 (variance must be > 0); line 3 (variance must be > 0); line 4 (variance must be > 0); line 5 (variance must be > 0); line 6 (variance must be > 0); line 7 (variance must be > 0); line 8 (variance must be > 0); line 9 (variance must be > 0); line 10 (variance must be > 0); line 11 (variance must be > 0).",
+  "firstRows": [],
+  "screenshot": "08_rhoW_mode_six_fields.png"
+ },
+ "figure2": {
+  "browser": "Microsoft Edge 155.0.4283.62",
+  "deviceScaleFactor": 3,
+  "data": "default page data (mvmeta berkey98, 5 trials)",
+  "hidden": "#hub-back",
+  "tableText": "PD | Multivariate (bivariate REML) | 0.353 [0.238, 0.469] | 0.0588 | 6.01 | <0.0001 | 0.01173 | 0.988\nPD | Univariate (REML, same studies) | 0.361 [0.245, 0.477] | 0.0592 | 6.09 | <0.0001 | 0.01187 | \nAL | Multivariate (bivariate REML) | -0.339 [-0.512, -0.167] | 0.0879 | -3.86 | 0.0001 | 0.03265 | 0.987\nAL | Univariate (REML, same studies) | -0.346 [-0.519, -0.172] | 0.0885 | -3.91 | <0.0001 | 0.03309 | ",
+  "sweepStatus": "Sweep complete: 19 of 19 ρw values fitted.",
+  "sweepTable": "-0.9\tok (rho-boundary)\t0.339 [0.240, 0.437]\t-0.296 [-0.467, -0.124]\t0.008548\t0.03512\t1.000\t4.272\n-0.8\tok (rho-boundary)\t0.338 [0.240, 0.436]\t-0.298 [-0.469, -0.126]\t0.008377\t0.03497\t1.000\t4.251\n-0.7\tok (rho-boundary)\t0.337 [0.239, 0.434]\t-0.300 [-0.472, -0.128]\t0.008204\t0.03484\t1.000\t4.224\n-0.6\tok (rho-boundary)\t0.336 [0.238, 0.433]\t-0.302 [-0.474, -0.129]\t0.008026\t0.03470\t1.000\t4.190\n-0.5\tok (rho-boundary)\t0.335 [0.238, 0.431]\t-0.304 [-0.476, -0.131]\t0.007839\t0.03457\t1.000\t4.147\n-0.4\tok\t0.334 [0.238, 0.431]\t-0.307 [-0.479, -0.134]\t0.007750\t0.03436\t0.989\t4.093\n-0.3\tok\t0.337 [0.238, 0.437]\t-0.312 [-0.484, -0.139]\t0.008204\t0.03388\t0.931\t4.037\n-0.2\tok\t0.340 [0.238, 0.442]\t-0.316 [-0.489, -0.144]\t0.008678\t0.03351\t0.876\t3.982\n-0.1\tok\t0.342 [0.238, 0.447]\t-0.321 [-0.493, -0.149]\t0.009173\t0.03322\t0.825\t3.928\n0\tok\t0.345 [0.238, 0.452]\t-0.325 [-0.498, -0.153]\t0.009693\t0.03300\t0.775\t3.874\n0.1\tok\t0.347 [0.238, 0.456]\t-0.330 [-0.502, -0.157]\t0.01024\t0.03285\t0.727\t3.820\n0.2\tok\t0.350 [0.238, 0.461]\t-0.334 [-0.506, -0.161]\t0.01083\t0.03274\t0.681\t3.765\n0.3\tok\t0.352 [0.238, 0.467]\t-0.338 [-0.510, -0.165]\t0.01145\t0.03270\t0.635\t3.709\n0.4\tok\t0.355 [0.238, 0.472]\t-0.341 [-0.514, -0.169]\t0.01211\t0.03270\t0.589\t3.651\n0.5\tok\t0.358 [0.239, 0.477]\t-0.345 [-0.518, -0.173]\t0.01282\t0.03277\t0.544\t3.593\n0.6\tok\t0.361 [0.239, 0.482]\t-0.349 [-0.522, -0.176]\t0.01358\t0.03290\t0.499\t3.533\n0.7\tok\t0.364 [0.239, 0.488]\t-0.353 [-0.526, -0.179]\t0.01438\t0.03309\t0.454\t3.472\n0.8\tok\t0.367 [0.240, 0.493]\t-0.356 [-0.530, -0.183]\t0.01523\t0.03335\t0.409\t3.411\n0.9\tok\t0.369 [0.241, 0.498]\t-0.360 [-0.534, -0.186]\t0.01610\t0.03367\t0.365\t3.348",
+  "headline": "k = 5 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 3.692",
+  "accessor": {
+   "mu": [
+    0.35342816963732965,
+    -0.3392151784592923
+   ],
+   "muSE": [
+    0.0588486314903215,
+    0.08790513609247724
+   ],
+   "rho": 0.608798682281344,
+   "logLik": 3.6917676943703244,
+   "plusKeys": null
+  }
+ }
+}

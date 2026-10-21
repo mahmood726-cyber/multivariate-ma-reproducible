@@ -1,0 +1,751 @@
+{
+  "paper": 18,
+  "original": {
+    "checks": 18684,
+    "passed": 18591,
+    "quantities": {
+      "G": {
+        "checks": 368,
+        "passed": 360
+      },
+      "accessor_G": {
+        "checks": 404,
+        "passed": 404
+      },
+      "accessor_k": {
+        "checks": 101,
+        "passed": 101
+      },
+      "accessor_logLik": {
+        "checks": 101,
+        "passed": 101
+      },
+      "accessor_mu": {
+        "checks": 202,
+        "passed": 202
+      },
+      "accessor_muSE": {
+        "checks": 202,
+        "passed": 202
+      },
+      "accessor_rho": {
+        "checks": 101,
+        "passed": 101
+      },
+      "api_refusal": {
+        "checks": 4,
+        "passed": 1
+      },
+      "app_keys": {
+        "checks": 1,
+        "passed": 1
+      },
+      "app_unique": {
+        "checks": 1,
+        "passed": 1
+      },
+      "ciLower": {
+        "checks": 182,
+        "passed": 178
+      },
+      "ciUpper": {
+        "checks": 182,
+        "passed": 178
+      },
+      "default_G": {
+        "checks": 4,
+        "passed": 0
+      },
+      "default_logLik": {
+        "checks": 1,
+        "passed": 0
+      },
+      "default_mu": {
+        "checks": 2,
+        "passed": 0
+      },
+      "default_muSE": {
+        "checks": 2,
+        "passed": 0
+      },
+      "default_rho": {
+        "checks": 1,
+        "passed": 0
+      },
+      "display_cards": {
+        "checks": 101,
+        "passed": 101
+      },
+      "display_headline": {
+        "checks": 101,
+        "passed": 101
+      },
+      "ellipse_in_viewport": {
+        "checks": 101,
+        "passed": 79
+      },
+      "ellipse_mahalanobis": {
+        "checks": 8100,
+        "passed": 8100
+      },
+      "ellipse_vertices": {
+        "checks": 101,
+        "passed": 101
+      },
+      "fit_status": {
+        "checks": 91,
+        "passed": 91
+      },
+      "focused_k": {
+        "checks": 10,
+        "passed": 9
+      },
+      "input_membership": {
+        "checks": 92,
+        "passed": 92
+      },
+      "k": {
+        "checks": 91,
+        "passed": 91
+      },
+      "logLik": {
+        "checks": 92,
+        "passed": 92
+      },
+      "m": {
+        "checks": 91,
+        "passed": 91
+      },
+      "mu": {
+        "checks": 184,
+        "passed": 182
+      },
+      "muSE": {
+        "checks": 184,
+        "passed": 180
+      },
+      "muVcov": {
+        "checks": 364,
+        "passed": 356
+      },
+      "outcome_labels": {
+        "checks": 1,
+        "passed": 0
+      },
+      "plot_study_coordinate": {
+        "checks": 6436,
+        "passed": 6436
+      },
+      "plot_study_count": {
+        "checks": 101,
+        "passed": 101
+      },
+      "reference_keys": {
+        "checks": 1,
+        "passed": 1
+      },
+      "reference_unique": {
+        "checks": 1,
+        "passed": 1
+      },
+      "refusal": {
+        "checks": 1,
+        "passed": 0
+      },
+      "rho": {
+        "checks": 79,
+        "passed": 77
+      },
+      "rho_undefined": {
+        "checks": 13,
+        "passed": 0
+      },
+      "schema": {
+        "checks": 101,
+        "passed": 101
+      },
+      "sd": {
+        "checks": 182,
+        "passed": 174
+      },
+      "svg_finite": {
+        "checks": 101,
+        "passed": 101
+      },
+      "ui_refusal": {
+        "checks": 4,
+        "passed": 2
+      },
+      "valid_capture": {
+        "checks": 101,
+        "passed": 101
+      }
+    },
+    "failures": [
+      [
+        "built-in-Berkey",
+        "default_G"
+      ],
+      [
+        "built-in-Berkey",
+        "default_G"
+      ],
+      [
+        "built-in-Berkey",
+        "default_G"
+      ],
+      [
+        "built-in-Berkey",
+        "default_G"
+      ],
+      [
+        "built-in-Berkey",
+        "default_logLik"
+      ],
+      [
+        "built-in-Berkey",
+        "default_mu"
+      ],
+      [
+        "built-in-Berkey",
+        "default_mu"
+      ],
+      [
+        "built-in-Berkey",
+        "default_muSE"
+      ],
+      [
+        "built-in-Berkey",
+        "default_muSE"
+      ],
+      [
+        "built-in-Berkey",
+        "default_rho"
+      ],
+      [
+        "focused::api-asymmetric",
+        "api_refusal"
+      ],
+      [
+        "focused::api-indefinite",
+        "api_refusal"
+      ],
+      [
+        "focused::api-nan",
+        "api_refusal"
+      ],
+      [
+        "focused::blank-number",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::comments",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::constant-effects",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::escaped-outcomes",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::escaped-outcomes",
+        "outcome_labels"
+      ],
+      [
+        "focused::indefinite",
+        "ui_refusal"
+      ],
+      [
+        "focused::negative-variance",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::nonfinite",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::numeric-junk",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::numeric-junk",
+        "focused_k"
+      ],
+      [
+        "focused::partial-outcome",
+        "ellipse_in_viewport"
+      ],
+      [
+        "focused::singular",
+        "ui_refusal"
+      ],
+      [
+        "focused::two-studies",
+        "ellipse_in_viewport"
+      ],
+      [
+        "metadat::dat.fine1993::month12+month18::REML::documented-covariance-raw",
+        "rho_undefined"
+      ],
+      [
+        "metadat::dat.fine1993::month12+month18::REML::documented-covariance-ridge",
+        "rho_undefined"
+      ],
+      [
+        "metadat::dat.fine1993::month18+month24::REML::documented-covariance-raw",
+        "refusal"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw",
+        "rho_undefined"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month12::REML::documented-covariance-ridge",
+        "rho_undefined"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month18::REML::documented-covariance-raw",
+        "rho_undefined"
+      ],
+      [
+        "metadat::dat.fine1993::month6+month18::REML::documented-covariance-ridge",
+        "rho_undefined"
+      ],
+      [
+        "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97",
+        "ellipse_in_viewport"
+      ],
+      [
+        "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::gliomas::month12+month18::REML::documented-AR1-0",
+        "rho_undefined"
+      ],
+      [
+        "mixmeta::gliomas::month12+month18::REML::documented-AR1-0.61",
+        "rho_undefined"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0",
+        "rho_undefined"
+      ],
+      [
+        "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61",
+        "rho_undefined"
+      ],
+      [
+        "mixmeta::gliomas::month6+month18::REML::documented-AR1-0",
+        "rho_undefined"
+      ],
+      [
+        "mixmeta::p53::y1+y2::REML::documented-rho-0.95",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::smoking::yB+yC::REML::supplied",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::smoking::yB+yC::REML::supplied",
+        "rho_undefined"
+      ],
+      [
+        "mixmeta::smoking::yB+yC::REML::supplied",
+        "sd"
+      ],
+      [
+        "mixmeta::smoking::yB+yC::REML::supplied",
+        "sd"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "ciLower"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "ciLower"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "ciUpper"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "ciUpper"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "mu"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "muSE"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "muSE"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "rho"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "sd"
+      ],
+      [
+        "mixmeta::smoking::yB+yD::REML::supplied",
+        "sd"
+      ],
+      [
+        "mixmeta::smoking::yC+yD::REML::supplied",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mvmeta::p53::y1+y2::REML::documented-rho-0.95",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mvmeta::smoking::yB+yC::REML::supplied",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mvmeta::smoking::yB+yC::REML::supplied",
+        "rho_undefined"
+      ],
+      [
+        "mvmeta::smoking::yB+yC::REML::supplied",
+        "sd"
+      ],
+      [
+        "mvmeta::smoking::yB+yC::REML::supplied",
+        "sd"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "G"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "ciLower"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "ciLower"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "ciUpper"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "ciUpper"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "ellipse_in_viewport"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "mu"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "muSE"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "muSE"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "muVcov"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "rho"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "sd"
+      ],
+      [
+        "mvmeta::smoking::yB+yD::REML::supplied",
+        "sd"
+      ],
+      [
+        "mvmeta::smoking::yC+yD::REML::supplied",
+        "ellipse_in_viewport"
+      ]
+    ]
+  },
+  "patched": {
+    "checks": 18682,
+    "passed": 18682,
+    "quantities": {
+      "G": {
+        "checks": 368,
+        "passed": 368
+      },
+      "accessor_G": {
+        "checks": 404,
+        "passed": 404
+      },
+      "accessor_k": {
+        "checks": 101,
+        "passed": 101
+      },
+      "accessor_logLik": {
+        "checks": 101,
+        "passed": 101
+      },
+      "accessor_mu": {
+        "checks": 202,
+        "passed": 202
+      },
+      "accessor_muSE": {
+        "checks": 202,
+        "passed": 202
+      },
+      "accessor_rho": {
+        "checks": 80,
+        "passed": 80
+      },
+      "accessor_rho_undefined": {
+        "checks": 21,
+        "passed": 21
+      },
+      "api_refusal": {
+        "checks": 4,
+        "passed": 4
+      },
+      "app_keys": {
+        "checks": 1,
+        "passed": 1
+      },
+      "app_unique": {
+        "checks": 1,
+        "passed": 1
+      },
+      "ciLower": {
+        "checks": 182,
+        "passed": 182
+      },
+      "ciUpper": {
+        "checks": 182,
+        "passed": 182
+      },
+      "default_G": {
+        "checks": 4,
+        "passed": 4
+      },
+      "default_logLik": {
+        "checks": 1,
+        "passed": 1
+      },
+      "default_mu": {
+        "checks": 2,
+        "passed": 2
+      },
+      "default_muSE": {
+        "checks": 2,
+        "passed": 2
+      },
+      "default_rho": {
+        "checks": 1,
+        "passed": 1
+      },
+      "display_cards": {
+        "checks": 101,
+        "passed": 101
+      },
+      "display_headline": {
+        "checks": 101,
+        "passed": 101
+      },
+      "ellipse_in_viewport": {
+        "checks": 101,
+        "passed": 101
+      },
+      "ellipse_mahalanobis": {
+        "checks": 8100,
+        "passed": 8100
+      },
+      "ellipse_vertices": {
+        "checks": 101,
+        "passed": 101
+      },
+      "fit_status": {
+        "checks": 91,
+        "passed": 91
+      },
+      "focused_k": {
+        "checks": 10,
+        "passed": 10
+      },
+      "input_membership": {
+        "checks": 92,
+        "passed": 92
+      },
+      "k": {
+        "checks": 91,
+        "passed": 91
+      },
+      "logLik": {
+        "checks": 92,
+        "passed": 92
+      },
+      "m": {
+        "checks": 91,
+        "passed": 91
+      },
+      "mu": {
+        "checks": 184,
+        "passed": 184
+      },
+      "muSE": {
+        "checks": 184,
+        "passed": 184
+      },
+      "muVcov": {
+        "checks": 364,
+        "passed": 364
+      },
+      "outcome_labels": {
+        "checks": 1,
+        "passed": 1
+      },
+      "plot_study_coordinate": {
+        "checks": 6434,
+        "passed": 6434
+      },
+      "plot_study_count": {
+        "checks": 101,
+        "passed": 101
+      },
+      "reference_keys": {
+        "checks": 1,
+        "passed": 1
+      },
+      "reference_unique": {
+        "checks": 1,
+        "passed": 1
+      },
+      "refusal": {
+        "checks": 1,
+        "passed": 1
+      },
+      "rho": {
+        "checks": 79,
+        "passed": 79
+      },
+      "rho_undefined": {
+        "checks": 13,
+        "passed": 13
+      },
+      "schema": {
+        "checks": 101,
+        "passed": 101
+      },
+      "sd": {
+        "checks": 182,
+        "passed": 182
+      },
+      "svg_finite": {
+        "checks": 101,
+        "passed": 101
+      },
+      "ui_refusal": {
+        "checks": 4,
+        "passed": 4
+      },
+      "valid_capture": {
+        "checks": 101,
+        "passed": 101
+      }
+    },
+    "failures": []
+  },
+  "configurations": 92,
+  "reference_fits": 91,
+  "reference_refusals": 1,
+  "candidate_datasets": 132,
+  "included_datasets": 22
+}

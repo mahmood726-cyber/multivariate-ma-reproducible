@@ -1,0 +1,293 @@
+Multivariate and Univariate Meta-Analysis and Meta-Regression
+
+Description:
+
+     The package 'mvmeta' consists of a collection of functions to
+     perform fixed and random-effects multivariate and univariate
+     meta-analysis and meta-regression in R.
+
+     It is now superseded by the package 'mixmeta', which offers a
+     unified mixed-effects framework to perform various meta-analytical
+     models in R, including non-standard extensions such as
+     multivariate, multilevel, longitudinal, and dose-response models.
+     The package 'mvmeta' will be still maintained, but its development
+     is now discontinued. Improvements and further extensions will be
+     implemented in 'mixmeta'. Users are suggested to switch to the
+     latter.
+
+Modelling framework:
+
+     Multivariate meta-analytical models represent an extension of the
+     standard univariate techniques, where estimates of a single effect
+     size, here defined generally as outcome, are pooled across
+     studies. In multivariate meta-analysis, estimates of multiple
+     outcomes are combined while accounting for their correlation.
+     Multivariate meta-regression also models such multivariate
+     distribution in terms of study-level predictors. These statistical
+     tools were originally proposed to model multiple endpoints in
+     clinical trials. Applications and methodological developments are
+     currently proposed also for network meta-analysis (indirect
+     treatment comparison), for the meta-analysis of multi-parameter
+     associations and for meta-analysis of diagnostic studies, among
+     others. See references below for details.
+
+     Similarly to univariate methods, fixed-effects models do not
+     assume heterogeneity among studies, and the estimates are
+     conditional on the set of studies collected in the meta-analysis,
+     based on a multivariate weighted average of study-level estimates.
+     Random-effects meta-analysis, instead, allows a degree of
+     heterogeneity among studies, assuming the (true but unobserved)
+     study-specific outcomes as randomly sampled from a multivariate
+     normal distribution of studies. Inference from these models may
+     therefore be extended to other unmeasured studies assumed to
+     belong to the same (usually hypothetical) population.
+
+     Estimation and interpretation exploit here the framework of linear
+     mixed models. The fixed part of the model provides an estimate of
+     fixed effects, which represent the population-averaged outcomes
+     and, in the case of meta-regression, are defined by a set of
+     coefficients associated to study-level predictors. The random part
+     of the model describes the deviation from the population averages,
+     estimating the components of a between-study (co)variance matrix.
+     Assuming k outcomes yi estimated in each of i = 1, ..., m studies,
+     and related to p study-level predictors xi, random-effects
+     multivariate meta-regression models can be generally described
+     with:
+
+                         yi ~ Nk(Xibeta , Si + Psi)                     
+     
+     Here the outcomes yi are assumed to be sampled from a multivariate
+     normal distribution of order k. Their distribution is centred on
+     Xibeta, with Xi as a k x kp design matrix and beta the vector of
+     fixed-effects coefficients. The marginal k x k (co)variance matrix
+     Sigmai = Si + Psi is given by the sum of within (assumed known)
+     and between-study (co)variance matrices Si and Psi, respectively.
+
+     Other models are taken as special cases of that above. In
+     multivariate meta-analysis, Xi becomes an identity matrix with
+     p=1, and beta reduces to k intercepts, interpreted as the
+     population-averaged outcomes. For k=1, the model reduces to the
+     standard univariate meta-analysis or meta-regression. In
+     fixed-effects meta-analytic models, Psi is assumed not to exist,
+     and the variability between studies is due exclusively to the
+     within-study estimation error.
+
+Estimation methods:
+
+     The aim is to estimate the coefficients beta and, for
+     random-effects models, the components of the between-study
+     (co)variance matrix Psi. If the same linear predictor of p terms
+     xi measured in each study is specified for all the outcomes (the
+     only option available in the current version), the dimension of
+     beta is kp. The parameters for the random part depend on the
+     chosen structure of the between-study (co)variance matrix Psi,
+     with k(k+1)/2 parameters for an unstructured form, and a smaller
+     set of parameters for structured (co)variances.
+
+     Different estimator are implemented in the package 'mvmeta'. The
+     estimation options available in the current version are:
+
+        * *Fixed-effects*
+
+        * *Maximum likelihood* (ML)
+
+        * *Restricted maximum likelihood* (REML)
+
+        * *Method of moments*
+
+        * *Variance components*
+
+     The fixed-effects model is fitted through generalized least
+     squares (GLS), assuming the (co)variance structure, composed by
+     the within-study error only, as completely known. Among
+     random-effects models, ML and REML approaches provides fit
+     criteria and inferential test derived from likelihood theory, such
+     as AIC and likelihood ratio test. However, they are based on
+     computationally intensive iterative procedures of optimization,
+     and convergence can be slow for high-dimensional models (with a
+     high number of outcomes). Estimators based on semiparametric
+     alternatives such as the non-iterative method of moments or the
+     iterative variance components approach are generally faster.
+     Further details on estimation methods are given in the related
+     help pages.
+
+Functions and data included in the package:
+
+     The main function in the package is 'mvmeta', which performs the
+     various models illustrated above. This function resembles standard
+     regression functions in R, and specifies the model through a
+     regression formula. The function returns a list object of class
+     '"mvmeta"' (see 'mvmetaObject').
+
+     The estimation is carried out internally through 'mvmeta.fit', a
+     wrapper which prepares the data and calls specific estimation
+     functions for fitting the models. Specifically, 'mvmeta.fixed' is
+     applied for fixed-effects models, while estimators for
+     random-effects models are implemented in the functions 'mvmeta.ml'
+     and 'mvmeta.reml' for (restricted) maximum likelihood, 'mvmeta.mm'
+     for the method of moments, and 'mvmeta.vc' for variance
+     components. For likelihood-based methods, iterative 'optimizations
+     algorithms' are used for maximizing the (restricted) likelihood,
+     and specific '(co)variance structures' for the between-study
+     random effects are available. Fitting parameter options are set by
+     'mvmeta.control'.
+
+     Method functions are available for objects of class '"mvmeta"'
+     (see 'mvmetaObject' for a complete list). The method 'summary'
+     produces a list of class '"summary.mvmeta"' for summarizing the
+     fit of the model and providing additional results. The method
+     function 'predict' computes predicted values, optionally for a set
+     of new values of the predictors. 'blup' gives the (empirical) best
+     linear unbiased predictions for the set of studies used for
+     estimation. Other default or specific method functions for
+     regression can be used on objects of class '"mvmeta"', such as
+     'fitted' and 'residuals', 'logLik', 'AIC' and 'BIC', among others.
+
+     Methods for 'model.frame' and 'model.matrix' are used to extract
+     and construct the model frame and the design matrix of the
+     regression meta-analytical model, respectively. Methods for
+     'na.omit' and 'na.exclude' help handle correctly missing values.
+
+     Simulations can be produced using the function 'mvmetaSim' and the
+     method function 'simulate', which return one or multiple sets of
+     simulated outcomes for a group of studies. The function 'inputna'
+     and 'inputcov' are used internally to augment the missing data
+     values and to input missing correlations, respectively.
+
+     The method function 'qtest.mvmeta' (producing an object with class
+     of the same name) performs the (multivariate) Cochran Q test for
+     (residual) heterogeneity, both on the overall multivariate
+     distribution and on each single outcome. The generic method
+     function is 'qtest'.
+
+     Printing functions for the objects of classes defined above are
+     also provided. Other functions are used internally in the source
+     code, and not exported in the namespace. For users interested in
+     getting into details of the package structure, these functions can
+     be displayed using the triple colon ('':::'') operator. For
+     instance, 'mvmeta:::glsfit' displays the code of the function
+     'glsfit'. Also, some comments are added in the original source
+     code.
+
+     The package includes the datasets 'berkey98', 'fibrinogen',
+     'hsls', 'hyp', 'p53' and 'smoking' as data frames, which are used
+     in the examples.
+
+Additional information:
+
+     A list of changes included in the current and previous versions
+     can be found by typing:
+
+     'file.show(system.file("ChangeLog",package="mvmeta"))'
+
+     General information on the development and applications of the
+     'mvmeta' package and on the modelling framework of multivariate
+     meta-analysis, together with an updated version of the R scripts
+     for running the examples in published papers, can be found at
+     *www.ag-myresearch.com*.
+
+Warnings:
+
+     This release of the package 'mvmeta' has been tested with
+     different simulated and real datasets. The functions generally
+     perform well under several scenarios, and comparisons with
+     alternative software implementations show good agreement. However,
+     bugs and bad performance under un-tested conditions may not be
+     excluded. Please report any error or unexpected behaviour to the
+     e-mail address below.
+
+Note:
+
+     The functions included in the package 'mvmeta' may be applied also
+     to perform standard univariate meta-analysis and meta-regression.
+     However, alternative packages provides a more exhaustive and
+     efficient set of functions. See for example the packages
+     'metafor', 'meta', 'rmeta' and 'metaLik', among others.
+
+     Functions for fitting multivariate models are available in other R
+     packages. The package 'metafor' provides functions to perform
+     fixed or random-effects multivariate models, the latter fitted
+     through maximum or restricted maximum likelihood. A thorough
+     comparison with the implementation offered in 'mvmeta' is not
+     available yet. The package 'metaSEM' (not in CRAN) offers
+     functions to perfor fixed-effects and likelihood-based
+     random-effects multivariate meta-analysis through structural
+     equation modelling. The package 'mvtmeta' performs fixed-effects
+     and random-effects multivariate meta-analysis using the same
+     method of moments estimator adopted here, although without
+     allowing for missing outcomes or meta-regression. The package
+     'mada' contains functions for bivariate models used in diagnostic
+     studies.
+
+     Use 'citation("mvmeta")' to cite this package.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+     White IR (2009). Multivariate random-effects meta-analysis. _Stata
+     Journal_. *9*(1):40-56.
+
+     Jackson D, Riley R, White IR (2011). Multivariate meta-analysis:
+     Potential and promise. _Statistics in Medicine_.
+     *30*(20);2481-2498.
+
+     White IR (2011). Multivariate random-effects meta-regression:
+     updates to mvmeta. _Stata Journal_. *11*(2):255-270.
+
+     van Houwelingen HC, Arends LR, et al. (2002). Advanced methods in
+     meta-analysis: multivariate approach and meta-regression.
+     _Statistics in Medicine_. *21*(4):589-624.
+
+     Lu G, Ades AE (2004). Combination of direct and indirect evidence
+     in mixed treatment comparisons. _Statistics in Medicine_.
+     *23*(20):3105-3124.
+
+     Nam IS, Mengersen K, et al. (2003). Multivariate meta-analysis.
+     _Statistics in Medicine_. *22*(14):2309-2333.
+
+     Arends LR, Voko Z, Stijnen T (2003). Combining multiple outcome
+     measures in a meta-analysis: an application. _Statistics in
+     Medicine_. *22*(8):1335-1353.
+
+     Ritz J, Demidenko E, Spiegelman G (2008). Multivariate
+     meta-analysis for data consortia, individual patient
+     meta-analysis, and pooling projects. _Journal of Statistical
+     Planning and Inference_. *139*(7):1919-1933.
+
+     Berkey, CS, Anderson JJ, Hoaglin DC (1996). Multiple-outcome
+     meta-analysis of clinical trials. _Statistics in Medicine_.
+     *15*(5):537-547.
+
+     Berkey, CS, Hoaglin DC, et al. (1998). Meta-analysis of multiple
+     outcomes by regression with random effects. _Statistics in
+     Medicine_. *17*(22):2537-2550.
+
+     Jackson D, White IR, Riley RD (2013). A matrix based method of
+     moments for fitting the multivariate random effects model for
+     meta-analysis and meta-regression. _Biometrical Journal_.
+     *55*(2):231-245.
+
+     Chen H, Manning AK, Dupuis J (2012). A method of moments estimator
+     for random effect multivariate meta-analysis. _Biometrics_.
+     *68*(4):1278-1284.
+
+     Cheung MWL, Chan W (2009). A two-stage approach to synthesizing
+     covariance matrices in meta-analytic structural equation modeling.
+     _Structural Equation Modeling_. *16*(1):28-53.
+
+     Doebler P, Holling H, Bohning D (2012). A mixed model approach to
+     meta-analysis of diagnostic studies with binary test outcome.
+     _Psychological Methods_. *17*(3):418-36.
+

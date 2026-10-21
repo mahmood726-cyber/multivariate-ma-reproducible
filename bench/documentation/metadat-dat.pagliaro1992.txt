@@ -1,0 +1,97 @@
+Studies on the Effectiveness of Nonsurgical Treatments in Cirrhosis
+
+Description:
+
+     Results from 26 trials examining the effectiveness of
+     beta-blockers and sclerotherapy for the prevention of first
+     bleeding in patients with cirrhosis
+
+Usage:
+
+     dat.pagliaro1992
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*  'numeric'    study id                                        
+       *trt*    'character'  either beta-blockers, sclerotherapy, or control 
+       *xi*     'numeric'    number of patients with first bleeding          
+       *ni*     'numeric'    number of patients treated                      
+      
+Details:
+
+     The dataset includes the results from 26 randomized controlled
+     trials examining the effectiveness of nonsurgical treatments for
+     the prevention of first bleeding in patients with cirrhosis.
+     Patients were either treated with beta-blockers, endoscopic
+     sclerotherapy, or with a nonactive treatment (control). Two trials
+     included all three treatment conditions, 7 trials compared
+     beta-blockers against control, and 17 trials compared
+     sclerotherapy against control. The dataset has been used in
+     various papers to illustrate methods for conducting a network
+     meta-analysis / mixed treatment comparison.
+
+Concepts:
+
+     medicine, odds ratios, Mantel-Haenszel method, network
+     meta-analysis
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Pagliaro, L., D'Amico, G., Soerensen, T. I. A., Lebrec, D.,
+     Burroughs, A. K., Morabito, A., Tine, F., Politi, F., & Traina, M.
+     (1992). Prevention of first bleeding in cirrhosis: A meta-analysis
+     of randomized trials of nonsurgical treatment. _Annals of Internal
+     Medicine_, *117*(1), 59-70.
+     https://doi.org/10.7326/0003-4819-117-1-59
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.pagliaro1992
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### restructure dataset to a contrast-based format
+     dat.c <- to.wide(dat, study="study", grp="trt", grpvars=3:4)
+     dat.c
+     
+     ### Mantel-Haenszel results for beta-blockers and sclerotherapy versus control, respectively
+     rma.mh(measure="OR", ai=xi.1, n1i=ni.1, ci=xi.2, n2i=ni.2,
+            data=dat.c, subset=(trt.1=="beta-blockers"), digits=2)
+     rma.mh(measure="OR", ai=xi.1, n1i=ni.1, ci=xi.2, n2i=ni.2,
+            data=dat.c, subset=(trt.1=="sclerotherapy"), digits=2)
+     
+     ### calculate log odds for each study arm
+     dat <- escalc(measure="PLO", xi=xi, ni=ni, data=dat)
+     dat
+     
+     ### turn treatment variable into factor and set reference level
+     dat$trt <- relevel(factor(dat$trt), ref="control")
+     
+     ### add a space before each level (this makes the output a bit more legible)
+     levels(dat$trt) <- paste0(" ", levels(dat$trt))
+     
+     ### network meta-analysis using an arm-based random-effects model with fixed study effects
+     ### (by setting rho=1/2, tau^2 reflects the amount of heterogeneity for all treatment comparisons)
+     res <- rma.mv(yi, vi, mods = ~ 0 + factor(study) + trt, random = ~ trt | study, rho=1/2, data=dat)
+     res
+     
+     ### average odds ratio comparing beta-blockers and sclerotherapy versus control, respectively
+     predict(res, newmods=c(rep(0,26), 1, 0), transf=exp, digits=2)
+     predict(res, newmods=c(rep(0,26), 0, 1), transf=exp, digits=2)
+     
+     ### average odds ratio comparing beta-blockers versus sclerotherapy
+     predict(res, newmods=c(rep(0,26), 1, -1), transf=exp, digits=2)
+     ## End(Not run)
+     

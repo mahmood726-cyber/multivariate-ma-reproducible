@@ -1,0 +1,66 @@
+Studies on the Effectiveness of Injected Cholera Vaccines
+
+Description:
+
+     Results from 17 studies on the effectiveness of injected vaccines
+     against cholera.
+
+Usage:
+
+     dat.graves2010
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*  'character'  author/study name and publication year          
+       *ai*     'numeric'    number of cholera cases in the vaccinated group 
+       *n1i*    'numeric'    number of individuals in the vaccinated group   
+       *ci*     'numeric'    number of cholera cases in the placebo group    
+       *n2i*    'numeric'    number of individuals in the placebo group      
+      
+Details:
+
+     Cholera is an infection caused by certain strains of the bacterium
+     _Vibrio cholerae_. When untreated, mortality rates can be as high
+     as 50-60%. Proper sanitation practices are usually effective in
+     preventing outbreaks, but a number of oral and injectable vaccines
+     have also been developed. The Cochrane review by Graves et al.
+     (2010) examined the effectiveness of injectable vaccines for
+     preventing cholera cases and death. The present dataset includes
+     results from 17 studies that reported the number of cholera cases
+     in vaccinated and placebo/comparison groups up to 7 months after
+     the treatment.
+
+Concepts:
+
+     medicine, risk ratios, Mantel-Haenszel method
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Graves, P. M., Deeks, J. J., Demicheli, V., & Jefferson, T.
+     (2010). Vaccines for preventing cholera: Killed whole cell or
+     other subunit vaccines (injected). _Cochrane Database of
+     Systematic Reviews_, *8*, CD000974.
+     https://doi.org/10.1002/14651858.CD000974.pub2
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.graves2010
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### analysis using the Mantel-Haenszel method
+     rma.mh(measure="RR", ai=ai, n1i=n1i, ci=ci, n2i=n2i, data=dat, digits=2)
+     ## End(Not run)
+     

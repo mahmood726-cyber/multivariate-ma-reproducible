@@ -1,0 +1,62 @@
+Best Linear Unbiased Predictions
+
+Description:
+
+     This is a generic function for generating best linear unbiased
+     predictions (BLUPs) from the results of various fitting functions
+     for meta-analytical models. The function invokes particular
+     methods which depend on the 'class' of the first argument.
+     Currently, specific methods exist for several meta-analytical
+     models in various packages: 'blup.mixmeta', 'blup.rma.uni',
+     'blup.mvmeta', and 'blup.dosresmeta'.
+
+Usage:
+
+     blup(object, ...)
+     
+Arguments:
+
+  object: a model object for which BLUPs are desired.
+
+     ...: further arguments passed to or from other methods.
+
+Details:
+
+     The generic method function 'blup' calls specific method functions
+     to produces (empirical) best linear unbiased predictions (BLUPs)
+     from model objects.
+
+     These predictions are a shrunk version of unit-specific
+     realizations, where unit-specific estimates borrow strength from
+     the assumption of an underlying (potentially multivariate)
+     distribution in a (usually hypothetical) population. The amount of
+     shrinkage depends from the relative size of the within and
+     between-unit covariance matrices.
+
+Value:
+
+     The form of the value returned by 'blup' depends on the class of
+     its argument. See the documentation of the particular methods for
+     details of what is produced by that method. Usually, the results
+     consist of point estimates of BLUPs and optionally some measure of
+     their uncertainty.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>> and
+     Francesco Sera <<mailto:francesco.sera@lshtm.ac.uk>>
+
+References:
+
+     Verbeke G, Molenberghs G. _Linear Mixed Models for Longitudinal
+     Data_. Springer; 1997.
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+See Also:
+
+     Specific methods for various classes: 'blup.mixmeta',
+     'blup.rma.uni', 'blup.mvmeta', and 'blup.dosresmeta'.
+

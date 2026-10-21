@@ -1,0 +1,140 @@
+Studies on the Generation Effect
+
+Description:
+
+     Results from 126 articles that examined the so-called 'generation
+     effect'.
+
+Usage:
+
+     dat.mccurdy2020
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *article*           'numeric'    article identifier                                                                                                                     
+       *experiment*        'character'  experiment (within article) identifier                                                                                                 
+       *sample*            'numeric'    sample (within experiment) identifier                                                                                                  
+       *id*                'numeric'    row identifier                                                                                                                         
+       *pairing*           'numeric'    identifier to indicate paired conditions within experiments                                                                            
+       *yi*                'numeric'    mean recall rate for the condition                                                                                                     
+       *vi*                'numeric'    corresponding sampling variance                                                                                                        
+       *ni*                'numeric'    number of participants for the condition                                                                                               
+       *stimuli*           'numeric'    number of stimuli for the condition                                                                                                    
+       *condition*         'factor'     condition ('read' or 'generate')                                                                                                       
+       *gen_difficulty*    'factor'     generation difficulty ('low' or 'high')                                                                                                
+       *manip_type*        'factor'     manipulation type of the generate versus read condition (using a 'within' or 'between' subjects design)                                
+       *present_style*     'factor'     presentation style ('mixed' or 'pure' list presentation)                                                                               
+       *word_status*       'factor'     word status ('words', 'non-words', or 'numbers')                                                                                       
+       *memory_test*       'factor'     memory test ('recognition', 'cued recall', or 'free recall')                                                                           
+       *memory_type*       'factor'     memory type ('item', 'source', 'font color', 'font type', 'order', 'cue word', 'background color', or 'location')                      
+       *gen_constraint*    'factor'     generation constraint ('low', 'medium', or 'high')                                                                                     
+       *learning_type*     'factor'     learning type ('incidental' or 'intentional')                                                                                          
+       *stimuli_relation*  'factor'     stimuli relation ('semantic', 'category', 'antonym', 'synonym', 'rhyme', 'compound words', 'definitions', or 'unrelated')              
+       *gen_mode*          'factor'     generation mode ('verbal/speaking', 'covert/thinking', or 'writing/typing')                                                            
+       *gen_task*          'factor'     generation task ('anagram', 'letter transposition', 'word fragment', 'sentence completion', 'word stem', 'calculation', or 'cue only') 
+       *attention*         'factor'     attention ('divided' or 'full')                                                                                                        
+       *pacing*            'factor'     pacing ('self-paced' or 'timed')                                                                                                       
+       *filler_task*       'factor'     filler task ('yes' or 'no')                                                                                                            
+       *age_grp*           'factor'     age group ('younger' or 'older' adults)                                                                                                
+       *retention_delay*   'factor'     retention delay ('immediate', 'short', or 'long')                                                                                      
+      
+Details:
+
+     The generation effect is the memory benefit for self-generated
+     compared with read or experimenter-provided information (Jacoby,
+     1978; Slamecka & Graf, 1978). In a typical study, participants are
+     presented with a list of stimuli (usually words or word pairs).
+     For half of the stimuli, participants self-generate a target word
+     (e.g., open<e2><80><93>cl____), while for the other half, participants simply
+     read an intact target word (e.g., above<e2><80><93>below). On a later memory
+     test for the target words, the common finding is that
+     self-generated words are better remembered than read words (i.e.,
+     the generation effect).
+
+     Although several theories have been proposed to explain the
+     generation effect, there is still some debate on the underlying
+     memory mechanism(s) contributing to this phenomenon. The
+     meta-analysis by McCurdy et al. (2020) translated various theories
+     on the generation effect into hypotheses that could then be tested
+     in moderator analyses based on a dataset containing 126 articles,
+     310 experiments, and 1653 mean recall estimates collected under
+     various conditions.
+
+     Detailed explanations of the various variables coded (and how
+     these can be used to test various hypotheses regarding the
+     generation effect) can be found in the article. The most important
+     variable is 'condition', which denotes whether a particular row of
+     the dataset corresponds to the results of a 'read' or a 'generate'
+     condition.
+
+     The data structure is quite complex. Articles may have reported
+     the findings from multiple experiments involving one or multiple
+     samples that were examined under various conditions. The 'pairing'
+     variable indicates which rows of the dataset represent a pairing
+     of a read condition with one or multiple corresponding generate
+     conditions within an experiment. A pairing may involve the same
+     sample of subjects (when using a within-subjects design for
+     comparing the conditions) or different samples (when using a
+     between-subjects design).
+
+Concepts:
+
+     psychology, memory, proportions, raw means, multilevel models,
+     cluster-robust inference
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     McCurdy, M. P., Viechtbauer, W., Sklenar, A. M., Frankenstein, A.
+     N., & Leshikar, E. D. (2020). Theories of the generation effect
+     and the impact of generation constraint: A meta-analytic review.
+     _Psychonomic Bulletin & Review_, *27*(6), 1139-1165.
+     https://doi.org/10.3758/s13423-020-01762-3
+
+References:
+
+     Slamecka, N. J., & Graf, P. (1978). The generation effect:
+     Delineation of a phenomenon. _Journal of Experimental Psychology:
+     Human Learning and Memory_, *4*(6), 592-604.
+     https://doi.org/10.1037/0278-7393.4.6.592
+
+     Jacoby, L. L. (1978). On interpreting the effects of repetition:
+     Solving a problem versus remembering a solution. _Journal of
+     Verbal Learning and Verbal Behavior_, *17*(6), 649-668.
+     https://doi.org/10.1016/S0022-5371(78)90393-6
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.mccurdy2020
+     head(dat)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### fit multilevel mixed-effects meta-regression model
+     res <- rma.mv(yi, vi, mods = ~ condition,
+                   random = list(~ 1 | article/experiment/sample/id, ~ 1 | pairing),
+                   data=dat, sparse=TRUE, digits=3)
+     res
+     
+     ### proportion of total amount of heterogeneity due to each component
+     data.frame(source=res$s.names, sigma2=round(res$sigma2, 3),
+        prop=round(res$sigma2 / sum(res$sigma2), 2))
+     
+     ### apply cluster-robust inference methods
+     sav <- robust(res, cluster=article, clubSandwich=TRUE)
+     sav
+     
+     ### estimated average recall rate in read and generate conditions
+     predict(sav, newmods = c(0,1), digits=3)
+     ## End(Not run)
+     

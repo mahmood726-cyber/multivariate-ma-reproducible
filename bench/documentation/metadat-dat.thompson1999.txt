@@ -1,0 +1,77 @@
+Trials on Serum Cholesterin Concentration Lowering and Risk of
+Ischaemic Heart Disease
+
+Description:
+
+     Results from 28 trials evaluating effect of serum cholesterin
+     concentration lowering on risk of ischaemic heart disease
+
+Usage:
+
+     dat.thompson1999
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *studyid*     'integer'  study ID                                          
+       *ihd.cont*    'integer'  number of ischaemic heart disease (control group) 
+       *noihd.cont*  'integer'  number of non-events (control group)              
+       *ihd.exp*     'integer'  number of ischaemic heart disease (treated group) 
+       *noihd.exp*   'integer'  number of non-events (treated group)              
+       *OR*          'numeric'  odds ratio                                        
+       *logOR*       'numeric'  log odds ratio                                    
+       *varlogOR*    'numeric'  variance of log odds ratio                        
+       *cholr*       'numeric'  cholesterol reduction (mmol/l)                    
+      
+Details:
+
+     Thompson and Sharp (1999) compare several meta-regression
+     approaches to explain heterogeneity in meta-analysis. The data set
+     used is originally from Law et al. (1994), but with minor
+     modifications.
+
+Concepts:
+
+     medicine, cardiology, odds ratios, meta-regression
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Thompson, S. G., & Sharp, S. J. (1999). Explaining heterogeneity
+     in meta-analysis: A comparison of methods. _Statistics in
+     Medicine_, *18*(20), 2693-2708.
+     https://doi.org/10.1002/(sici)1097-0258(19991030)18:20<2693::aid-sim235>3.0.co;2-v
+
+References:
+
+     Law, M. R., Wald, N. J., & Thompson, S. G. (1994). By how much and
+     how quickly does reduction in serum cholesterol concentration
+     lower risk of ischaemic heart disease? _British Medical Journal_,
+     *308*(6925), 367-372. https://doi.org/10.1136/bmj.308.6925.367
+
+Examples:
+
+     ### Show first five studies
+     head(dat.thompson1999, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Conduct meta-analysis
+     m <- metabin(ihd.exp, ihd.exp + noihd.exp, ihd.cont, ihd.cont + noihd.cont,
+       data = dat.thompson1999, sm = "OR", method = "Inverse")
+     
+     ### Thompson & Sharp (1999), Table III
+     ### (1) None
+     metareg(m, cholr, method.tau = "FE")
+     ### (3a) Additive (MM)
+     metareg(m, cholr, method.tau = "DL")
+     ## End(Not run)
+     

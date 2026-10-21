@@ -1,0 +1,170 @@
+Example Data for the Meta-Analysis of Significance Values
+
+Description:
+
+     A collection of datasets for illustrating the meta-analysis of
+     significance values (i.e., methods for combining p-values from
+     tests of significance).
+
+Usage:
+
+     dat.metap
+     
+Format:
+
+     A list with the following elements:
+
+     'beckerp'
+          A numeric vector with 5 hypothetical p-values
+
+     'cholest'
+          A data frame with 34 observations on the following 5
+          variables:
+
+            *ntreat*    'numeric'  number of patients in the treated group 
+            *ncontrol*  'numeric'  number of patients in the control group 
+            *dtreat*    'numeric'  number of deaths in the treated group   
+            *dcontrol*  'numeric'  number of deaths in the control group   
+            *p*         'numeric'  one-sided p-values                      
+           
+     'edgington'
+          A vector of with 7 hypothetical p-values
+
+     'mourning'
+          A data frame with 9 observations on the following 3
+          variables:
+
+            *stance*  'character'  character variable with levels 'No stand', 'Opponent', 'Supporter' 
+            *grade*   'character'  character variable with levels 'G11-12', 'G7-8', 'G9-10'           
+            *p*       'numeric'    p-values                                                           
+           
+     'naep'
+          A data frame with 34 observations on the following 2
+          variables:
+
+            *state*  'character'  character variable with two-letter US state names 
+            *p*      'numeric'    p-values                                          
+           
+     'rosenthal'
+          A data frame with 5 observations on the following 3
+          variables:
+
+            *t*   'numeric'  t-statistics       
+            *df*  'numeric'  degrees of freedom 
+            *p*   'numeric'  one-sided p-values 
+           
+     'teachexpect'
+          A vector of 19 p-values
+
+     'validity'
+          A data frame with 20 observations on the following 3
+          variables:
+
+            *n*  'numeric'  sample sizes             
+            *r*  'numeric'  correlation coefficients 
+            *p*  'numeric'  one-sided p-values       
+           
+     'zhang'
+          A data frame with 22 observations on the following 11
+          variables:
+
+            *study*   'character'  study names                                        
+            *smd*     'numeric'    standardized mean differences                      
+            *lo*      'numeric'    lower confidence interval limits                   
+            *hi*      'numeric'    upper confidence interval limits                   
+            *ntreat*  'numeric'    treated group sample sizes                         
+            *ncont*   'numeric'    control group sample sizes                         
+            *n*       'numeric'    total sample sizes                                 
+            *phase*   'factor'     phase the patients were in: acute, healing, healed 
+            *sd*      'numeric'    the calculated standard deviations                 
+            *z*       'numeric'    the calculated z-values                            
+            *p*       'numeric'    one-sided p-values                                 
+           
+Details:
+
+     'beckerp'
+          Hypothetical p-values from Becker (1994).
+
+     'cholest'
+          Trials of interventions for cholesterol lowering from Sutton
+          et al. (2000).
+
+     'edgington'
+          Hypothetical p-values from Edgington (1972).
+
+     'mourning'
+          Results from a study of mourning practices of Israeli youth
+          following the assassination of Itzakh Rabin from Benjamini
+          and Hochberg (2000).
+
+     'naep'
+          Results of mathematical achievement scores from the National
+          Assessment of Educational Progress from Benjamini and
+          Hochberg (2000).
+
+     'rosenthal'
+          Hypothetical example from Rosenthal (1978).
+
+     'teachexpect'
+          p-values from studies of the effect of manipulating teacher
+          expectancy on student IQ from Becker (1994).
+
+     'validity'
+          Data from studies of validity of student ratings of their
+          instructors from Becker (1994) including correlations and
+          sample sizes as well as p-values.
+
+     'zhang'
+          Data from trials of exercise training for patients with
+          cardiovascular disease from Zhang et al. (2016).
+
+Concepts:
+
+     combining p-values
+
+Note:
+
+     The p-values in 'cholest' have been re-calculated from other data
+     given in the book and so are of higher accuracy than the ones
+     given in the book which are only to two decimal places.
+
+Author(s):
+
+     Michael Dewey
+
+References:
+
+     Becker, B. J. (1994). Combining significance levels. In H. Cooper
+     & L. V. Hedges (Eds.), _The handbook of research synthesis_ (pp.
+     215<e2><80><93>230). New York: Russell Sage Foundation.
+
+     Benjamini, Y., & Hochberg, Y. (2000). On the adaptive control of
+     the false discovery rate in multiple testing with independent
+     statistics. _Journal of Educational and Behavioral Statistics_,
+     *25*(1), 60-83. https://doi.org/10.3102/10769986025001060
+
+     Edgington, E. S. (1972). An additive method for combining
+     probability values from independent experiments. _Journal of
+     Psychology_, *80*(2), 351-363.
+     https://doi.org/10.1080/00223980.1972.9924813
+
+     Rosenthal, R. (1978). Combining results of independent studies.
+     _Psychological Bulletin_, *85*(1), 185-193.
+     https://doi.org/10.1037/0033-2909.85.1.185
+
+     Sutton, A. J., Abrams, K. R., Jones, D. R., Sheldon, T. A., &
+     Song, F. (2000). _Methods for meta-analysis in medical research_.
+     Chichester, UK: Wiley.
+
+     Zhang, Y.-M., Lu, Y., Tang, Y., Yang, D., Wu, H.-F., Bian, Z.-P.,
+     Xu, J.-D., Gu, C.-R., Wang, L.-S., & Chen, X.-J. (2016). The
+     effects of different initiation time of exercise training on left
+     ventricular remodeling and cardiopulmonary rehabilitation in
+     patients with left ventricular dysfunction after myocardial
+     infarction. _Disability and Rehabilitation_, *38*(3), 268-276.
+     https://doi.org/10.3109/09638288.2015.1036174
+
+Examples:
+
+     dat.metap
+     

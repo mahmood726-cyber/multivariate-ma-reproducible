@@ -1,0 +1,107 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+R version 4.6.0 (2026-04-24 ucrt) 
+[1] "<R_LIBS>"
+[2] "<R_LIBS_USER>"  
+[3] "<R_HOME>/library"         
+mvmeta 1.0.3 
+mixmeta 1.2.2 
+metafor 5.2.1 
+metadat 1.6.0 
+jsonlite 2.0.0 
+1 mvmeta::berkey98::PD+AL::REML::supplied ok  
+2 mvmeta::fibrinogen::b2+b3::REML::supplied ok  
+3 mvmeta::fibrinogen::b2+b4::REML::supplied ok  
+4 mvmeta::fibrinogen::b2+b5::REML::supplied ok  
+5 mvmeta::fibrinogen::b3+b4::REML::supplied ok  
+6 mvmeta::fibrinogen::b3+b5::REML::supplied ok  
+7 mvmeta::fibrinogen::b4+b5::REML::supplied ok  
+8 mvmeta::hsls::b1+b2::REML::supplied ok  
+9 mvmeta::hsls::b1+b3::REML::supplied ok  
+10 mvmeta::hsls::b2+b3::REML::supplied ok  
+11 mvmeta::hyp::sbp+dbp::REML::supplied ok  
+12 mvmeta::p53::y1+y2::REML::documented-rho-0.95 ok  
+13 mvmeta::smoking::yB+yC::REML::supplied ok  
+14 mvmeta::smoking::yB+yD::REML::supplied ok  
+15 mvmeta::smoking::yC+yD::REML::supplied ok  
+16 mixmeta::berkey98::PD+AL::REML::supplied ok  
+17 mixmeta::fibrinogen::b2+b3::REML::supplied ok  
+18 mixmeta::fibrinogen::b2+b4::REML::supplied ok  
+19 mixmeta::fibrinogen::b2+b5::REML::supplied ok  
+20 mixmeta::fibrinogen::b3+b4::REML::supplied ok  
+21 mixmeta::fibrinogen::b3+b5::REML::supplied ok  
+22 mixmeta::fibrinogen::b4+b5::REML::supplied ok  
+23 mixmeta::hsls::b1+b2::REML::supplied ok  
+24 mixmeta::hsls::b1+b3::REML::supplied ok  
+25 mixmeta::hsls::b2+b3::REML::supplied ok  
+26 mixmeta::hyp::sbp+dbp::REML::supplied ok  
+27 mixmeta::p53::y1+y2::REML::documented-rho-0.95 ok  
+28 mixmeta::smoking::yB+yC::REML::supplied ok  
+29 mixmeta::smoking::yB+yD::REML::supplied ok  
+30 mixmeta::smoking::yC+yD::REML::supplied ok  
+31 mixmeta::dbs::eff_month3+eff_month6::REML::documented-AR1-0 ok  
+32 mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0 ok  
+33 mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0 ok  
+34 mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0 ok  
+35 mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0 ok  
+36 mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0 ok  
+37 mixmeta::dbs::eff_month3+eff_month6::REML::documented-AR1-0.97 ok  
+38 mixmeta::dbs::eff_month3+eff_month12::REML::documented-AR1-0.97 ok  
+39 mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97 ok  
+40 mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0.97 ok  
+41 mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97 ok  
+42 mixmeta::dbs::eff_month12+eff_long::REML::documented-AR1-0.97 ok  
+43 metadat::dat.ishak2007::y1i+y2i::REML::documented-AR1-0.97 ok  
+44 metadat::dat.ishak2007::y1i+y3i::REML::documented-AR1-0.97 ok  
+45 metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97 ok  
+46 metadat::dat.ishak2007::y2i+y3i::REML::documented-AR1-0.97 ok  
+47 metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97 ok  
+48 metadat::dat.ishak2007::y3i+y4i::REML::documented-AR1-0.97 ok  
+49 mixmeta::gliomas::month6+month12::REML::documented-AR1-0 ok  
+50 mixmeta::gliomas::month6+month18::REML::documented-AR1-0 ok  
+51 mixmeta::gliomas::month6+month24::REML::documented-AR1-0 ok  
+52 mixmeta::gliomas::month12+month18::REML::documented-AR1-0 ok  
+53 mixmeta::gliomas::month12+month24::REML::documented-AR1-0 ok  
+54 mixmeta::gliomas::month18+month24::REML::documented-AR1-0 ok  
+55 mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61 ok  
+56 mixmeta::gliomas::month6+month18::REML::documented-AR1-0.61 ok  
+57 mixmeta::gliomas::month6+month24::REML::documented-AR1-0.61 ok  
+58 mixmeta::gliomas::month12+month18::REML::documented-AR1-0.61 ok  
+59 mixmeta::gliomas::month12+month24::REML::documented-AR1-0.61 ok  
+60 mixmeta::gliomas::month18+month24::REML::documented-AR1-0.61 ok  
+61 metadat::dat.berkey1998::PD+AL::REML::supplied ok  
+62 metadat::dat.berkey1998r::AL+PD::REML::supplied ok  
+63 metadat::dat.kalaian1996::verbal+math::REML::documented-rho-0.66 ok  
+64 metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw ok  
+65 metadat::dat.fine1993::month6+month18::REML::documented-covariance-raw ok  
+66 metadat::dat.fine1993::month6+month24::REML::documented-covariance-raw ok  
+67 metadat::dat.fine1993::month12+month18::REML::documented-covariance-raw ok  
+68 metadat::dat.fine1993::month12+month24::REML::documented-covariance-raw ok  
+69 metadat::dat.fine1993::month18+month24::REML::documented-covariance-raw refused Within-study covariance must be positive definite. 
+70 metadat::dat.fine1993::month6+month12::REML::documented-covariance-ridge ok  
+71 metadat::dat.fine1993::month6+month18::REML::documented-covariance-ridge ok  
+72 metadat::dat.fine1993::month6+month24::REML::documented-covariance-ridge ok  
+73 metadat::dat.fine1993::month12+month18::REML::documented-covariance-ridge ok  
+74 metadat::dat.fine1993::month12+month24::REML::documented-covariance-ridge ok  
+75 metadat::dat.fine1993::month18+month24::REML::documented-covariance-ridge ok  
+76 metadat::dat.craft2003::acog.perf+asom.perf::REML::rcalc ok  
+77 metadat::dat.craft2003::acog.perf+conf.perf::REML::rcalc ok  
+78 metadat::dat.craft2003::acog.perf+acog.asom::REML::rcalc ok  
+79 metadat::dat.craft2003::acog.perf+acog.conf::REML::rcalc ok  
+80 metadat::dat.craft2003::acog.perf+asom.conf::REML::rcalc ok  
+81 metadat::dat.craft2003::asom.perf+conf.perf::REML::rcalc ok  
+82 metadat::dat.craft2003::asom.perf+acog.asom::REML::rcalc ok  
+83 metadat::dat.craft2003::asom.perf+acog.conf::REML::rcalc ok  
+84 metadat::dat.craft2003::asom.perf+asom.conf::REML::rcalc ok  
+85 metadat::dat.craft2003::conf.perf+acog.asom::REML::rcalc ok  
+86 metadat::dat.craft2003::conf.perf+acog.conf::REML::rcalc ok  
+87 metadat::dat.craft2003::conf.perf+asom.conf::REML::rcalc ok  
+88 metadat::dat.craft2003::acog.asom+acog.conf::REML::rcalc ok  
+89 metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc ok  
+90 metadat::dat.craft2003::acog.conf+asom.conf::REML::rcalc ok  
+91 metadat::dat.kearon1998::logit_sensitivity+logit_specificity::REML::disjoint-binomial-samples ok  
+92 metadat::dat.rivera2025::logit_sensitivity+logit_specificity::REML::disjoint-binomial-samples ok  
+REFERENCE 92 configurations; 91 fits; boundary adjudication recorded

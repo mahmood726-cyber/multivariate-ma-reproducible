@@ -1,0 +1,33 @@
+Data preparation function
+
+Description:
+
+     Function to run data processing scripts.
+
+Usage:
+
+     prep_dat(rebuild=FALSE, overwrite, pkgdir)
+     
+Arguments:
+
+ rebuild: logical indicating whether the entire database should be
+          rebuild (default is 'FALSE').
+
+overwrite: character vector with one or more '.Rd' filenames to
+          overwrite (if they already exist). The default is to never
+          overwrite any existing '.Rd' files.
+
+  pkgdir: character string specifying the root directory of the source
+          package (if unspecified, the current working directory is
+          assumed to be the package root directory).
+
+Details:
+
+     The function is only for used for processing new datasets for
+     inclusion in the package. It should be used as described on the
+     'metadat-package' help page.
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>
+

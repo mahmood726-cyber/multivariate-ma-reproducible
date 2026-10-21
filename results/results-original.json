@@ -1,0 +1,1166 @@
+{
+  "variant": "original",
+  "total": 18684,
+  "passed": 18591,
+  "summary": [
+    {
+      "quantity": "G",
+      "checks": 368,
+      "passed": 360,
+      "max_error": 6.998130629827515e-06,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "accessor_G",
+      "checks": 404,
+      "passed": 404,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_k",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_logLik",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_mu",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_muSE",
+      "checks": 202,
+      "passed": 202,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "accessor_rho",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "api_refusal",
+      "checks": 4,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "app_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ciLower",
+      "checks": 182,
+      "passed": 178,
+      "max_error": 1.644819597190761e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "ciUpper",
+      "checks": 182,
+      "passed": 178,
+      "max_error": 1.1319384802564864e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_G",
+      "checks": 4,
+      "passed": 0,
+      "max_error": 0.003015923619680845,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_logLik",
+      "checks": 1,
+      "passed": 0,
+      "max_error": 0.01626172528342269,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_mu",
+      "checks": 2,
+      "passed": 0,
+      "max_error": 0.01753917950962397,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_muSE",
+      "checks": 2,
+      "passed": 0,
+      "max_error": 0.00615404522664359,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "default_rho",
+      "checks": 1,
+      "passed": 0,
+      "max_error": 0.15203325275681817,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "display_cards",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "display_headline",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_in_viewport",
+      "checks": 101,
+      "passed": 79,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ellipse_mahalanobis",
+      "checks": 8100,
+      "passed": 8100,
+      "max_error": 1.6737848414165666e-11,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "ellipse_vertices",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "fit_status",
+      "checks": 91,
+      "passed": 91,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "focused_k",
+      "checks": 10,
+      "passed": 9,
+      "max_error": 0.3333333333333333,
+      "tolerance": 0
+    },
+    {
+      "quantity": "input_membership",
+      "checks": 92,
+      "passed": 92,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "k",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "logLik",
+      "checks": 92,
+      "passed": 92,
+      "max_error": 4.985408624738672e-13,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "m",
+      "checks": 91,
+      "passed": 91,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "mu",
+      "checks": 184,
+      "passed": 182,
+      "max_error": 1.2117216852125523e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muSE",
+      "checks": 184,
+      "passed": 180,
+      "max_error": 1.843797125166506e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "muVcov",
+      "checks": 364,
+      "passed": 356,
+      "max_error": 4.148523486323046e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "outcome_labels",
+      "checks": 1,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "plot_study_coordinate",
+      "checks": 6436,
+      "passed": 6436,
+      "max_error": 1.0799858638444551e-14,
+      "tolerance": 1e-09
+    },
+    {
+      "quantity": "plot_study_count",
+      "checks": 101,
+      "passed": 101,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_keys",
+      "checks": 1,
+      "passed": 1,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "reference_unique",
+      "checks": 1,
+      "passed": 1,
+      "max_error": 0.0,
+      "tolerance": 0
+    },
+    {
+      "quantity": "refusal",
+      "checks": 1,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "rho",
+      "checks": 79,
+      "passed": 77,
+      "max_error": 1.0541257755569688e-07,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "rho_undefined",
+      "checks": 13,
+      "passed": 0,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "schema",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "sd",
+      "checks": 182,
+      "passed": 174,
+      "max_error": 1.449572404302324e-05,
+      "tolerance": 1e-06
+    },
+    {
+      "quantity": "svg_finite",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "ui_refusal",
+      "checks": 4,
+      "passed": 2,
+      "max_error": null,
+      "tolerance": 0
+    },
+    {
+      "quantity": "valid_capture",
+      "checks": 101,
+      "passed": 101,
+      "max_error": null,
+      "tolerance": 0
+    }
+  ],
+  "failures": [
+    {
+      "id": "mvmeta::p53::y1+y2::REML::documented-rho-0.95",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "sd",
+      "actual": 6.441486943368511e-06,
+      "reference": 0,
+      "tolerance": 1e-09,
+      "error": 6.441486943368511e-06,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "sd",
+      "actual": 6.589119135973479e-06,
+      "reference": 0,
+      "tolerance": 1e-09,
+      "error": 6.589119135973479e-06,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "mu",
+      "actual": 0.260984740802769,
+      "reference": 0.26098474535721583,
+      "tolerance": 1e-09,
+      "error": 4.554446819682312e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muSE",
+      "actual": 23.57187920059582,
+      "reference": 23.57187924925596,
+      "tolerance": 1e-09,
+      "error": 2.064330140633952e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muSE",
+      "actual": 23.571285291990883,
+      "reference": 23.571285217761144,
+      "tolerance": 1e-09,
+      "error": 3.1491595860959134e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.6334890474818,
+      "reference": 555.6334913415037,
+      "tolerance": 1e-09,
+      "error": 4.1286602277130115e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.536365550375,
+      "reference": 555.5363649594233,
+      "tolerance": 1e-09,
+      "error": 1.063749779641182e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.5363655503749,
+      "reference": 555.5363649594233,
+      "tolerance": 1e-09,
+      "error": 1.0637495749978051e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.6054903164257,
+      "reference": 555.6054868170451,
+      "tolerance": 1e-09,
+      "error": 6.298319158369236e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": 0.025256228664996706,
+      "reference": 0.025260817633221216,
+      "tolerance": 1e-09,
+      "error": 4.588968224510798e-06,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": -0.03836272294280416,
+      "reference": -0.03836390421662294,
+      "tolerance": 1e-09,
+      "error": 1.1812738187760852e-06,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": -0.03836272294280416,
+      "reference": -0.03836390421662294,
+      "tolerance": 1e-09,
+      "error": 1.1812738187760852e-06,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": 0.0582707158024849,
+      "reference": 0.05826371767185507,
+      "tolerance": 1e-09,
+      "error": 6.998130629827515e-06,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "rho",
+      "actual": -0.9999999961968289,
+      "reference": -1,
+      "tolerance": 1e-09,
+      "error": 3.803171111371739e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciLower",
+      "actual": -45.93904954029384,
+      "reference": -45.93904963111151,
+      "tolerance": 1e-09,
+      "error": 1.9769166392099637e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciUpper",
+      "actual": 46.461019021899375,
+      "reference": 46.461019121825935,
+      "tolerance": 1e-09,
+      "error": 2.150761248035113e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "sd",
+      "actual": 0.15892208362904353,
+      "reference": 0.15893652076606313,
+      "tolerance": 1e-09,
+      "error": 1.4437137019596147e-05,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciLower",
+      "actual": -45.33659745784641,
+      "reference": -45.336597312380086,
+      "tolerance": 1e-09,
+      "error": 3.2085849414098443e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciUpper",
+      "actual": 47.06114302539524,
+      "reference": 47.06114287988631,
+      "tolerance": 1e-09,
+      "error": 3.091912322339513e-09,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "sd",
+      "actual": 0.2413932803590127,
+      "reference": 0.24137878463496967,
+      "tolerance": 1e-09,
+      "error": 1.449572404302324e-05,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mvmeta::smoking::yC+yD::REML::supplied",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::p53::y1+y2::REML::documented-rho-0.95",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "sd",
+      "actual": 6.441486943368511e-06,
+      "reference": 0,
+      "tolerance": 1e-09,
+      "error": 6.441486943368511e-06,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "sd",
+      "actual": 6.589119135973479e-06,
+      "reference": 0,
+      "tolerance": 1e-09,
+      "error": 6.589119135973479e-06,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yC::REML::supplied",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "mu",
+      "actual": 0.260984740802769,
+      "reference": 0.26098474535721583,
+      "tolerance": 1e-09,
+      "error": 4.554446819682312e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muSE",
+      "actual": 23.57187920059582,
+      "reference": 23.57187924925596,
+      "tolerance": 1e-09,
+      "error": 2.064330140633952e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muSE",
+      "actual": 23.571285291990883,
+      "reference": 23.571285217761144,
+      "tolerance": 1e-09,
+      "error": 3.1491595860959134e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.6334890474818,
+      "reference": 555.6334913415037,
+      "tolerance": 1e-09,
+      "error": 4.1286602277130115e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.536365550375,
+      "reference": 555.5363649594233,
+      "tolerance": 1e-09,
+      "error": 1.063749779641182e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.5363655503749,
+      "reference": 555.5363649594233,
+      "tolerance": 1e-09,
+      "error": 1.0637495749978051e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "muVcov",
+      "actual": 555.6054903164257,
+      "reference": 555.6054868170451,
+      "tolerance": 1e-09,
+      "error": 6.298319158369236e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": 0.025256228664996706,
+      "reference": 0.025260817633221216,
+      "tolerance": 1e-09,
+      "error": 4.588968224510798e-06,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": -0.03836272294280416,
+      "reference": -0.03836390421662294,
+      "tolerance": 1e-09,
+      "error": 1.1812738187760852e-06,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": -0.03836272294280416,
+      "reference": -0.03836390421662294,
+      "tolerance": 1e-09,
+      "error": 1.1812738187760852e-06,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "G",
+      "actual": 0.0582707158024849,
+      "reference": 0.05826371767185507,
+      "tolerance": 1e-09,
+      "error": 6.998130629827515e-06,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "rho",
+      "actual": -0.9999999961968289,
+      "reference": -1,
+      "tolerance": 1e-09,
+      "error": 3.803171111371739e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciLower",
+      "actual": -45.93904954029384,
+      "reference": -45.93904963111151,
+      "tolerance": 1e-09,
+      "error": 1.9769166392099637e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciUpper",
+      "actual": 46.461019021899375,
+      "reference": 46.461019121825935,
+      "tolerance": 1e-09,
+      "error": 2.150761248035113e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "sd",
+      "actual": 0.15892208362904353,
+      "reference": 0.15893652076606313,
+      "tolerance": 1e-09,
+      "error": 1.4437137019596147e-05,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciLower",
+      "actual": -45.33659745784641,
+      "reference": -45.336597312380086,
+      "tolerance": 1e-09,
+      "error": 3.2085849414098443e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ciUpper",
+      "actual": 47.06114302539524,
+      "reference": 47.06114287988631,
+      "tolerance": 1e-09,
+      "error": 3.091912322339513e-09,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "sd",
+      "actual": 0.2413932803590127,
+      "reference": 0.24137878463496967,
+      "tolerance": 1e-09,
+      "error": 1.449572404302324e-05,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yB+yD::REML::supplied",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::smoking::yC+yD::REML::supplied",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month3+eff_long::REML::documented-AR1-0.97",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y1i+y4i::REML::documented-AR1-0.97",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.ishak2007::y2i+y4i::REML::documented-AR1-0.97",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month12::REML::documented-AR1-0",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month18::REML::documented-AR1-0",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month12+month18::REML::documented-AR1-0",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "mixmeta::gliomas::month12+month18::REML::documented-AR1-0.61",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month18::REML::documented-covariance-raw",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month12+month18::REML::documented-covariance-raw",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month18+month24::REML::documented-covariance-raw",
+      "quantity": "refusal",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month12::REML::documented-covariance-ridge",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month6+month18::REML::documented-covariance-ridge",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "metadat::dat.fine1993::month12+month18::REML::documented-covariance-ridge",
+      "quantity": "rho_undefined",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::indefinite",
+      "quantity": "ui_refusal",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::singular",
+      "quantity": "ui_refusal",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::negative-variance",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::partial-outcome",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::numeric-junk",
+      "quantity": "focused_k",
+      "actual": 4,
+      "reference": 3,
+      "tolerance": 0,
+      "error": 0.3333333333333333,
+      "passed": false
+    },
+    {
+      "id": "focused::numeric-junk",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::nonfinite",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::blank-number",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::comments",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::escaped-outcomes",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::escaped-outcomes",
+      "quantity": "outcome_labels",
+      "actual": [
+        "A&amp;B &lt;C> pooled",
+        "D &amp; E pooled",
+        "Between-study SD A&amp;B &lt;C>",
+        "Between-study SD D &amp; E",
+        "Between-study ρ"
+      ],
+      "reference": [
+        "A&B <C> pooled",
+        "D & E pooled",
+        "Between-study SD A&B <C>",
+        "Between-study SD D & E",
+        "Between-study ρ"
+      ],
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::constant-effects",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::two-studies",
+      "quantity": "ellipse_in_viewport",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::api-indefinite",
+      "quantity": "api_refusal",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::api-asymmetric",
+      "quantity": "api_refusal",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "focused::api-nan",
+      "quantity": "api_refusal",
+      "actual": false,
+      "reference": true,
+      "tolerance": 0,
+      "error": null,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_mu",
+      "actual": 0.35679479239607015,
+      "reference": 0.35342816957007667,
+      "tolerance": 1e-06,
+      "error": 0.0033666228259934816,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_mu",
+      "actual": -0.35675435789045523,
+      "reference": -0.33921517838083126,
+      "tolerance": 1e-06,
+      "error": 0.01753917950962397,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_muSE",
+      "actual": 0.059705047640278695,
+      "reference": 0.058848631440459466,
+      "tolerance": 1e-06,
+      "error": 0.0008564161998192293,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_muSE",
+      "actual": 0.08175109058998906,
+      "reference": 0.08790513581663265,
+      "tolerance": 1e-06,
+      "error": 0.00615404522664359,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_G",
+      "actual": 0.012178623067725547,
+      "reference": 0.011733025283547515,
+      "tolerance": 1e-06,
+      "error": 0.00044559778417803224,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_G",
+      "actual": 0.008900039761702635,
+      "reference": 0.01191596338138348,
+      "tolerance": 1e-06,
+      "error": 0.003015923619680845,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_G",
+      "actual": 0.008900039761702635,
+      "reference": 0.01191596338138348,
+      "tolerance": 1e-06,
+      "error": 0.003015923619680845,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_G",
+      "actual": 0.0311744822008607,
+      "reference": 0.032651332080095755,
+      "tolerance": 1e-06,
+      "error": 0.0014768498792350551,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_rho",
+      "actual": 0.4567654308424906,
+      "reference": 0.6087986835993088,
+      "tolerance": 1e-06,
+      "error": 0.15203325275681817,
+      "passed": false
+    },
+    {
+      "id": "built-in-Berkey",
+      "quantity": "default_logLik",
+      "actual": 3.751802206426391,
+      "reference": 3.691767694370326,
+      "tolerance": 1e-06,
+      "error": 0.01626172528342269,
+      "passed": false
+    }
+  ]
+}

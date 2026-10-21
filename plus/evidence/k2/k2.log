@@ -1,0 +1,32 @@
+K2 start 19/10/2026 19:20:49.57 
+==== v1 engine 1b9b932 (single-start Nelder-Mead, via k1shim) 
+fits 2023 fails 4 ms 28554
+{"id":"mixmeta::gliomas::month6+month12::REML::documented-AR1-0#0.8","q":"rho:null","m":null,"ok":false,"adj":"none","rgrad":8.716083410575948e-13}
+{"id":"mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#0.8","q":"rho:null","m":null,"ok":false,"adj":"none","rgrad":8.716083410575948e-13}
+{"id":"metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#0.8","q":"rho:null","m":null,"ok":false,"adj":"none","rgrad":8.811562590693711e-13}
+{"id":"metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc#-0.3","q":"rho","m":0.0001356087317055943,"ok":false,"adj":"none","rgrad":0.000008483576541817861}
+{"id":"mvmeta::hsls::b1+b2::REML::supplied#-0.6","q":"rho","m":1.2643038921171523e-7,"ok":true,"adj":"none","rgrad":2.8095581416920368e-14}
+{"id":"mixmeta::hsls::b1+b2::REML::supplied#-0.6","q":"rho","m":1.2643038921171523e-7,"ok":true,"adj":"none","rgrad":2.8095581416920368e-14}
+{"id":"mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0#uni1","q":"uni","m":1.020218417078931e-7,"ok":true,"adj":"tau2=4.692646727994361"}
+{"id":"mixmeta::dbs::eff_month6+eff_long::REML::documented-AR1-0.97#uni1","q":"uni","m":1.020218417078931e-7,"ok":true,"adj":"tau2=4.692646727994361"}
+==== intermediate engine (1b9b932 + Fisher-scoring polish, single start; k2_engine.py) 
+fits 2023 fails 4 ms 29348
+{"id":"mixmeta::gliomas::month6+month12::REML::documented-AR1-0#0.8","q":"rho:null","m":null,"ok":false,"adj":"none","js":"zero","rgrad":8.716083410575948e-13,"pol":"no-acceptable-step"}
+{"id":"mixmeta::gliomas::month6+month12::REML::documented-AR1-0.61#0.8","q":"rho:null","m":null,"ok":false,"adj":"none","js":"zero","rgrad":8.716083410575948e-13,"pol":"no-acceptable-step"}
+{"id":"metadat::dat.fine1993::month6+month12::REML::documented-covariance-raw#0.8","q":"rho:null","m":null,"ok":false,"adj":"none","js":"zero","rgrad":8.811562590693711e-13,"pol":"no-acceptable-step"}
+{"id":"metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc#-0.3","q":"rho","m":0.0001356087317055943,"ok":false,"adj":"none","js":"rank-one","rgrad":0.000008483576541817861,"pol":null}
+{"id":"mvmeta::fibrinogen::b4+b5::REML::supplied#sup","q":"rho","m":5.325838225989088e-8,"ok":true,"adj":"none","js":"interior","rgrad":2.422090306097857e-13,"pol":"converged"}
+{"id":"mixmeta::fibrinogen::b4+b5::REML::supplied#sup","q":"rho","m":5.325838225989088e-8,"ok":true,"adj":"none","js":"interior","rgrad":2.422090306097857e-13,"pol":"converged"}
+{"id":"mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0#-0.9","q":"G","m":1.582961552920617e-8,"ok":true,"adj":"none","js":"rank-one","rgrad":null,"pol":null}
+{"id":"mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0.97#-0.9","q":"G","m":1.582961552920617e-8,"ok":true,"adj":"none","js":"rank-one","rgrad":null,"pol":null}
+==== final engine d089222 shared/multivariate-ma.js (polish + 5 screened starts) 
+fits 2023 fails 1 ms 10847
+{"id":"metadat::dat.craft2003::acog.asom+asom.conf::REML::rcalc#-0.3","q":"rho","m":0.0001356087317055943,"ok":false,"adj":"none","js":"rank-one","rgrad":0.000008483576541817861,"pol":null}
+{"id":"mvmeta::fibrinogen::b4+b5::REML::supplied#sup","q":"rho","m":1.8247081623457007e-8,"ok":true,"adj":"none","js":"interior","rgrad":2.422090306097857e-13,"pol":"converged"}
+{"id":"mixmeta::fibrinogen::b4+b5::REML::supplied#sup","q":"rho","m":1.8247081623457007e-8,"ok":true,"adj":"none","js":"interior","rgrad":2.422090306097857e-13,"pol":"converged"}
+{"id":"mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0#-0.9","q":"G","m":1.5829616547186497e-8,"ok":true,"adj":"none","js":"rank-one","rgrad":null,"pol":null}
+{"id":"mixmeta::dbs::eff_month6+eff_month12::REML::documented-AR1-0.97#-0.9","q":"G","m":1.5829616547186497e-8,"ok":true,"adj":"none","js":"rank-one","rgrad":null,"pol":null}
+{"id":"metadat::dat.ishak2007::y2i+y3i::REML::documented-AR1-0.97#-0.9","q":"G","m":1.5829616547186497e-8,"ok":true,"adj":"none","js":"rank-one","rgrad":null,"pol":null}
+{"id":"metadat::dat.berkey1998r::AL+PD::REML::supplied#-0.4","q":"rho","m":2.1043999876013686e-10,"ok":true,"adj":"none","js":"interior","rgrad":1.887379141862766e-14,"pol":"converged"}
+{"id":"mvmeta::berkey98::PD+AL::REML::supplied#-0.4","q":"rho","m":2.0017287827300834e-10,"ok":true,"adj":"none","js":"interior","rgrad":1.9095836023552692e-14,"pol":"converged"}
+K2 end 19/10/2026 19:21:58.65 

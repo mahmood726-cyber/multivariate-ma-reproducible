@@ -1,0 +1,108 @@
+Studies on Treatments for Periodontal Disease
+
+Description:
+
+     Results from 5 trials comparing surgical and non-surgical
+     treatments for medium-severity periodontal disease one year after
+     treatment.
+
+Usage:
+
+     dat.berkey1998
+     dat.berkey1998r
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *trial*    'numeric'    trial number                                                       
+       *author*   'character'  study author(s)                                                    
+       *year*     'numeric'    publication year                                                   
+       *ni*       'numeric'    number of patients                                                 
+       *outcome*  'character'  outcome (PD = probing depth; AL = attachment level)                
+       *yi*       'numeric'    observed mean difference in outcome (surgical versus non-surgical) 
+       *vi*       'numeric'    corresponding sampling variance                                    
+       *v1i*      'numeric'    variances and covariances of the observed effects                  
+       *v2i*      'numeric'    variances and covariances of the observed effects                  
+      
+Details:
+
+     The dataset includes the results from 5 trials that compared
+     surgical and non-surgical methods for the treatment of
+     medium-severity periodontal disease. Reported outcomes include the
+     change in probing depth (PD) and attachment level (AL) one year
+     after the treatment. The outcome measure used for this
+     meta-analysis was the (raw) mean difference, calculated in such a
+     way that positive values indicate that surgery was more effective
+     than non-surgical treatment in decreasing the probing depth and
+     increasing the attachment level (so, the results from the various
+     trials indicate that surgery is preferable for reducing the
+     probing depth, while non-surgical treatment is preferable for
+     increasing the attachment level). Since each trial provides effect
+     size estimates for both outcomes, the estimates are correlated. A
+     multivariate model can be used to meta-analyze the two outcomes
+     simultaneously.
+
+     The 'v1i' and 'v2i' values are the variances and covariances of
+     the observed effects. In particular, for each study, variables
+     'v1i' and 'v2i' form a 2x2 variance-covariance matrix of the
+     observed effects, with the diagonal elements corresponding to the
+     sampling variances of the mean differences (the first for probing
+     depth, the second for attachment level) and the off-diagonal value
+     corresponding to the covariance of the two mean differences.
+     Below, the full (block diagonal) variance-covariance for all
+     studies is constructed from these two variables.
+
+     The dataset 'dat.berkey1998r' is the same as 'dat.berkey1998'
+     except that the first row of each study corresponds to outcome
+     'AL' and the second to outcome 'PD' (i.e., the rows are reversed).
+
+Concepts:
+
+     medicine, dentistry, raw mean differences, multivariate models
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Berkey, C. S., Antczak-Bouckoms, A., Hoaglin, D. C., Mosteller,
+     F., & Pihlstrom, B. L. (1995). Multiple-outcomes meta-analysis of
+     treatments for periodontal disease. _Journal of Dental Research_,
+     *74*(4), 1030-1039. https://doi.org/10.1177/00220345950740040201
+
+     Berkey, C. S., Hoaglin, D. C., Antczak-Bouckoms, A., Mosteller,
+     F., & Colditz, G. A. (1998). Meta-analysis of multiple outcomes by
+     regression with random effects. _Statistics in Medicine_,
+     *17*(22), 2537-2550.
+     https://doi.org/10.1002/(sici)1097-0258(19981130)17:22<2537::aid-sim953>3.0.co;2-c
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.berkey1998
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### construct block diagonal var-cov matrix of the observed outcomes based on variables v1i and v2i
+     V <- vcalc(vi=1, cluster=author, rvars=c(v1i, v2i), data=dat)
+     
+     ### fit multiple outcomes (meta-regression) model (with REML estimation)
+     res <- rma.mv(yi, V, mods = ~ 0 + outcome, random = ~ outcome | trial, struct="UN", data=dat)
+     print(res, digits=3)
+     
+     ### test/estimate difference between the two outcomes
+     anova(res, X=c(1,-1))
+     
+     ### fit model including publication year as moderator for both outcomes (with ML estimation)
+     res <- rma.mv(yi, V, mods = ~ 0 + outcome + outcome:I(year - 1983),
+                   random = ~ outcome | trial, struct="UN", data=dat, method="ML")
+     print(res, digits=3)
+     ## End(Not run)
+     

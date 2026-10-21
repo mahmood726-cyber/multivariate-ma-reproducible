@@ -1,0 +1,81 @@
+Trials on Non-Steroidal Anti-Inflammatory Drugs in Acute Pain
+
+Description:
+
+     Results from 37 trials evaluating non-steroidal anti-inflammatory
+     drugs (NSAIDS) in patients with acute pain.
+
+Usage:
+
+     dat.moore1998
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*          'integer'    study ID                                      
+       *author*      'character'  first author                                  
+       *year*        'integer'    publication year                              
+       *Ee*          'integer'    number of treatment successes (NSAIDS group)  
+       *Ne*          'integer'    number of patients (NSAIDS group)             
+       *Ec*          'integer'    number of treatment successes (control group) 
+       *Nc*          'integer'    number of patients (control group)            
+       *nonenglish*  'integer'    non-English publication                       
+       *medline*     'integer'    listed in Medline                             
+       *grey*        'integer'    grey literature                               
+       *samecont*    'integer'    same control group                            
+       *journal*     'character'  journal                                       
+      
+Details:
+
+     Moore et al. (1998) conducted a systematic review of 37 randomized
+     placebo-controlled trials on the effectiveness and safety of
+     topical non-steroidal anti-inflammatory drugs (NSAIDS) in acute
+     pain. The main outcome was treatment success, defined as a
+     reduction in pain of at least 50%.
+
+     This data set is used as an example in Schwarzer et al. (2015).
+
+Concepts:
+
+     medicine, odds ratios, publication bias
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Moore, R. A., Tram<c3><a8>r, M. R., Carroll, D., Wiffen, P. J., & McQuay,
+     H. J. (1998). Quantitive systematic review of topically applied
+     non-steroidal anti-inflammatory drugs. _British Medical Journal_,
+     *316*(7128), 333-338. https://doi.org/10.1136/bmj.316.7128.333
+
+References:
+
+     Schwarzer, G., Carpenter, J. R., & Ruecker, G. (2015).
+     _Meta-analysis with R_. Cham, Switzerland: Springer.
+
+Examples:
+
+     ### Show first five studies
+     head(dat.moore1998, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Conduct meta-analysis
+     m <- metabin(Ee, Ne, Ec, Nc, data = dat.moore1998,
+       sm = "OR", studlab = id,
+       label.e = "NSAIDS", label.c = "Placebo")
+     
+     ### Funnel plot
+     fun <- funnel(m, type = "contour",
+       random = FALSE, pch = 16)
+     legend(0.25, 1.25, bty = "n",
+       legend = fun$text.contour, fill = fun$col.contour)
+     ## End(Not run)
+     

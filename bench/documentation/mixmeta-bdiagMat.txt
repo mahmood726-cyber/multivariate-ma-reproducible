@@ -1,0 +1,34 @@
+Block-Diagonal Expansion of a List of Matrices
+
+Description:
+
+     The function 'bdiagMat' builds a single matrix with block-diagonal
+     from a list of matrices.
+
+Usage:
+
+     bdiagMat(x)
+     
+Arguments:
+
+       x: a list of matrices, or a single matrix.
+
+Value:
+
+     A matrix with block-diagonal form if 'x' is a list, or otherwise
+     'x' itself if a matrix.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+See Also:
+
+     See functions 'bldiag' in package 'metafor'.
+
+Examples:
+
+     # GENERATE A LIST OF MATRICES, AND CREATE THE BLOCK-DIAGONAL MATRIX
+     (matlist <- list(matrix(1:4,2), matrix(1:8,2)))
+     bdiagMat(matlist)
+     

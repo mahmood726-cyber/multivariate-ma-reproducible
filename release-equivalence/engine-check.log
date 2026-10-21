@@ -1,0 +1,4 @@
+ENGINE run-v1-control/app-patched/shared/multivariate-ma.js 2002/2002 numeric checks pass
+by quantity {"mu":[182,182],"muSE":[182,182],"muVcov":[364,364],"G":[364,364],"rho":[78,78],"logLik":[91,91],"k":[91,91],"m":[91,91],"ciLower":[182,182],"ciUpper":[182,182],"sd":[182,182],"rho_undefined":[13,13]}
+ENGINE run-v1-v18/app-patched/shared/multivariate-ma.js 2002/2002 numeric checks pass
+by quantity {"mu":[182,182],"muSE":[182,182],"muVcov":[364,364],"G":[364,364],"rho":[78,78],"logLik":[91,91],"k":[91,91],"m":[91,91],"ciLower":[182,182],"ciUpper":[182,182],"sd":[182,182],"rho_undefined":[13,13]}

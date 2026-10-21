@@ -1,0 +1,22 @@
+
+Running 11 tests using 1 worker
+
+[1A[2K[1/11] [chromium] › multivariate-ma-parity.spec.mjs:22:1 › multivariate MA matches metafor::rma.mv (Berkey 1998)
+[1A[2K[2/11] [chromium] › multivariate-ma-parity.spec.mjs:41:1 › multivariate-ma app renders + exposes accessor
+[1A[2K[3/11] [chromium] › multivariate-ma-plus.spec.mjs:9:1 › fresh load shows core output with zero clicks; sweep is one click
+[1A[2K[4/11] [chromium] › multivariate-ma-plus.spec.mjs:34:1 › examples, clear, CSV upload, omitted rows and r flags
+[1A[2K[5/11] [chromium] › multivariate-ma-plus.spec.mjs:52:1 › 250 ms debounce, assumed rho_w mode, editable grid refusals
+[1A[2K[6/11] [chromium] › multivariate-ma-plus.spec.mjs:68:1 › downloads: R script, JSON, SVG and PNG
+[1A[2K[7/11] [chromium] › multivariate-ma-plus.spec.mjs:81:1 › keyboard: every plus control reachable and operable
+[1A[2K[8/11] [chromium] › multivariate-ma-plus.spec.mjs:88:1 › full pinned corpus replay versus R (all checks)
+[1A[2K[chromium] › multivariate-ma-plus.spec.mjs:88:1 › full pinned corpus replay versus R (all checks)
+MV PLUS 54612/54612 adjudicated [33m1[39m {"appHigherBy1e10":1,"refHigherBy1e10":0,"maxAbsDiff":5.441762596092303e-10}
+
+[1A[2K[9/11] [chromium] › multivariate-ma-plus.spec.mjs:99:1 › altered reference bytes fail closed
+[1A[2K[10/11] [chromium] › multivariate-ma-plus.spec.mjs:117:1 › axe WCAG 2.1 AA: no violations on the page with the sweep shown
+[1A[2K[chromium] › multivariate-ma-plus.spec.mjs:117:1 › axe WCAG 2.1 AA: no violations on the page with the sweep shown
+AXE []
+
+[1A[2K[11/11] [chromium] › multivariate-ma-sanity.spec.mjs:7:1 › multivariate-ma default example matches mvmeta (pinned reference) and renders cleanly
+[1A[2K  11 passed (40.4s)
+exit=0 

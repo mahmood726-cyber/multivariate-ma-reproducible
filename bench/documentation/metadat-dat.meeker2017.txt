@@ -1,0 +1,97 @@
+Baseball Batting Averages
+
+Description:
+
+     Batting averages in 2014 for 10 baseball teams.
+
+Usage:
+
+     dat.meeker2017
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *team*      'character'  baseball team                      
+       *division*  'factor'     division                           
+       *mean*      'numeric'    batting average (team sample mean) 
+       *se*        'numeric'    team standard error                
+       *batters*   'integer'    number of batters                  
+      
+Details:
+
+     Meeker, Hahn, and Escobar (2017) considered an example application
+     concerning batting averages from 10 baseball teams during 2014.
+     The data (from chapter 17) consist of sample means (batting
+     averages) and corresponding standard errors for each team's
+     batters who had at least 300 _at-bats_. Baseball teams are
+     associated with one of two divisions, namely _American League
+     Central (AL-C)_ or _National League Central (NL-C)_.
+
+Concepts:
+
+     sports, raw means
+
+Author(s):
+
+     Christian Roever, <mailto:christian.roever@med.uni-goettingen.d>
+
+Source:
+
+     Meeker, W. Q. , Hahn, G. J., & Escobar, L. A. (2017).
+     _Statistical intervals: A guide for practitioners and researchers_
+     (2nd ed.). Hoboken, NJ: John Wiley and Sons.
+
+Examples:
+
+     dat.meeker2017
+     
+     ## Not run:
+     
+     library(metafor)
+     library(bayesmeta)
+     
+     # convert data to an "escalc" object
+     es <- escalc(measure="GEN",
+                  yi=mean, sei=se, slab=team, ni=batters,
+                  data=dat.meeker2017)
+     
+     # illustrate the plain data
+     forestplot(es, zero=NA, title="baseball batting averages (dat.meeker2017)")
+     
+     # specify regressor matrix,
+     # distinguishing between AL-C and NL-C divisions
+     Xmat <- cbind("intercept" = 1,
+                   "offset"    = rep(c(0.5, -0.5), each=5))
+     rownames(Xmat) <- rownames(dat.meeker2017)
+     Xmat
+     
+     # reproduce analysis from Sec.17.2
+     # (using improper uniform priors for all 3 parameters)
+     mreg <- bmr(es, X=Xmat)
+     mreg
+     
+     # generate a plot similar to Fig.17.2
+     forestplot(mreg,
+                X.mean=rbind("AL-C" = c(1, 0.5),
+                             "NL-C" = c(1, -0.5),
+                             "mu"   = c(1, 0)),
+                xlab="batting average", zero=NA)
+     
+     # show more summary stats for some estimates
+     summary(mreg,
+             X.mean=rbind("AL-C"              = c(1, 0.5),
+                          "NL-C"              = c(1, -0.5),
+                          "mean (mu)"         = c(1, 0),
+                          "difference (beta)" = c(0, 1)))
+     
+     # show shrinkage estimates
+     t(mreg$theta)
+     
+     # show trace plot
+     traceplot(mreg,
+               X=rbind("AL-C" = c(1, 0.5),
+                       "NL-C" = c(1, -0.5)),
+               infinity=TRUE, ylab="batting average")
+     ## End(Not run)
+     

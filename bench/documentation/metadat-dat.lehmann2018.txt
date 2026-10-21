@@ -1,0 +1,119 @@
+The Effect of Red on Perceived Attractiveness
+
+Description:
+
+     Results from studies in which participants rated the
+     attractiveness of photos that featured red or a control color. See
+     OSF project at https://osf.io/xy47p/.
+
+Usage:
+
+     dat.lehmann2018
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *Short_Title*             'character'  Shortened citation formatted as: Author name(s), year of publication - Experiment number. All cells in the column are unique for use as labels in the meta-analysis.                                                                                                    
+       *Full_Citation*           'character'  Full citation in APA format.                                                                                                                                                                                                                                            
+       *Short_Citation*          'character'  Shortened citation of different format, exactly as it would appear in an in-text citation.                                                                                                                                                                              
+       *Year*                    'numeric'    Year study published (whether in journal or published online).                                                                                                                                                                                                          
+       *Study*                   'character'  Experiment number. If only one experiment presented in a paper, then 'Exp 1', otherwise numbered according to numbering within paper.                                                                                                                                   
+       *Peer_Reviewed*           'character'  Whether the experiment was published in a peer-reviewed journal or not. 'Yes' = peer-reviewed journal, 'No' can mean in press, online publication, or other.                                                                                                            
+       *Source_Type*             'character'  Location where experiment is available, including journal articles, conference proceedings, online-only, and other options. More specific than whether peer-reviewed or not.                                                                                            
+       *Preregistered*           'character'  Whether experiment was pre-registered or not.                                                                                                                                                                                                                           
+       *Moderator_Group*         'character'  In some studies, a moderator was intentionally investigated that was meant to reduce the red-romance effect. Data for studies where the red-romance effect is expected to be moderated are marked 'Yes' in this column. All others are blank.                           
+       *Gender*                  'character'  Gender of rater (male or female). In all cases, gender of stimuli will be opposite.                                                                                                                                                                                     
+       *Color_Contrast*          'character'  The color used as the contrast against red. In some cases, not every contrast color was listed. We chose to examine only contrasts that were present in the original studies, when possible. This column contains only the contrasts we examined in this meta-analysis. 
+       *Color_Form*              'character'  Location of color in photo. Background = background or border color manipulated; Face = facial redness manipulated; Shirt, Dress, Item = color of specified object manipulated; Dot = a dot of color on shirt manipulated.                                              
+       *Photo_Type*              'character'  Amount of body visible in photo. Head Shot = head only; Bust = head, shoulders, sometimes torso; Full Body = entire body visible.                                                                                                                                       
+       *DV_Type*                 'character'  Scale used for DV. 'Perceived attractiveness' = the perceived attractiveness scale used in the original studies; alternate scales are differentiated.                                                                                                                   
+       *DV_Items*                'numeric'    Number of items in DV scale.                                                                                                                                                                                                                                            
+       *DV_Scale*                'character'  Full length of DV scale, if clear.                                                                                                                                                                                                                                      
+       *DV_ScaleBottom*          'numeric'    Lower anchor of DV scale.                                                                                                                                                                                                                                               
+       *DV_ScaleTop*             'numeric'    Upper anchor of DV scale.                                                                                                                                                                                                                                               
+       *Location*                'character'  Country where study took place, if clear. 'Worldwide' in some cases of online participation without IP filtering of participants.                                                                                                                                       
+       *Continent*               'character'  Continent where study took place, for the sake of creating larger categories for analysis.                                                                                                                                                                              
+       *Participants*            'character'  Basic notes about participants. Students = high school, undergraduate, or graduate students; Online = participants were gathered online; Adult = no other common identifying factor given.                                                                              
+       *Participant_Notes*       'character'  A finer grained description of participant characteristics.                                                                                                                                                                                                             
+       *Design*                  'character'  Whether study was a between- or within-subjects design.                                                                                                                                                                                                                 
+       *Eth_Majority*            'character'  Basic notes about participant ethnicity for ease of analysis. This represents the ethnic majority within the sample.                                                                                                                                                    
+       *Eth_Majority_Detail*     'character'  A finer grained description of participant characteristics, including in some cases participant counts when the ethnic majority was close to another category.                                                                                                          
+       *Eth_Stim*                'character'  Ethnicity of the people pictured in the stimulus materials.                                                                                                                                                                                                             
+       *Eth_Match*               'character'  Whether the ethnic majority of the participant pool matched the ethnicity of stimulus photos.                                                                                                                                                                           
+       *Red_Age*                 'numeric'    Mean age of participants in red group. If not given for specific group, then mean age overall.                                                                                                                                                                          
+       *Control_Age*             'numeric'    Mean age of participants in control group. If not given for specific group, then mean age overall.                                                                                                                                                                      
+       *Color_Red*               'character'  Specific values of red color, if given.                                                                                                                                                                                                                                 
+       *Color_Control*           'character'  Specific values of control color, if given.                                                                                                                                                                                                                             
+       *Red_Original*            'character'  Whether the red color used in the study is within 5 units of the LCh values for red used in the original study.                                                                                                                                                         
+       *Color_Match*             'character'  Whether the control color used in the study is within 5 units of the red color on the L and C parameters. In cases where the control color used was white, it was not possible for the L and C parameters to match.                                                     
+       *Presentation_Control*    'character'  Whether the color of the stimulus viewed by each participant was consistent, as in participants viewing everything on paper or the same computer, versus uncontrolled presentation of the stimulus, as in viewing stimulus on different computers.                      
+       *Stimuli_Presentation*    'character'  Method for presenting stimuli. 'Paper' = stimuli printed on paper, shown in-person; 'Screen' = stimuli shown on-screen, not carefully controlled; 'Screen Control' = stimuli shown on-screen, but screen carefully color-matched.                                       
+       *Red_N*                   'numeric'    Number of participants in red group.                                                                                                                                                                                                                                    
+       *Red_M*                   'numeric'    Mean rating of DV in red group.                                                                                                                                                                                                                                         
+       *Red_SD*                  'numeric'    Standard deviation of DV in red group.                                                                                                                                                                                                                                  
+       *Control_N*               'numeric'    Number of participants in control group.                                                                                                                                                                                                                                
+       *Control_M*               'numeric'    Mean rating of DV in control group.                                                                                                                                                                                                                                     
+       *Control_SD*              'numeric'    Standard deviation of DV in control group.                                                                                                                                                                                                                              
+       *SD_diff*                 'numeric'    Calculated for within-subjects studies, standard deviation of difference scores.                                                                                                                                                                                        
+       *RM_r*                    'numeric'    Calculated for within-subjects studies, correlation between participant ratings of red and control attractiveness.                                                                                                                                                      
+       *Control_Attractiveness*  'numeric'    Attractiveness of stimuli in control condition, calculated as '(Control_M - DV_ScaleBottom) / DV_ScaleTop', in order to compare attractiveness ratings across different scales.                                                                                         
+       *Notes*                   'character'  Any additional notes on the study.                                                                                                                                                                                                                                      
+       *Total.SampleSize*        'numeric'    Total unique participants in the study.                                                                                                                                                                                                                                 
+       *pooled*                  'numeric'    Pooled standard deviation for within-subjects studies.                                                                                                                                                                                                                  
+       *yi*                      'numeric'    Standardized mean difference.                                                                                                                                                                                                                                           
+       *vi*                      'numeric'    Corresponding sampling variance.                                                                                                                                                                                                                                        
+      
+Details:
+
+     This is data from a meta-analysis of studies that test the
+     red-romance hypothesis, which is that the color red enhances
+     heterosexual attraction in romantic contexts. Analyzing male
+     participants only, the meta-analysis should show a small,
+     statistically significant effect (d = 0.26 [0.12, 0.40], p =
+     .0004, N = 2,961). Analyzing female participants only should show
+     a very small effect (d = 0.13 [0.01, 0.25], p = .03, N = 2,739).
+     The analyses in the published meta-analysis found clear evidence
+     of upward bias in the estimate for female participants and
+     equivocal evidence for male participants. Moderator analyses
+     suggest effect sizes may have declined over time (both genders),
+     may be largest when an original shade of red is used (men only),
+     and may be smaller in pre-registered studies (women only).
+
+Concepts:
+
+     psychology, attraction, standardized mean differences
+
+Author(s):
+
+     Robert Calin-Jageman, <mailto:rcalinjageman@dom.edu>,
+     <https://calin-jageman.net>
+
+Source:
+
+     Lehmann, G. K., Elliot, A. J., & Calin-Jageman, R. J. (2018).
+     Meta-analysis of the effect of red on perceived attractiveness.
+     _Evolutionary Psychology_, *16*(4).
+     https://doi.org/10.1177/1474704918802412 https://osf.io/xy47p/
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.lehmann2018
+     head(dat)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### meta-analyses for male and female participants
+     red_romance_malep   <- dat[dat$Gender == "Males", ]
+     red_romance_femalep <- dat[dat$Gender == "Females", ]
+     
+     res_malep <- rma(yi, vi, data=red_romance_malep, test="knha")
+     res_malep
+     res_femalep <- rma(yi, vi, data=red_romance_femalep, test="knha")
+     res_femalep
+     ## End(Not run)
+     

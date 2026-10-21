@@ -1,0 +1,52 @@
+Cochran Q Test of Heterogeneity
+
+Description:
+
+     This is a generic function to perform a Cochran Q test of
+     (residual) heterogeneity. The function invokes particular
+     'methods' which depend on the 'class' of the first argument.
+     Currently, specific methods exist for several meta-analytical
+     models in various packages: 'qtest.mixmeta', 'qtest.mvmeta', and
+     'qtest.dosresmeta'.
+
+Usage:
+
+     qtest(object, ...)
+     
+Arguments:
+
+  object: an object for which the test is desired
+
+     ...: further arguments passed to specific methods.
+
+Details:
+
+     The test assesses the null hypothesis that the variability in the
+     distribution of the outcomes is explained only in terms of
+     within-unit estimation errors. This corresponds to a test on the
+     hypotesis that there is no variation attributable to
+     random-effects terms.
+
+Value:
+
+     Returned values depend on the specific class. Usually, the results
+     of the test.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+References:
+
+     Cochran WG (1950). The comparison of percentages in matched
+     samples". _Biometrika_. *37*(3/4):256-266.
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+See Also:
+
+     Specific methods for various classes: 'qtest.mixmeta',
+     'qtest.mvmeta', and 'qtest.dosresmeta'.
+

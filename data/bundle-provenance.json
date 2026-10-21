@@ -1,0 +1,65 @@
+{
+  "paper": 18,
+  "app": "multivariate-ma",
+  "source_commit": "acd363fa33f0decd2fcafcf08814f663bb9d6178",
+  "source_release_note": "The six validated original files are byte-identical to allmeta release v1.7.0 (git diff v1.7.0..acd363f is empty for every file in app/source-manifest.json).",
+  "bundle_zip": {
+    "file": "P18-validation.zip",
+    "bytes": 2917775,
+    "sha256": "c2881d1e8550f5a6890901f54cf42279dae25aae46c49160c6fc1539a1ff44b9",
+    "files": 1325
+  },
+  "bundle_run": {
+    "host": "worker",
+    "started": "2026-10-19T10:47:28.2668444+01:00",
+    "finished": "2026-10-19T11:10:32.6916429+01:00",
+    "exit_code": 0,
+    "lane": "P18"
+  },
+  "bundle_archive_verification": {
+    "source_commit": "acd363fa33f0decd2fcafcf08814f663bb9d6178",
+    "source_unchanged": true,
+    "patch_replay_matches": true,
+    "exact_configuration_coverage": 92,
+    "unique_candidate_coverage": 132,
+    "input_membership_and_numeric_values_exact": true,
+    "patched_output_finite": true,
+    "patched_checks": 18682,
+    "patched_checks_pass": true,
+    "all_candidate_documentation_present": true,
+    "all_R_logs_have_versions_and_library_paths": true,
+    "archive_files": 1325,
+    "archive_bytes": 2917775,
+    "archive_sha256": "c2881d1e8550f5a6890901f54cf42279dae25aae46c49160c6fc1539a1ff44b9",
+    "all_archive_hashes_match": true,
+    "no_machine_paths": true
+  },
+  "excluded": {
+    "node_modules": {
+      "files": 1052,
+      "top_level_packages": {
+        "boolbase": "1.0.0",
+        "css-select": "5.2.2",
+        "css-what": "6.2.2",
+        "cssom": "0.5.0",
+        "dom-serializer": "2.0.0",
+        "domelementtype": "2.3.0",
+        "domhandler": "5.0.3",
+        "domutils": "3.2.2",
+        "entities": "4.5.0",
+        "html-escaper": "3.0.3",
+        "htmlparser2": "10.1.0",
+        "linkedom": "0.18.12",
+        "nth-check": "2.1.1",
+        "uhyphen": "0.2.0"
+      },
+      "reason": "third-party offline Node runtime used only to capture the page (linkedom); not redistributed"
+    },
+    "other": [
+      "PROGRESS.md (job progress notes)",
+      "archive-manifest.json is kept as bench/bundle-archive-manifest.json"
+    ]
+  },
+  "checks_compressed": "checks-original.json and checks-patched.json are stored xz-compressed; see analysis/compression_proof.json",
+  "upstream_status": "At archive build time fix.patch was not merged into allmeta main; no merge commit is asserted."
+}

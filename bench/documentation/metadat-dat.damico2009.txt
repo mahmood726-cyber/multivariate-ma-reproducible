@@ -1,0 +1,72 @@
+Studies on Topical plus Systemic Antibiotics to Prevent Respiratory
+Tract Infections
+
+Description:
+
+     Results from 16 studies examining the effectiveness of topical
+     plus systemic antibiotics to prevent respiratory tract infections
+     (RTIs).
+
+Usage:
+
+     dat.damico2009
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*    'character'  first author                                            
+       *year*     'numeric'    publication year                                        
+       *xt*       'numeric'    number of RTIs in the treatment group                   
+       *nt*       'numeric'    number of patients in the treatment group               
+       *xc*       'numeric'    number of RTIs in the control group                     
+       *nc*       'numeric'    number of patients in the control group                 
+       *conceal*  'numeric'    allocation concealment (0 = not adequate, 1 = adequate) 
+       *blind*    'numeric'    blinding (0 = open, 1 = double-blind)                   
+      
+Details:
+
+     The dataset includes the results from 16 studies that examined the
+     effectiveness of topical plus systemic antibiotics versus no
+     prophylaxis to prevent respiratory tract infections (RTIs).
+
+Concepts:
+
+     medicine, pulmonology, odds ratios
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     D'Amico, R., Pifferi, S., Torri, V., Brazzi, L., Parmelli, E., &
+     Liberati, A. (2009). Antibiotic prophylaxis to reduce respiratory
+     tract infections and mortality in adults receiving intensive care.
+     _Cochrane Database of Systematic Reviews_, *4*, CD000022.
+     https://doi.org/10.1002/14651858.CD000022.pub3
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.damico2009
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### meta-analysis of the (log) odds ratios using the Mantel-Haenszel method
+     rma.mh(measure="OR", ai=xt, n1i=nt, ci=xc, n2i=nc, data=dat, digits=2)
+     
+     ### calculate log odds ratios and corresponding sampling variances
+     dat <- escalc(measure="OR", ai=xt, n1i=nt, ci=xc, n2i=nc, data=dat)
+     
+     ### meta-analysis using a random-effects model
+     res <- rma(yi, vi, data=dat, method="DL")
+     res
+     predict(res, transf=exp, digits=2)
+     ## End(Not run)
+     

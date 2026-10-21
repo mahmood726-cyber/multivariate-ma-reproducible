@@ -1,0 +1,137 @@
+Ancillary Parameters for Controlling the Fit in mvmeta Models
+
+Description:
+
+     This internal function sets the parameter options used for fitting
+     meta-analytical models, commonly to pre-specified default values.
+     It is usually internally called by 'mvmeta.fit'.
+
+Usage:
+
+     mvmeta.control(optim=list(), showiter=FALSE, maxiter=100, initPsi=NULL,
+       Psifix=NULL,Psicor=0, Scor=0, inputna=FALSE, inputvar=10^4, igls.iter=10, 
+       hessian=FALSE, vc.adj=TRUE,reltol=sqrt(.Machine$double.eps),
+       set.negeigen=sqrt(.Machine$double.eps))
+     
+Arguments:
+
+   optim: list of parameters passed to the 'control' argument of the
+          function 'optim', which performs the quasi-Newton
+          optimization in likelihood-based random-effects models. See
+          'optim' for the list of arguments. See Details for additional
+          info.
+
+showiter: logical. If 'TRUE', the progress of iterative optimization is
+          shown.
+
+ maxiter: positive interger value. Maximum number of iterations in
+          methods involving optimization procedures.
+
+ initPsi: either a matrix or a vector of its lower triangular elements
+          (with diagonal, taken by column) from which starting values
+          of the parameters of the between-study (co)variance matrix
+          are derived, used in the optimization procedure for
+          likelihood-based random-effects models. If 'NULL' (the
+          default, and recommended), the starting value is created
+          internally through an iterative generalized least square
+          algorithm.
+
+  Psifix: either a matrix or a vector of its lower triangular elements
+          (with diagonal, taken by column) equal or proportional to the
+          between-study (co)variance. Only used when 'bscov="fixed"' or
+          'bscov="prop"' in 'mvmeta', and, if not provided, it set
+          internally to a 0 or identity matrix, respectively.
+
+  Psicor: either a scalar, vector or matrix representing the
+          between-study correlation(s) (see 'inputcov'). Only used when
+          'bscov="cor"' in 'mvmeta'.
+
+    Scor: either a scalar, vector or matrix representing the
+          within-study correlation(s) to be inputted when the
+          covariances are not provided, and ignored if they are (see
+          'inputcov').
+
+ inputna: logical. If missing values must be internally inputted. To be
+          used with caution, see 'inputna'.
+
+inputvar: multiplier for inputting the missing variances, to be passed
+          as an argument to 'inputna'.
+
+igls.iter: number of iteration of the iterative generalized least
+          square algorithm to be run in the hybrid optimization
+          procedure of linkelihood-based models to provide the starting
+          value. See 'iter.igls'.
+
+ hessian: logical. If 'TRUE', the Hessian matrix of the parameters
+          estimated in the optimization process is computed and
+          returned. Only applicable to likelihood-based estimation
+          methods. For details, see the info provided in the help pages
+          of the 'optimizations algorithms' and '(co)variance
+          structure'.
+
+  vc.adj: logical. If 'TRUE', an adjustement to the way the marginal
+          variance part is computed in the variance components
+          estimator is applied. See 'mvmeta.vc'.
+
+  reltol: relative convergence tolerance in methods involving
+          optimization procedures. The algorithm stops if it is unable
+          to reduce the value by a factor of 'reltol * (abs(val) +
+          reltol)' at a step.
+
+set.negeigen: positive value. Value to which negative eigenvalues are
+          to be set in estimators where such method is used to force
+          positive semi-definiteness of the estimated between-study
+          (co)variance matrix.
+
+Details:
+
+     The control argument of 'mvmeta' is by default passed to
+     'mvmeta.fit', which uses its elements as arguments of
+     'mvmeta.control'.
+
+     Many arguments refer to specific fitting procedures. Refer to the
+     help page of the related estimator for details.
+
+     The function automatically sets non-default values for some
+     control arguments for 'optim', unless explicitly set in the list
+     passed to it. Specifically, the function selects 'fnscale=-1',
+     'maxit=maxiter' and 'reltol=reltol', where the latter two are
+     specified by other arguments of this function.
+
+     The function is expected to be extended and/or modified at every
+     release of the package 'mvmeta'.
+
+Value:
+
+     A list with components named as the arguments.
+
+Author(s):
+
+     Antonio Gasparrini, <mailto:antonio.gasparrini@lshtm.ac.uk>
+
+References:
+
+     Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An
+     extended mixed-effects framework for meta-analysis._Statistics in
+     Medicine_. 2019;38(29):5429-5444. [Freely available *here*].
+
+     Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate
+     meta-analysis for non-linear and other multi-parameter
+     associations. _Statistics in Medicine_. *31*(29):3821-3839.
+     [Freely available *here*].
+
+See Also:
+
+     See 'mvmeta'. See also 'glm.control'. See the help pages of the
+     related fitting functions for details on each parameter. See
+     'mvmeta-package' for an overview of this modelling framework.
+
+Examples:
+
+     # PRINT THE ITERATIONS (SEE ?optim) AND CHANGE THE DEFAULT FOR STARTING VALUES
+     model <- mvmeta(cbind(PD,AL)~pubyear,S=berkey98[5:7],data=berkey98,
+       control=list(showiter=TRUE,igls.iter=20))
+       
+     # INPUT THE CORRELATION
+     model <- mvmeta(cbind(y1,y2),S=cbind(V1,V2),data=p53,control=list(Scor=0.5))
+     

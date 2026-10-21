@@ -1,0 +1,19 @@
+variant,id,reference_status,reference_reason,app_status,app_reason
+original,metadat::dat.fine1993::month18+month24::REML::documented-covariance-raw,refused,Within-study covariance must be positive definite.,ok,k = 16 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = -25.399
+original,focused::empty,refused,input contract: empty/singleton or invalid covariance/outcomes,refused,Enter ≥ 2 studies.
+original,focused::singleton,refused,input contract: empty/singleton or invalid covariance/outcomes,refused,Enter ≥ 2 studies.
+original,focused::indefinite,refused,input contract: empty/singleton or invalid covariance/outcomes,ok,k = 2 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 1152921504606846976.000
+original,focused::singular,refused,input contract: empty/singleton or invalid covariance/outcomes,ok,k = 2 studies · 2 outcomes · unstructured between-study covariance (REML) · logLik = 14.415
+original,focused::api-singleton,refused,input contract: empty/singleton or invalid covariance/outcomes,error,multivariate MA requires k>=2 studies (between-study covariance G is unidentifiable with k<2)
+original,focused::api-indefinite,refused,input contract: empty/singleton or invalid covariance/outcomes,ok,
+original,focused::api-asymmetric,refused,input contract: empty/singleton or invalid covariance/outcomes,ok,
+original,focused::api-nan,refused,input contract: empty/singleton or invalid covariance/outcomes,ok,
+patched,metadat::dat.fine1993::month18+month24::REML::documented-covariance-raw,refused,Within-study covariance must be positive definite.,refused,Within-study covariance must be positive definite.
+patched,focused::empty,refused,input contract: empty/singleton or invalid covariance/outcomes,refused,Enter ≥ 2 studies.
+patched,focused::singleton,refused,input contract: empty/singleton or invalid covariance/outcomes,refused,Enter ≥ 2 studies.
+patched,focused::indefinite,refused,input contract: empty/singleton or invalid covariance/outcomes,refused,Within-study covariance must be positive definite.
+patched,focused::singular,refused,input contract: empty/singleton or invalid covariance/outcomes,refused,Within-study covariance must be positive definite.
+patched,focused::api-singleton,refused,input contract: empty/singleton or invalid covariance/outcomes,error,multivariate MA requires k>=2 studies (between-study covariance G is unidentifiable with k<2)
+patched,focused::api-indefinite,refused,input contract: empty/singleton or invalid covariance/outcomes,error,Within-study covariance must be positive definite.
+patched,focused::api-asymmetric,refused,input contract: empty/singleton or invalid covariance/outcomes,error,Within-study covariance must be symmetric.
+patched,focused::api-nan,refused,input contract: empty/singleton or invalid covariance/outcomes,error,Outcomes must be finite and covariance matrices conformable.

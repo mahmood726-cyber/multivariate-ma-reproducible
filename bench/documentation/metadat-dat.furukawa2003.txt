@@ -1,0 +1,83 @@
+Studies on Low Dosage Tricyclic Antidepressants for the Treatment of
+Depression
+
+Description:
+
+     Results on depression severity from 17 studies comparing low
+     dosage tricyclic antidepressants (TCA) and placebo for the
+     treatment of depression.
+
+Usage:
+
+     dat.furukawa2003
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *author*   'character'  First author with information on dosage in parentheses 
+       *Ne*       'integer'    number of patients in low TCA group                    
+       *Me*       'numeric'    depression severity (low TCA)                          
+       *Se*       'numeric'    standard deviation (low TCA)                           
+       *Nc*       'integer'    number of patients in placebo group                    
+       *Mc*       'numeric'    depression severity (placebo)                          
+       *Sc*       'numeric'    standard deviation (placebo)                           
+       *measure*  'character'  depression scale                                       
+      
+Details:
+
+     Furukawa et al. (2003) carried out a systematic review comparing
+     low dosage tricyclic antidepressants (TCA) with placebo for the
+     treatment of depression. They reported the effect on
+     presence/absence of depression and on depression severity at
+     various time points. Here we focus on depression severity at four
+     weeks. Most studies used some version of the Hamilton Depression
+     Rating Scale, however, some studies used the Montgomery-Asberg
+     Depression Rating Scale. Accordingly, it is not possible to pool
+     the estimated effects directly.
+
+     This data set is used as an example in Schwarzer et al. (2015).
+
+Concepts:
+
+     psychology, psychiatry, standardized mean differences
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Furukawa, T. A., McGuire, H., & Barbui, C. (2003). Low dosage
+     tricyclic antidepressants for depression. _Cochrane Database of
+     Systematic Reviews_, *3*, CD003197.
+     https://doi.org/10.1002/14651858.CD003197
+
+References:
+
+     Schwarzer, G., Carpenter, J. R., & Ruecker, G. (2015).
+     _Meta-analysis with R_. Cham, Switzerland: Springer.
+
+Examples:
+
+     ### Show first five studies
+     head(dat.furukawa2003, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Use RevMan5 settings
+     oldset <- settings.meta("RevMan5", digits = 2)
+     
+     ### Conduct random effects meta-analysis with Hedges' g as effect measure
+     mc2 <- metacont(Ne, Me, Se, Nc, Mc, Sc, common = FALSE,
+                     data = dat.furukawa2003, sm = "SMD")
+     mc2
+     
+     ### Use previous settings
+     settings.meta(oldset)
+     ## End(Not run)
+     

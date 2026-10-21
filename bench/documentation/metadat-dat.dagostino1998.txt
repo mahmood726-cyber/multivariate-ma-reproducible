@@ -1,0 +1,127 @@
+Studies on the Effectiveness of Antihistamines in Reducing Symptoms of
+the Common Cold
+
+Description:
+
+     Results from 9 studies on the effectiveness of antihistamines in
+     reducing the severity of runny nose and sneezing in the common
+     cold.
+
+Usage:
+
+     dat.dagostino1998
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*     'numeric'    study id                                                                    
+       *cold*      'character'  natural or induced cold study                                               
+       *scale.rn*  'character'  scale for measuring runny nose severity                                     
+       *scale.sn*  'character'  scale for measuring sneezing severity                                       
+       *drug*      'character'  type of antihistamine studied                                               
+       *tnt*       'numeric'    total sample size of the treatment group                                    
+       *tnc*       'numeric'    total sample size of the control (placebo) group                            
+       *outcome*   'character'  outcome variable (see 'Details')                                            
+       *mt*        'numeric'    mean in the treatment group                                                 
+       *sdt*       'numeric'    SD in the treatment group                                                   
+       *mc*        'numeric'    mean in the control group                                                   
+       *sdc*       'numeric'    SD in the control group                                                     
+       *xt*        'numeric'    number of patients reaching the therapy goal in the treatment group         
+       *xc*        'numeric'    number of patients reaching the therapy goal in the control (placebo) group 
+       *nt*        'numeric'    sample size of the treatment group for measuring the outcome                
+       *nc*        'numeric'    sample size of the control group for measuring the outcome                  
+      
+Details:
+
+     The studies for this meta-analysis were assembled to examine the
+     effectiveness of antihistamines in reducing the severity of runny
+     nose and sneezing in the common cold. Effectiveness was measured
+     after one and two days of treatment in terms of 4 different
+     outcome variables:
+
+       1. 'rnic1' and 'rnic2' (continuous): incremental change
+          (improvement) in runny nose severity at day 1 and day 2,
+
+       2. 'rngoal1' and 'rngoal2' (dichotomous): reaching the goal of
+          therapy (of at least a 50% reduction in runny nose severity)
+          at day 1 and day 2,
+
+       3. 'snic1' and 'snic2' (continuous): incremental change
+          (improvement) in sneezing severity at day 1 and day 2, and
+
+       4. 'rngoal1' and 'rngoal2' (dichotomous): reaching the goal of
+          therapy (of at least a 50% reduction in sneezing severity) at
+          day 1 and day 2.
+
+     For the continuous outcomes, standardized mean differences can be
+     computed to quantify the difference between the treatment and
+     control groups. For the dichotomous outcomes, one can compute
+     (log) odds ratios to quantify the difference between the treatment
+     and control groups.
+
+Concepts:
+
+     medicine, standardized mean differences, odds ratios, multivariate
+     models
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     D'Agostino, R. B., Sr., Weintraub, M., Russell, H. K., Stepanians,
+     M., D'Agostino, R. B., Jr., Cantilena, L. R., Jr., Graumlich, J.
+     F., Maldonado, S., Honig, P., & Anello, C. (1998). The
+     effectiveness of antihistamines in reducing the severity of runny
+     nose and sneezing: A meta-analysis. _Clinical Pharmacology &
+     Therapeutics_, *64*(6), 579-596.
+     https://doi.org/10.1016/S0009-9236(98)90049-2
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.dagostino1998
+     head(dat, 16)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### compute standardized mean differences and corresponding sampling variances
+     dat <- escalc(measure="SMD", m1i=mt, m2i=mc, sd1i=sdt, sd2i=sdc, n1i=nt, n2i=nc, data=dat,
+                   add.measure=TRUE)
+     
+     ### compute log odds ratios and corresponding sampling variances
+     dat <- escalc(measure="OR",  ai=xt, ci=xc, n1i=nt, n2i=nc, data=dat,
+                   replace=FALSE, add.measure=TRUE, add=1/2, to="all")
+     
+     ### inspect data for the first study
+     head(dat, 8)
+     
+     ### fit a random-effects model for incremental change in runny nose severity at day 1
+     res <- rma(yi, vi, data=dat, subset=outcome=="rnic1")
+     res
+     
+     ### fit a random-effects model for reaching the goal of therapy for runny nose severity at day 1
+     res <- rma(yi, vi, data=dat, subset=outcome=="rngoal1")
+     res
+     predict(res, transf=exp)
+     
+     ### construct approximate V matrix assuming a correlation of 0.7 for sampling errors within studies
+     dat$esid <- ave(dat$study, dat$study, FUN=seq)
+     V <- vcalc(vi, cluster=study, obs=esid, rho=0.7, data=dat)
+     
+     ### fit a model for incremental change in runny nose severity at day 1 and at day 2, allowing for
+     ### correlated sampling errors (no random effects added, since there does not appear to be any
+     ### noteworthy heterogeneity in these data)
+     res <- rma.mv(yi, V, mods = ~ 0 + outcome, data=dat, subset=outcome %in% c("rnic1","rnic2"))
+     res
+     
+     ### test if there is a difference in effects at day 1 and day 2
+     anova(res, X=c(1,-1))
+     ## End(Not run)
+     

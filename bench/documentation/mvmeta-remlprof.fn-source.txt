@@ -1,0 +1,14 @@
+function (par, Xlist, ylist, Slist, nalist, k, m, p, nall, bscov, 
+    ctrl) 
+{
+    Psi <- par2Psi(par, k, bscov, ctrl)
+    gls <- glsfit(Xlist, ylist, Slist, nalist, Psi, onlycoef = FALSE)
+    pconst <- -0.5 * (nall - length(gls$coef)) * log(2 * pi)
+    pres <- -0.5 * (crossprod(gls$invtUy - gls$invtUX %*% gls$coef))
+    pdet1 <- -sum(sapply(gls$Ulist, function(U) sum(log(diag(U)))))
+    tXWXtot <- sumlist(lapply(gls$invtUXlist, crossprod))
+    pdet2 <- -sum(log(diag(chol(tXWXtot))))
+    as.numeric(pconst + pdet1 + pdet2 + pres)
+}
+<bytecode: 0x000001c4eab16fb8>
+<environment: namespace:mvmeta>

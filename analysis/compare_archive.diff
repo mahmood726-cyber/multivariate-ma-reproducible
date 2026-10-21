@@ -1,0 +1,28 @@
+--- bench/compare.py
++++ analysis/compare_archive.py
+@@ -1,7 +1,12 @@
++# Generated from bench/compare.py; only input/output paths differ (see analysis/compare_archive.diff).
++# corpus.json, reference.json and metafor-crosscheck.json are read from the fresh R run; app observations from results/.
+ import json, math, sys, collections, re, xml.etree.ElementTree as ET
+ from pathlib import Path
+-variant=sys.argv[1] if len(sys.argv)>1 else 'original'
+-def read(name): return json.loads(Path(name).read_text(encoding='utf-8'))
++ROOT=Path(__file__).resolve().parents[1]
++variant,REFDIR,OUTDIR=sys.argv[1],Path(sys.argv[2]),Path(sys.argv[3])
++assert variant in ('original','patched')
++FRESH={'corpus.json','reference.json','metafor-crosscheck.json'}
++def read(name): return json.loads(((REFDIR if name in FRESH else ROOT/'results')/name).read_text(encoding='utf-8'))
+ corpus=read('corpus.json'); refs=read('reference.json'); apps=read(f'app-{variant}.json')
+ checks=[]
+ def check(id,q,a,b,tol=0,absolute=False):
+@@ -92,7 +97,7 @@
+     cc=[c for c in checks if c['quantity']==q];errs=[c['error'] for c in cc if c['error'] is not None]
+     summary.append(dict(quantity=q,checks=len(cc),passed=sum(c['passed'] for c in cc),max_error=max(errs,default=None),tolerance=max(c['tolerance'] for c in cc)))
+ result=dict(variant=variant,total=len(checks),passed=sum(c['passed'] for c in checks),summary=summary,failures=[c for c in checks if not c['passed']])
+-Path(f'results-{variant}.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
+-Path(f'checks-{variant}.json').write_text(json.dumps(checks,ensure_ascii=False),encoding='utf-8')
++(OUTDIR/f'results-{variant}.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
++(OUTDIR/f'checks-{variant}.json').write_text(json.dumps(checks,ensure_ascii=False),encoding='utf-8')
+ lines=[f'{s["quantity"]}: {s["passed"]}/{s["checks"]}; max error={s["max_error"]}; tolerance={s["tolerance"]}' for s in summary]+[f'{result["passed"]}/{result["total"]} checks pass']
+-text='\n'.join(lines);print(text);Path(f'comparison-{variant}.txt').write_text(text+'\n')
++text='\n'.join(lines);print(text);(OUTDIR/f'comparison-{variant}.txt').write_text(text+'\n',encoding='utf-8')

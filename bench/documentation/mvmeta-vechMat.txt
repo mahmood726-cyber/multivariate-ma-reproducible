@@ -1,0 +1,51 @@
+Vectorization and Expansion of Symmetric Matrices
+
+Description:
+
+     The function 'vechMat' transforms a symmetric matrix in a vector
+     containing its lower triangular elements, taken by column. The
+     function 'xpndMat' reverses this transformation.
+
+Usage:
+
+     vechMat(mat, diag=TRUE)
+     
+     xpndMat(vech)
+     
+Arguments:
+
+     mat: a square matrix.
+
+    vech: a vector.
+
+    diag: a logical switch indicating if the diagonal entries must be
+          included.
+
+Value:
+
+     A vector for 'vechMat', a symmetric matrix for 'xnpdMat'.
+
+Note:
+
+     These functions are imported from the package 'mixmeta'.
+
+Author(s):
+
+     Antonio Gasparrini <<mailto:antonio.gasparrini@lshtm.ac.uk>>
+
+See Also:
+
+     See functions 'vech' and 'xpnd' in package 'MCMCpack'.
+
+Examples:
+
+     # GENERATE A POSITIVE-DEFINITE MATRIX, VECTORIZE IT AND THEN RE-EXPAND
+     (M <- crossprod(matrix(rnorm(9),3)))
+     (v <- vechMat(M))
+     xpndMat(v)
+     
+     # EXTRACT VECTORIZED S, EXPAND TO A LIST, AND RE-VECTORIZE
+     (S <- as.matrix(berkey98[5:7]))
+     (Slist <- lapply(seq(nrow(S)), function(i) xpndMat(S[i,])))
+     t(sapply(Slist,vechMat))
+     

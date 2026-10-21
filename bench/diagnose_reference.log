@@ -1,0 +1,420 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+R version 4.6.0 (2026-04-24 ucrt) 
+[1] "<R_LIBS>"
+[2] "<R_LIBS_USER>"  
+[3] "<R_HOME>/library"         
+mvmeta 1.0.3 
+mixmeta 1.2.2 
+metafor 5.2.1 
+metadat 1.6.0 
+jsonlite 2.0.0 
+$id
+[1] "mvmeta::berkey98::PD+AL::REML::supplied"
+
+$control
+list()
+
+$mu
+[1]  0.3534282 -0.3392152
+
+$muSE
+[1] 0.05884863 0.08790514
+
+$G
+$G[[1]]
+[1] 0.01173303 0.01191596
+
+$G[[2]]
+[1] 0.01191596 0.03265133
+
+
+$rho
+[1] 0.6087987
+
+$logLik
+[1] 3.691768
+
+$id
+[1] "mvmeta::berkey98::PD+AL::REML::supplied"
+
+$control
+$control$rel.tol
+[1] 1e-10
+
+$control$x.tol
+[1] 1e-10
+
+$control$iter.max
+[1] 10000
+
+$control$eval.max
+[1] 20000
+
+
+$mu
+[1]  0.3534282 -0.3392152
+
+$muSE
+[1] 0.05884863 0.08790514
+
+$G
+$G[[1]]
+[1] 0.01173303 0.01191596
+
+$G[[2]]
+[1] 0.01191596 0.03265133
+
+
+$rho
+[1] 0.6087987
+
+$logLik
+[1] 3.691768
+
+$id
+[1] "mvmeta::berkey98::PD+AL::REML::supplied"
+
+$control
+$control$optimizer
+[1] "optim"
+
+$control$optmethod
+[1] "BFGS"
+
+$control$reltol
+[1] 1e-14
+
+$control$maxit
+[1] 10000
+
+
+$mu
+[1]  0.3534294 -0.3392156
+
+$muSE
+[1] 0.05885008 0.08790667
+
+$G
+$G[[1]]
+[1] 0.01173383 0.01191628
+
+$G[[2]]
+[1] 0.01191628 0.03265262
+
+
+$rho
+[1] 0.6087818
+
+$logLik
+[1] 3.691768
+
+$id
+[1] "mvmeta::berkey98::PD+AL::REML::supplied"
+
+$control
+$control$optimizer
+[1] "optim"
+
+$control$optmethod
+[1] "Nelder-Mead"
+
+$control$reltol
+[1] 1e-14
+
+$control$maxit
+[1] 10000
+
+
+$mu
+[1]  0.3534282 -0.3392152
+
+$muSE
+[1] 0.05884863 0.08790514
+
+$G
+$G[[1]]
+[1] 0.01173303 0.01191596
+
+$G[[2]]
+[1] 0.01191596 0.03265133
+
+
+$rho
+[1] 0.6087986
+
+$logLik
+[1] 3.691768
+
+$reltol
+[1] 1e-14
+
+$mu
+y1.(Intercept) y2.(Intercept) 
+     0.3534282     -0.3392152 
+
+$G
+           y1         y2
+y1 0.01173303 0.01191596
+y2 0.01191596 0.03265133
+
+$se
+y1.(Intercept) y2.(Intercept) 
+    0.05884863     0.08790514 
+
+$logLik
+'log Lik.' 2.08233 (df=5)
+
+$converged
+[1] TRUE
+
+$reltol
+[1] 1e-15
+
+$mu
+y1.(Intercept) y2.(Intercept) 
+     0.3534282     -0.3392152 
+
+$G
+           y1         y2
+y1 0.01173303 0.01191596
+y2 0.01191596 0.03265133
+
+$se
+y1.(Intercept) y2.(Intercept) 
+    0.05884863     0.08790514 
+
+$logLik
+'log Lik.' 2.08233 (df=5)
+
+$converged
+[1] TRUE
+
+$reltol
+[1] 1e-16
+
+$mu
+y1.(Intercept) y2.(Intercept) 
+     0.3534282     -0.3392152 
+
+$G
+           y1         y2
+y1 0.01173303 0.01191596
+y2 0.01191596 0.03265133
+
+$se
+y1.(Intercept) y2.(Intercept) 
+    0.05884863     0.08790514 
+
+$logLik
+'log Lik.' 2.08233 (df=5)
+
+$converged
+[1] TRUE
+
+$id
+[1] "mvmeta::smoking::yC+yD::REML::supplied"
+
+$control
+list()
+
+$mu
+[1] 0.7052018 0.6331126
+
+$muSE
+[1] 0.4233576 0.4540800
+
+$G
+$G[[1]]
+[1]  0.07143519 -0.09002986
+
+$G[[2]]
+[1] -0.09002986  0.11346475
+
+
+$rho
+[1] -1
+
+$logLik
+[1] -15.93879
+
+$id
+[1] "mvmeta::smoking::yC+yD::REML::supplied"
+
+$control
+$control$rel.tol
+[1] 1e-10
+
+$control$x.tol
+[1] 1e-10
+
+$control$iter.max
+[1] 10000
+
+$control$eval.max
+[1] 20000
+
+
+$mu
+[1] 0.7052018 0.6331126
+
+$muSE
+[1] 0.4233576 0.4540800
+
+$G
+$G[[1]]
+[1]  0.07143519 -0.09002986
+
+$G[[2]]
+[1] -0.09002986  0.11346475
+
+
+$rho
+[1] -1
+
+$logLik
+[1] -15.93879
+
+$id
+[1] "mvmeta::smoking::yC+yD::REML::supplied"
+
+$control
+$control$optimizer
+[1] "optim"
+
+$control$optmethod
+[1] "BFGS"
+
+$control$reltol
+[1] 1e-14
+
+$control$maxit
+[1] 10000
+
+
+$mu
+[1] 0.7052448 0.6331556
+
+$muSE
+[1] 0.4233484 0.4540875
+
+$G
+$G[[1]]
+[1]  0.07141167 -0.09002675
+
+$G[[2]]
+[1] -0.09002675  0.11349428
+
+
+$rho
+[1] -0.9999999
+
+$logLik
+[1] -15.93879
+
+$id
+[1] "mvmeta::smoking::yC+yD::REML::supplied"
+
+$control
+$control$optimizer
+[1] "optim"
+
+$control$optmethod
+[1] "Nelder-Mead"
+
+$control$reltol
+[1] 1e-14
+
+$control$maxit
+[1] 10000
+
+
+$mu
+[1] 0.7052396 0.6331504
+
+$muSE
+[1] 0.4233495 0.4540866
+
+$G
+$G[[1]]
+[1]  0.07141453 -0.09002712
+
+$G[[2]]
+[1] -0.09002712  0.11349067
+
+
+$rho
+[1] -1
+
+$logLik
+[1] -15.93879
+
+$reltol
+[1] 1e-14
+
+$mu
+y1.(Intercept) y2.(Intercept) 
+     0.7052394      0.6331502 
+
+$G
+            y1          y2
+y1  0.07141463 -0.09002716
+y2 -0.09002716  0.11349060
+
+$se
+y1.(Intercept) y2.(Intercept) 
+     0.4233495      0.4540866 
+
+$logLik
+'log Lik.' -17.32508 (df=5)
+
+$converged
+[1] TRUE
+
+$reltol
+[1] 1e-15
+
+$mu
+y1.(Intercept) y2.(Intercept) 
+     0.7052381      0.6331489 
+
+$G
+            y1          y2
+y1  0.07141537 -0.09002726
+y2 -0.09002726  0.11348968
+
+$se
+y1.(Intercept) y2.(Intercept) 
+     0.4233498      0.4540863 
+
+$logLik
+'log Lik.' -17.32508 (df=5)
+
+$converged
+[1] TRUE
+
+$reltol
+[1] 1e-16
+
+$mu
+y1.(Intercept) y2.(Intercept) 
+     0.7052381      0.6331489 
+
+$G
+            y1          y2
+y1  0.07141537 -0.09002726
+y2 -0.09002726  0.11348968
+
+$se
+y1.(Intercept) y2.(Intercept) 
+     0.4233498      0.4540863 
+
+$logLik
+'log Lik.' -17.32508 (df=5)
+
+$converged
+[1] TRUE
+

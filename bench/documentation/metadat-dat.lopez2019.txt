@@ -1,0 +1,187 @@
+Studies on the Effectiveness of CBT for Depression
+
+Description:
+
+     Results from 76 studies examining the effectiveness of cognitive
+     behavioral therapy (CBT) for depression in adults.
+
+Usage:
+
+     dat.lopez2019
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*      'character'  (first) author and year of study                                          
+       *treatment*  'character'  treatment provided (see 'Details')                                        
+       *scale*      'character'  scale used to measure depression symptoms                                 
+       *n*          'numeric'    group size                                                                
+       *diff*       'numeric'    standardized mean change                                                  
+       *se*         'numeric'    corresponding standard error                                              
+       *group*      'numeric'    type of therapy (0 = individual, 1 = group therapy)                       
+       *tailored*   'numeric'    whether the intervention was tailored to each patient (0 = no, 1 = yes)   
+       *sessions*   'numeric'    number of sessions                                                        
+       *length*     'numeric'    average session length (in minutes)                                       
+       *intensity*  'numeric'    product of sessions and length                                            
+       *multi*      'numeric'    intervention included multimedia elements (0 = no, 1 = yes)               
+       *cog*        'numeric'    intervention included cognitive techniques (0 = no, 1 = yes)              
+       *ba*         'numeric'    intervention included behavioral activation (0 = no, 1 = yes)             
+       *psed*       'numeric'    intervention included psychoeducation (0 = no, 1 = yes)                   
+       *home*       'numeric'    intervention included homework (0 = no, 1 = yes)                          
+       *prob*       'numeric'    intervention included problem solving (0 = no, 1 = yes)                   
+       *soc*        'numeric'    intervention included social skills training (0 = no, 1 = yes)            
+       *relax*      'numeric'    intervention included relaxation (0 = no, 1 = yes)                        
+       *goal*       'numeric'    intervention included goal setting (0 = no, 1 = yes)                      
+       *final*      'numeric'    intervention included a final session (0 = no, 1 = yes)                   
+       *mind*       'numeric'    intervention included mindfulness (0 = no, 1 = yes)                       
+       *act*        'numeric'    intervention included acceptance and commitment therapy (0 = no, 1 = yes) 
+      
+Details:
+
+     The dataset includes the results from 76 studies examining the
+     effectiveness of cognitive behavioral therapy (CBT) for treating
+     depression in adults. Studies included two or more of the
+     following treatments/conditions:
+
+       1. treatment as usual (TAU),
+
+       2. no treatment,
+
+       3. wait list,
+
+       4. psychological or attention placebo,
+
+       5. face-to-face CBT,
+
+       6. multimedia CBT,
+
+       7. hybrid CBT (i.e., multimedia CBT with one or more
+          face-to-face sessions).
+
+     Multimedia CBT was defined as CBT delivered via self-help books,
+     audio/video recordings, telephone, computer programs, apps,
+     e-mail, or text messages.
+
+     Variable 'diff' is the standardized mean change within each group,
+     with negative values indicating a decrease in depression symptoms.
+
+Concepts:
+
+     psychiatry, standardized mean changes, network meta-analysis
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Personal communication.
+
+References:
+
+     L<c3><b3>pez-L<c3><b3>pez, J. A., Davies, S. R., Caldwell, D. M., Churchill, R.,
+     Peters, T. J., Tallon, D., Dawson, S., Wu, Q., Li, J., Taylor, A.,
+     Lewis, G., Kessler, D. S., Wiles, N., & Welton, N. J. (2019). The
+     process and delivery of CBT for depression in adults: A systematic
+     review and network meta-analysis. _Psychological Medicine_,
+     *49*(12), 1937-1947. https://doi.org/10.1017/S003329171900120X
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.lopez2019
+     dat[1:10,1:6]
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### create network graph ('igraph' package must be installed)
+     library(igraph, warn.conflicts=FALSE)
+     pairs <- data.frame(do.call(rbind,
+        sapply(split(dat$treatment, dat$study), function(x) t(combn(x,2)))), stringsAsFactors=FALSE)
+     pairs$X1 <- factor(pairs$X1, levels=sort(unique(dat$treatment)))
+     pairs$X2 <- factor(pairs$X2, levels=sort(unique(dat$treatment)))
+     tab <- table(pairs[,1], pairs[,2])
+     tab # adjacency matrix
+     g <- graph_from_adjacency_matrix(tab, mode = "plus", weighted=TRUE, diag=FALSE)
+     plot(g, edge.curved=FALSE, edge.width=E(g)$weight/2,
+          layout=layout_in_circle(g, order=c("Wait list", "No treatment", "TAU", "Multimedia CBT",
+                                             "Hybrid CBT", "F2F CBT", "Placebo")),
+          vertex.size=45, vertex.color="lightgray", vertex.label.color="black", vertex.label.font=2)
+     
+     ### restructure data into wide format
+     dat <- to.wide(dat, study="study", grp="treatment", ref="TAU",
+                    grpvars=c("diff","se","n"), postfix=c("1","2"))
+     
+     ### compute contrasts between treatment pairs and corresponding sampling variances
+     dat$yi <- with(dat, diff1 - diff2)
+     dat$vi <- with(dat, se1^2 + se2^2)
+     
+     ### calculate the variance-covariance matrix for multitreatment studies
+     calc.v <- function(x) {
+        v <- matrix(x$se2[1]^2, nrow=nrow(x), ncol=nrow(x))
+        diag(v) <- x$vi
+        v
+     }
+     V <- bldiag(lapply(split(dat, dat$study), calc.v))
+     
+     ### add contrast matrix to the dataset
+     dat <- contrmat(dat, grp1="treatment1", grp2="treatment2")
+     
+     ### network meta-analysis using a contrast-based random-effects model
+     ### by setting rho=1/2, tau^2 reflects the amount of heterogeneity for all treatment comparisons
+     ### the treatment left out (TAU) becomes the reference level for the treatment comparisons
+     res1 <- rma.mv(yi, V, data=dat,
+              mods = ~ 0 + No.treatment + Wait.list + Placebo + F2F.CBT + Hybrid.CBT + Multimedia.CBT,
+              random = ~ comp | study, rho=1/2)
+     res1
+     
+     ### forest plot of the contrast estimates (treatments versus TAU)
+     forest(coef(res1), diag(vcov(res1)), slab=sub(".", " ", names(coef(res1)), fixed=TRUE),
+            xlim=c(-5,5), alim=c(-3,3), psize=1, header="Treatment",
+            xlab="Difference in Standardized Mean Change (compared to TAU)")
+     
+     ### fit random inconsistency effects model (might have to switch optimizer to get convergence)
+     res2 <- rma.mv(yi, V, data=dat,
+              mods = ~ 0 + No.treatment + Wait.list + Placebo + F2F.CBT + Hybrid.CBT + Multimedia.CBT,
+              random = list(~ comp | study, ~ comp | design), rho=1/2, phi=1/2,
+              control=list(optimizer="BFGS"))
+     res2
+     
+     ### likelihood ratio test comparing the two models
+     anova(res1, res2)
+     
+     ### collapse the different CBT forms into a single category
+     dat$CBT <- with(dat, ifelse(F2F.CBT + Hybrid.CBT + Multimedia.CBT > 0, 1, 0))
+     
+     ### fit the model with this treatment indicator
+     res3 <- rma.mv(yi, V, data=dat,
+              mods = ~ 0 + No.treatment + Wait.list + Placebo + CBT,
+              random = ~ comp | study, rho=1/2)
+     res3
+     
+     ### component network meta-analysis (effect of CBT may be larger/smaller depending on
+     ### the presence of various components; leaving out 'mind' and 'act' as in the paper)
+     res4 <- rma.mv(yi, V, data=dat,
+              mods = ~ 0 + No.treatment + Wait.list + Placebo + CBT +
+              CBT:(multi + cog + ba + psed + home + prob + soc + relax + goal + final),
+              random = ~ comp | study, rho=1/2)
+     res4
+     
+     rownames <- names(coef(res4))
+     rownames <- sub(".", " ", rownames, fixed=TRUE)
+     rownames[5:14] <- c("Multimedia", "Cognitive Techniques", "Behavioral Activiation",
+                         "Psycheducation", "Homework", "Problem Solving", "Social Skills Training",
+                         "Relaxation", "Goal Setting", "Final Session")
+     
+     ### forest plot of the estimates
+     forest(coef(res4), diag(vcov(res4)), slab=rownames,
+            xlim=c(-5,5), alim=c(-3,3), psize=1, header="Treatment",
+            xlab="Difference in Standardized Mean Change (compared to TAU)")
+     abline(h=10.5, lty="dashed")
+     ## End(Not run)
+     

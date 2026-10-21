@@ -1,0 +1,91 @@
+Studies on the Effectiveness of Writing-to-Learn Interventions
+
+Description:
+
+     Results from 48 studies on the effectiveness of school-based
+     writing-to-learn interventions on academic achievement.
+
+Usage:
+
+     dat.bangertdrowns2004
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *id*        'numeric'    study number                                                           
+       *author*    'character'  study author(s)                                                        
+       *year*      'numeric'    publication year                                                       
+       *grade*     'numeric'    grade level (1 = elementary; 2 = middle; 3 = high-school; 4 = college) 
+       *length*    'numeric'    treatment length (in weeks)                                            
+       *minutes*   'numeric'    minutes per assignment                                                 
+       *wic*       'numeric'    writing tasks were completed in class (0 = no; 1 = yes)                
+       *feedback*  'numeric'    feedback on writing was provided (0 = no; 1 = yes)                     
+       *info*      'numeric'    writing contained informational components (0 = no; 1 = yes)           
+       *pers*      'numeric'    writing contained personal components (0 = no; 1 = yes)                
+       *imag*      'numeric'    writing contained imaginative components (0 = no; 1 = yes)             
+       *meta*      'numeric'    prompts for metacognitive reflection (0 = no; 1 = yes)                 
+       *subject*   'character'  subject matter                                                         
+       *ni*        'numeric'    total sample size of the study                                         
+       *yi*        'numeric'    standardized mean difference                                           
+       *vi*        'numeric'    corresponding sampling variance                                        
+      
+Details:
+
+     In each of the studies included in this meta-analysis, an
+     experimental group (i.e., a group of students that received
+     instruction with increased emphasis on writing tasks) was compared
+     against a control group (i.e., a group of students that received
+     conventional instruction) with respect to some content-related
+     measure of academic achievement (e.g., final grade, an
+     exam/quiz/test score). The outcome measure for this meta-analysis
+     was the standardized mean difference (with positive values
+     indicating a higher mean level of academic achievement in the
+     intervention group).
+
+     The standardized mean differences given here are bias-corrected
+     and therefore differ slightly from the values reported in the
+     article. Also, since only the total sample size is given in the
+     article, the sampling variances were computed under the assumption
+     that n_i1 = n_i2 = n_i / 2.
+
+Concepts:
+
+     education, standardized mean differences, meta-regression
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Bangert-Drowns, R. L., Hurley, M. M., & Wilkinson, B. (2004). The
+     effects of school-based writing-to-learn interventions on academic
+     achievement: A meta-analysis. _Review of Educational Research_,
+     *74*(1), 29-58. https://doi.org/10.3102/00346543074001029
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.bangertdrowns2004
+     dat[1:10,-13]
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### fit random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     
+     ### some examples of mixed-effects meta-regression models
+     res <- rma(yi, vi, mods = ~ factor(grade), data=dat)
+     res
+     res <- rma(yi, vi, mods = ~ length, data=dat)
+     res
+     res <- rma(yi, vi, mods = ~ info + pers + imag + meta, data=dat)
+     res
+     ## End(Not run)
+     

@@ -1,0 +1,76 @@
+Studies on Pharmacotherapy for Hypertension
+
+Description:
+
+     Results from 11 studies evaluating pharmacotherapy in patients
+     with hypertension.
+
+Usage:
+
+     dat.quan2000
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*  'character'  study label                                    
+       *Ee*     'integer'    fatal cerebrovascular events (pharmacotherapy) 
+       *Ne*     'integer'    number of patients (pharmacotherapy)           
+       *Ec*     'integer'    fatal cerebrovascular events (control)         
+       *Nc*     'integer'    number of patients (control)                   
+      
+Details:
+
+     Quan et al. (2000) conducted a Cochrane Review to evaluate whether
+     the benefit of treating hypertension in women differed between
+     younger and older women, as well as between white and African
+     American women. In the systematic review, the Peto method was used
+     for pooling. The primary outcome was the occurrence of fatal
+     cerebrovascular events, a rare event in hypertension. The dataset
+     contains the subgroup of women older than 55 years.
+
+     This data set is used as an example in Schwarzer et al. (2015).
+
+Concepts:
+
+     medicine, cardiology, Peto's method
+
+Author(s):
+
+     Guido Schwarzer, <mailto:guido.schwarzer@uniklinik-freiburg.de>,
+     <https://github.com/guido-s/>
+
+Source:
+
+     Quan, A. P., Kerlikowske, K., Gueyffier, F., Boissel, J.-P., &
+     INDANA Investigators (2010). Pharmacotherapy for hypertension in
+     women of different races. _Cochrane Database of Systematic
+     Reviews_, *2*, CD002146. https://doi.org/10.1002/14651858.cd002146
+
+References:
+
+     Schwarzer, G., Carpenter, J. R., & Ruecker, G. (2015).
+     _Meta-analysis with R_. Cham, Switzerland: Springer.
+
+Examples:
+
+     ### Show first five studies
+     head(dat.quan2000, 5)
+     
+     ## Not run:
+     
+     ### Load meta package
+     suppressPackageStartupMessages(library(meta))
+     
+     ### Use RevMan 5 settings
+     oldset <- settings.meta("RevMan5")
+     
+     ### Conduct meta-analyis with Peto method
+     m <- metabin(Ee, Ne, Ec, Nc, sm = "OR", method = "Peto",
+       data = dat.quan2000, studlab = study, random = FALSE)
+     m
+     
+     ### Use previous settings
+     settings.meta(oldset)
+     ## End(Not run)
+     

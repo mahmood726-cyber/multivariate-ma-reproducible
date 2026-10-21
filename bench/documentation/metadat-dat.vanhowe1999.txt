@@ -1,0 +1,111 @@
+Studies on the Association between Circumcision and HIV Infection
+
+Description:
+
+     Results from 33 studies examining the association between male
+     circumcision and HIV infection.
+
+Usage:
+
+     dat.vanhowe1999
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*     'character'  study author                                                      
+       *category*  'character'  study type (high-risk group, partner study, or population survey) 
+       *non.pos*   'numeric'    number of non-circumcised HIV positive cases                      
+       *non.neg*   'numeric'    number of non-circumcised HIV negative cases                      
+       *cir.pos*   'numeric'    number of circumcised HIV positive cases                          
+       *cir.neg*   'numeric'    number of circumcised HIV negative cases                          
+      
+Details:
+
+     The 33 studies provide data in terms of 2x2 tables in the form:
+
+                        HIV positive  HIV negative 
+       non-circumcised   'non.pos'     'non.neg'   
+       circumcised       'cir.pos'     'cir.neg'   
+      
+     The goal of the meta-analysis was to examine if the risk of an HIV
+     infection differs between non-circumcised versus circumcised men.
+
+     The dataset is interesting because it can be used to illustrate
+     the difference between naively pooling results by summing up the
+     counts across studies and then computing the odds ratio based on
+     the aggregated table (as was done by Van Howe, 1999) and
+     conducting a proper meta-analysis (as illustrated by O'Farrell &
+     Egger, 2000). In fact, a proper meta-analysis shows that the HIV
+     infection risk is on average higher in non-circumcised men, which
+     is the opposite of what the naive pooling approach yields (which
+     makes this an illustration of Simpson's paradox).
+
+Concepts:
+
+     medicine, epidemiology, odds ratios
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Van Howe, R. S. (1999). Circumcision and HIV infection: Review of
+     the literature and meta-analysis. _International Journal of STD &
+     AIDS_, *10*(1), 8-16. https://doi.org/10.1258/0956462991913015
+
+References:
+
+     O'Farrell, N., & Egger, M. (2000). Circumcision in men and the
+     prevention of HIV infection: A 'meta-analysis' revisited.
+     _International Journal of STD & AIDS_, *11*(3), 137-142.
+     https://doi.org/10.1258/0956462001915480
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.vanhowe1999
+     dat
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### naive pooling by summing up the counts within categories and then
+     ### computing the odds ratios and corresponding confidence intervals
+     cat1 <- with(dat[dat$category=="high-risk group",],
+        escalc(measure="OR", ai=sum(non.pos), bi=sum(non.neg), ci=sum(cir.pos), di=sum(cir.neg)))
+     cat2 <- with(dat[dat$category=="partner study",],
+        escalc(measure="OR", ai=sum(non.pos), bi=sum(non.neg), ci=sum(cir.pos), di=sum(cir.neg)))
+     cat3 <- with(dat[dat$category=="population survey",],
+        escalc(measure="OR", ai=sum(non.pos), bi=sum(non.neg), ci=sum(cir.pos), di=sum(cir.neg)))
+     summary(cat1, transf=exp, digits=2)
+     summary(cat2, transf=exp, digits=2)
+     summary(cat3, transf=exp, digits=2)
+     
+     ### naive pooling across all studies
+     all <- escalc(measure="OR", ai=sum(dat$non.pos), bi=sum(dat$non.neg),
+                                 ci=sum(dat$cir.pos), di=sum(dat$cir.neg))
+     summary(all, transf=exp, digits=2)
+     
+     ### calculate log odds ratios and corresponding sampling variances
+     dat <- escalc(measure="OR", ai=non.pos, bi=non.neg, ci=cir.pos, di=cir.neg, data=dat)
+     dat
+     
+     ### random-effects model
+     res <- rma(yi, vi, data=dat, method="DL")
+     res
+     predict(res, transf=exp, digits=2)
+     
+     ### random-effects model within subgroups
+     res <- rma(yi, vi, data=dat, method="DL", subset=category=="high-risk group")
+     predict(res, transf=exp, digits=2)
+     res <- rma(yi, vi, data=dat, method="DL", subset=category=="partner study")
+     predict(res, transf=exp, digits=2)
+     res <- rma(yi, vi, data=dat, method="DL", subset=category=="population survey")
+     predict(res, transf=exp, digits=2)
+     ## End(Not run)
+     

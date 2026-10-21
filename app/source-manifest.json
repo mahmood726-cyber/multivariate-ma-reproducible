@@ -1,0 +1,29 @@
+{
+  "commit": "acd363fa33f0decd2fcafcf08814f663bb9d6178",
+  "files": [
+    {
+      "path": "multivariate-ma/index.html",
+      "sha256": "1ac28dabc27203606ff16cd630d4f08faf5628fc0c4ffd98a3f06908103d3c37"
+    },
+    {
+      "path": "shared/multivariate-ma.js",
+      "sha256": "f7cb00a180fe42236958faa50ed7925cb9cbfbca84e005886199f763db196e54"
+    },
+    {
+      "path": "shared/build-info.js",
+      "sha256": "f75a435e283d007883ce8fb2f66da7a1cf6132cd5a391a57419b137a69c9c238"
+    },
+    {
+      "path": "shared/forced-colors.css",
+      "sha256": "a967581cb9dfe03bcd6158264353dd8c3fff386d2919143587aa507a24e0c39c"
+    },
+    {
+      "path": "hub/shared/a11y-landmarks.js",
+      "sha256": "a9b35c71c500b0fe4e5a080f23c9dbb11c5462663a0d44e4557f782149e5f8ea"
+    },
+    {
+      "path": "hub/shared/tests/multivariate-ma-parity.spec.mjs",
+      "sha256": "72af1da1e194a3e8f387490c0cc6be489c96b1af4308c2b131e0ad472ed593f6"
+    }
+  ]
+}

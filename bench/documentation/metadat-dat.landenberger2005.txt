@@ -1,0 +1,114 @@
+Studies on the Effectiveness of CBT for Reducing Recidivism
+
+Description:
+
+     Results from 58 studies on the effectiveness of
+     cognitive-behavioral therapy (CBT) for reducing recidivism in
+     juvenile and adult offenders.
+
+Usage:
+
+     dat.landenberger2005
+     
+Format:
+
+     The data frame contains the following columns:
+
+       *study*             'character'  (first) author and year                                                                           
+       *pubtype*           'character'  publication type (book chapter, journal article, report, or thesis)                               
+       *country*           'character'  country where study was carried out (Canada, New Zealand, UK, or USA)                             
+       *design*            'character'  study design (matched groups, nonequivalent groups, or randomized trial)                          
+       *program*           'character'  purpose of setting up the CBT program (for demonstration, practice, or research purposes)         
+       *setting*           'character'  treatment setting (community or prison)                                                           
+       *designprob*        'character'  indication of study design problems (no, favors the control group, or favors the treatment group) 
+       *n.ctrl.rec*        'numeric'    number of recidivists in the control group                                                        
+       *n.ctrl.non*        'numeric'    number of non-recidivists in the control group                                                    
+       *n.cbt.rec*         'numeric'    number of recidivists in the CBT group                                                            
+       *n.cbt.non*         'numeric'    number of non-recidivists in the CBT group                                                        
+       *interval*          'numeric'    recidivism interval (in months)                                                                   
+       *group*             'numeric'    study group (adults or juveniles)                                                                 
+       *age*               'numeric'    mean age of the study group                                                                       
+       *male*              'numeric'    percentage of males in the study group                                                            
+       *minority*          'numeric'    percentage of minorities in the study group                                                       
+       *length*            'numeric'    treatment length (in weeks)                                                                       
+       *sessions*          'numeric'    number of CBT sessions per week                                                                   
+       *hrs_week*          'numeric'    treatment hours per week                                                                          
+       *hrs_total*         'numeric'    total hours of treatment                                                                          
+       *cbt.cogskills*     'character'  CBT component: cognitive skills (yes, no)                                                         
+       *cbt.cogrestruct*   'character'  CBT component: cognitive restructuring (yes, no)                                                  
+       *cbt.intpprbsolv*   'character'  CBT component: interpersonal problem solving (yes, no)                                            
+       *cbt.socskills*     'character'  CBT component: social skills (yes, no)                                                            
+       *cbt.angerctrl*     'character'  CBT component: anger control (yes, no)                                                            
+       *cbt.victimimpact*  'character'  CBT component: victim impact (yes, no)                                                            
+       *cbt.subabuse*      'character'  CBT component: substance abuse (yes, no)                                                          
+       *cbt.behavmod*      'character'  CBT component: behavior modification (yes, no)                                                    
+       *cbt.relapseprev*   'character'  CBT component: relapse prevention (yes, no)                                                       
+       *cbt.moralrsng*     'character'  CBT component: moral reasoning (yes, no)                                                          
+       *cbt.roletaking*    'character'  CBT component: role taking (yes, no)                                                              
+       *cbt.other*         'character'  CBT component: other (yes, no)                                                                    
+      
+Details:
+
+     Landenberger and Lipsey (2005) conducted a meta-analysis of 58
+     experimental and quasi-experimental studies of the effects of
+     cognitive-behavioral therapy (CBT) on the recidivism rates of
+     adult and juvenile offenders (see also Lipsey et al., 2007). The
+     present dataset includes the results of these studies and a range
+     of potential moderator variables to identify factors associated
+     with variation in treatment effects.
+
+Concepts:
+
+     psychology, criminology, odds ratios, meta-regression
+
+Author(s):
+
+     Wolfgang Viechtbauer, <mailto:wvb@metafor-project.org>,
+     <https://www.metafor-project.org>
+
+Source:
+
+     Personal communication.
+
+References:
+
+     Landenberger, N. A., & Lipsey, M. W. (2005). The positive effects
+     of cognitive-behavioral programs for offenders: A meta-analysis of
+     factors associated with effective treatment. _Journal of
+     Experimental Criminology_, *1*, 451-476.
+     https://doi.org/10.1007/s11292-005-3541-7
+
+     Lipsey, M. W., Landenberger, N. A., & Wilson, S. J. (2007).
+     Effects of cognitive-behavioral programs for criminal offenders.
+     _Campbell Systematic Reviews_, *3*(1), 1-27.
+     https://doi.org/10.4073/csr.2007.6
+
+Examples:
+
+     ### copy data into 'dat' and examine data
+     dat <- dat.landenberger2005
+     head(dat)
+     
+     ## Not run:
+     
+     ### load metafor package
+     library(metafor)
+     
+     ### calculate log odds ratios (for non-recidivism in CBT vs. control groups) and sampling variances
+     dat <- escalc(measure="OR", ai=n.cbt.non, bi=n.cbt.rec, ci=n.ctrl.non, di=n.ctrl.rec, data=dat)
+     
+     ### fit random-effects model
+     res <- rma(yi, vi, data=dat)
+     res
+     
+     ### estimated average OR and corresponding 95% CI/PI
+     predict(res, transf=exp, digits=2)
+     
+     ### examine if number of treatment sessions per week is a potential moderator
+     res <- rma(yi, vi, mods = ~ sessions, data=dat)
+     res
+     
+     ### predicted ORs for 1, 2, 5, or 10 sessions per week
+     predict(res, newmods=c(1,2,5,10), transf=exp, digits=2)
+     ## End(Not run)
+     

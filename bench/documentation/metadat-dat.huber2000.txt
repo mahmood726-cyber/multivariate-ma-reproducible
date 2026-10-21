@@ -1,0 +1,84 @@
+Individual Participant Data (IPD) from Five Studies on Uro-Vaxom in
+Urinary Tract Infections
+
+Description:
+
+     Individual participant data (IPD) of 601 patients from 5 studies
+     comparing Uro-Vaxom versus placebo in recurrent urinary tract
+     infections (UTI) based on the numbers of recurrences experienced.
+
+Usage:
+
+     dat.huber2000
+     
+Format:
+
+     The data frame contains the following columns (one row per
+     patient):
+
+       *study*        'factor'   study identifier                 
+       *treatment*    'factor'   treatment (Uro-Vaxom or Placebo) 
+       *recurrences*  'numeric'  number of recurrences (relapses) 
+      
+Details:
+
+     Huber et al. (2000) jointly analyzed data from five randomized,
+     placebo-controlled studies investigating the use of _OM-89_
+     (Uro-Vaxom) in recurrent urinary tract infections (UTI). Treatment
+     efficacy was evaluated based on the numbers of recurrences
+     experienced by study participants.
+
+     The eventual analysis was carried out based on nonparametric
+     Wilcoxon-Mann-Whitney (WMW) tests applied for each study
+     individually and then synthesizing the five resulting test
+     statistic values. The WMW test statistics may be expressed in
+     terms of _common language effect sizes_ (CLES), that is, the
+     estimated probability that a patient in the treatment group has a
+     better outcome than a control patient.
+
+Concepts:
+
+     medicine, proportions, individual participant data)
+
+Author(s):
+
+     Christian Roever, <mailto:christian.roever@med.uni-goettingen.de>
+
+Source:
+
+     Huber, M., Krauter, K., Winkelmann, G., Bauer, H. W., Rahlfs, V.
+     W., Lauener, P. A., Ble<c3><9f>mann, G. S. S., & Bessler, W. G. (2000).
+     Immunostimulation by bacterial components: II. Efficacy studies
+     and meta-analysis of the bacterial extract OM-89. _International
+     Journal of Immunopharmacology_, *22*(12), 1103-1111.
+     https://doi.org/10.1016/s0192-0561(00)00070-9
+
+See Also:
+
+     'dat.bauer2002'
+
+Examples:
+
+     # show data
+     head(dat.huber2000)
+     str(dat.huber2000)
+     summary(dat.huber2000)
+     table(dat.huber2000[,1:2])
+     table(dat.huber2000[,c(2,3,1)])
+     
+     # compute WMW statistics for all 5 studies
+     wmw <- tapply(dat.huber2000, dat.huber2000$study,
+                   function(x){wilcox.test(x$recurrences[x$treatment=="Placebo"],
+                                           x$recurrences[x$treatment=="Uro-Vaxom"])$statistic},
+                   simplify=TRUE)
+     wmw
+     
+     # determine treatment group sizes
+     patients <- table(dat.huber2000[,1:2])
+     patients
+     
+     # convert WMW statistics into estimated probability of superiority
+     # ("common language effect size")
+     prob <- wmw / (patients[,1]*patients[,2])
+     round(prob, 3)
+     
